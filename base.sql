@@ -423,3 +423,4 @@ CREATE TABLE `usuarios` (
   `anulado` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+......
