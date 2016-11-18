@@ -1,0 +1,7 @@
+[2016-09-29 14:03:55.000000 ::1  - info ] Douglas2[2016-09-29 14:10:49.000000 ::1  - info ] Douglas2
+[2016-09-29 14:20:37.000000 ::1  - info ] Douglas2
+[2016-09-29 14:21:19.000000 ::1  - info ] Douglas5
+[2016-09-29 14:25:26.000000 ::1  - info ] 1 douglas nieves
+[2016-09-29 14:28:08.000000 ::1  - listado-whatapp ] 1 douglas nieves
+[2016-09-29 14:31:17.000000 ::1  - listado-whatapp ] 1 douglas nieves
+[2016-09-29 14:32:03.000000 ::1  - listado-whatapp ] 1 douglas nieves

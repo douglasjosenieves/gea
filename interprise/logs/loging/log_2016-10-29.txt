@@ -1,0 +1,4 @@
+[2016-10-29 06:20:53.000000 ::1  - success ] douglasjosenieves@gmail.com
+[2016-10-29 11:43:45.000000 ::1  - success ] douglasjosenieves@gmail.com
+[2016-10-29 12:04:51.000000 ::1  - success ] douglasjosenieves@gmail.com
+[2016-10-29 13:20:33.000000 ::1  - success ] douglasjosenieves@gmail.com
