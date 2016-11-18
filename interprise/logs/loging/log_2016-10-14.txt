@@ -1,6 +1,0 @@
-[2016-10-14 05:51:28.000000 ::1  - success ] admin
-[2016-10-14 06:16:51.000000 ::1  - success ] admin
-[2016-10-14 06:34:03.000000 ::1  - success ] douglasjosenieves@gmail.com
-[2016-10-14 06:43:50.000000 ::1  - success ] douglasjosenieves@gmail.com
-[2016-10-14 07:29:10.000000 ::1  - success ] douglasjosenieves@gmail.com
-[2016-10-14 08:26:02.000000 ::1  - success ] douglasjosenieves@gmail.com
