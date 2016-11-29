@@ -4,7 +4,7 @@
          <?php require_once 'nav.php'; ?>
 
 		<!-- Pending tasks -->
-		<div class="progessInfo hidden-xs hidden-sm">
+	<!-- 	<div class="progessInfo hidden-xs hidden-sm">
 			<h2 class="boxTitle">Pending tasks <span class="badge">8</span></h2>
 
 			<ul>
@@ -33,5 +33,5 @@
 					</div>
 				</li>
 			</ul>
-		</div>
+		</div> -->
 	</aside>
