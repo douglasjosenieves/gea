@@ -12,7 +12,7 @@ require_once 'nav_define.php';
 				
 
 				<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-border-color zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cliente<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-account-add zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cliente<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 					<li><a href="<?php echo BASE_URL ?>mod_clientes/index.php" title="#">Nuevo </a></li>
 					<li><a href="<?php echo BASE_URL ?>mod_clientes/reporte_clientes.php" title="#">Ver</a></li>
@@ -25,7 +25,7 @@ require_once 'nav_define.php';
 					
 			
 				<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-border-color zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Inventario<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-dialpad zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Inventario<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 						<li><a href="<?php echo BASE_URL ?>mod_inventario/index.php" >Nuevo</a></li>
 			 	        <li><a href="<?php echo BASE_URL ?>mod_inventario/reporte.php" title="#">Ver</a></li>
@@ -35,7 +35,7 @@ require_once 'nav_define.php';
 
 
 				<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-border-color zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Servicio<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-assignment zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Servicio<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 			 		<li><a href="<?php echo BASE_URL ?>mod_servicios/index.php" title="#">Nuevo</a></li>
 				 	<li><a href="<?php echo BASE_URL ?>mod_servicios/reporte.php" title="#">Ver</a></li>
@@ -44,14 +44,14 @@ require_once 'nav_define.php';
 					
 
 						<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-border-color zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cotización<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-file-text zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cotización<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 			 <li><a href="<?php echo BASE_URL ?>mod_cotizacion/index.php" title="Administracion de contactos">Nuevo</a> </li> <li><a href="<?php echo BASE_URL ?>mod_cotizacion/reporte.php" title="Administracion de contactos">Ver</a> </li>
 			</ul>
 			</li>	
 
 				<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-border-color zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Facturación<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-money zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Facturación<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 <li><a href="<?php echo BASE_URL ?>mod_facturacion/index.php" title="Administracion de contactos">Nuevo</a> </li> 
 <li><a href="<?php echo BASE_URL ?>mod_facturacion/reporte.php" title="Administracion de contactos">Ver</a> </li> 
@@ -67,7 +67,7 @@ require_once 'nav_define.php';
 
 
 			<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-border-color zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Notas de Entregas<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-accounts-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Nota de Entrega<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 			<li><a href="<?php echo BASE_URL ?>mod_nota_entrega/index.php" title="#">Nuevo</a></li> 
            <li><a href="<?php echo BASE_URL ?>mod_nota_entrega/reporte.php" title="#">Ver</a></li>
@@ -77,9 +77,28 @@ require_once 'nav_define.php';
 
 
 
+	<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-plus-circle zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cta Por Cobrar<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+			<li><a href="<?php echo BASE_URL ?>mod_cta_por_cobrar/index.php" title="#">Nuevo</a></li> 
+           <li><a href="<?php echo BASE_URL ?>mod_cta_por_cobrar/reporte.php" title="#">Ver</a></li>
+
+			</ul>
+			</li>
+
+
+<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-minus-circle zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cta Por Pagar<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+			<li><a href="<?php echo BASE_URL ?>mod_cta_por_pagar/index.php" title="#">Nuevo</a></li> 
+           <li><a href="<?php echo BASE_URL ?>mod_cta_por_pagar/reporte.php" title="#">Ver</a></li>
+
+			</ul>
+			</li>
+
 						
 <li class="sub js-submenu">
-					<div><i class="zmdi zmdi-border-color zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm" title="Seguimientos o Incidencias">Seguimientos<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-notifications-active zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm" title="Seguimientos o Incidencias">Seguimientos<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 <li><a href="<?php echo BASE_URL ?>mod_seguimientos/index.php" title="#">Nuevo</a></li>
  <li><a href="<?php echo BASE_URL ?>mod_seguimientos/reporte-seguimientos-abiertos.php" title="#">Ver<span class="label label-danger">ABIERTO</span></a></li>
