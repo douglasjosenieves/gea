@@ -15,7 +15,7 @@ if ($status == 'FORMULARIO') {
 }
 
 
-if ($status == 'CLIENTE') {
+if ($status == 'CLIENTE' OR $status == 'ACTIVO') {
 
 	$noti = '<span class="label label-success">'.$status.'</span>';
 }

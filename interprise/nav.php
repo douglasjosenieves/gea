@@ -12,7 +12,7 @@ require_once 'nav_define.php';
 				
 
 				<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-account-add zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cliente<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-account-add zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Clientes<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 					<li><a href="<?php echo BASE_URL ?>mod_clientes/index.php" title="#">Nuevo </a></li>
 					<li><a href="<?php echo BASE_URL ?>mod_clientes/reporte_clientes.php" title="#">Ver</a></li>
@@ -21,7 +21,42 @@ require_once 'nav_define.php';
 			
 			</ul>
 			</li>
-						 
+						
+
+								<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-account-box-o zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Proveedores<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+					<li><a href="<?php echo BASE_URL ?>mod_proveedores/index.php" title="#">Nuevo </a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_proveedores/reporte.php" title="#">Ver</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_proveedores/status.php" title="#">Ver por status</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_proveedores/anulados.php" title="Administracion de contactos">Anulados</a> </li>
+			
+			</ul>
+			</li>
+					 
+
+					 						<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-accounts-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Instaladores<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+					<li><a href="<?php echo BASE_URL ?>mod_instaladores/index.php" title="#">Nuevo </a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_instaladores/reporte.php" title="#">Ver</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_instaladores/status.php" title="#">Ver por status</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_instaladores/anulados.php" title="Administracion de contactos">Anulados</a> </li>
+			
+			</ul>
+			</li>
+					 
+
+					  						<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-city-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Obras<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+					<li><a href="<?php echo BASE_URL ?>mod_obras/index.php" title="#">Nuevo </a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_obras/reporte.php" title="#">Ver</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_obras/status.php" title="#">Ver por status</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_obras/anulados.php" title="Administracion de contactos">Anulados</a> </li>
+			
+			</ul>
+			</li>
 					
 			
 				<li class="sub js-submenu">
