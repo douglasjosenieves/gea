@@ -88,7 +88,7 @@ $data['data'][] = $row;
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Inventario</a>
+					<a href="#" title="#">Articulos</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="../index.php">Panel de controlo</a></li>
@@ -225,7 +225,27 @@ $data['data'][] = $row;
 
 
 	</div>				 
-					 
+		
+		<div class="row">
+	<div class="col-xs-12 col-sm-3">
+<div class="form-group">
+<label for="basicInput">Unidad de medida:</label>
+<input type="text" value="<?php echo $data['data'][0]['und_med'] ?>" required  class="form-control" name="und_med" id="und_med" placeholder="Ej: pza, ml, par, jgo, Und">
+</div>
+</div>
+
+
+<div class="col-xs-12 col-sm-3">
+<div class="form-group">
+<label for="basicInput">Porcentaje de desperdicio:</label>
+<input type="number" value="<?php echo $data['data'][0]['por_desperdicio'] ?>" required  class="form-control" name="por_desperdicio" id="por_desperdicio" placeholder="Porcentaje de desperdicio:">
+</div>
+</div>		
+
+
+
+
+		</div>			 
  
 	<div class="row">
 		

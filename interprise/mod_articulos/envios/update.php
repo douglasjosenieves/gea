@@ -39,6 +39,10 @@ SET
 `cantidad` = '$cantidad',
 `pro_inv_max` = '$pro_inv_max',
 `pro_inv_min` = '$pro_inv_min',
+
+`und_med` = '$und_med',
+`por_desperdicio` = '$por_desperdicio',
+
 `tax` = '$tax',
 `islr` = '$islr',
 `id_cat` = '$id_cat',

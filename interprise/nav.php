@@ -60,10 +60,10 @@ require_once 'nav_define.php';
 					
 			
 				<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-dialpad zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Inventario<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-dialpad zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Articulos<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
-						<li><a href="<?php echo BASE_URL ?>mod_inventario/index.php" >Nuevo</a></li>
-			 	        <li><a href="<?php echo BASE_URL ?>mod_inventario/reporte.php" title="#">Ver</a></li>
+						<li><a href="<?php echo BASE_URL ?>mod_articulos/index.php" >Nuevo</a></li>
+			 	        <li><a href="<?php echo BASE_URL ?>mod_articulos/reporte.php" title="#">Ver</a></li>
 				 
 			</ul>
 			</li>

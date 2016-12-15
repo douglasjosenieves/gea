@@ -39,6 +39,10 @@ $qry = "INSERT INTO `inventario`
 `cantidad`,
 `pro_inv_max`,
 `pro_inv_min`,
+
+`und_med`,
+`por_desperdicio`,
+
 `tax`,
 `islr`,
 `id_cat`,
@@ -66,6 +70,9 @@ $precio_compra,
 $cantidad,
 $pro_inv_max,
 $pro_inv_min,
+$und_med,
+$por_desperdicio,
+
 $tax,
 $islr,
 '$id_cat',
