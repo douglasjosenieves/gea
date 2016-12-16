@@ -36,7 +36,7 @@ $reg_descripcion_uns =  unserialize($data['data'][0]['reg_descripcion']);
 
 
 $reg_cantidad_uns =  unserialize($data['data'][0]['reg_cantidad']);
-
+$reg_und_med_uns =  unserialize($data['data'][0]['reg_und_med']);
 
 $reg_precio_uns =  unserialize($data['data'][0]['reg_precio']);
 $reg_subtotal_uns =  unserialize($data['data'][0]['reg_subtotal']);
@@ -55,8 +55,22 @@ foreach ($reg_id_uns as $key => $value) {
 	//{ text: 'Nombre', fontSize: 8 }
 	
 
+$reg .= "[";	
+$reg .= "{ text: '".$reg_id_uns[$key]."', fontSize: 8 }, ";
+$reg .= "{ text: '".strip_tags($reg_nombre_uns[$key])."', fontSize: 8 }, ";
+$reg .= "{ text: '".strip_tags($reg_descripcion_uns[$key])."', fontSize: 8 }, ";
+$reg .= "{ text: '".$reg_cantidad_uns[$key].' '.$reg_und_med_uns[$key]."', fontSize: 8 }, ";
+$reg .= "{ text: '".$reg_precio_uns[$key]."', fontSize: 8 }, ";
+$reg .= "{ text: '".$reg_subtotal_uns[$key]."', fontSize: 8 }, ";
+$reg .= "],";
 
-	$reg .= "[{ text: '".strip_tags($reg_id_uns[$key])."', fontSize: 9 },{ text: '".strip_tags($reg_nombre_uns[$key])."', fontSize: 9 }, { text: '".strip_tags($reg_descripcion_uns[$key])."', fontSize: 9 },{ text: '".strip_tags($reg_cantidad_uns[$key])."', fontSize: 9 },{ text: '".strip_tags($reg_precio_uns[$key])."', fontSize: 9 },{ text: '".strip_tags($reg_subtotal_uns[$key])."', fontSize: 9 }], "; 
+
+
+
+
+
+
+
 }
 
 
@@ -121,6 +135,7 @@ $total_total =  $data['data'][0]['total_total'];
 
 
 	<!-- Header -->
+	<?php  require_once '../config.php'; ?>
 	<?php  require_once '../header.php'; ?>
 	
 	<?php  require_once '../tareas-pendientes.php'; ?>
@@ -386,7 +401,7 @@ var docDefinition = {
         // you can declare how many rows should be treated as headers
          style: 'tableExample',
         headerRows: 1,
-  widths: [ 40, 80, '*', 50 , 70, 70],
+  widths: [ 40, '*', 80, 50 , 70, 70],
 
         body: [
           [ { text: 'Id', bold: true }, { text: 'Nombre', bold: true }, { text: 'Descripción', bold: true }, { text: 'Cantidad', bold: true }, { text: 'Precio', bold: true }, { text: 'Subtotal', bold: true } ],
@@ -403,8 +418,8 @@ var docDefinition = {
 /*=====  End of Aqui va el siclo de los items  ======*/
 [ '', '', '', '', '', ' '],
    [ '', '', '', '', {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
-   [ '', '', '', '', {text: 'IVA: 12%', bold: true, fontSize: 8 }, total_tax],
-     [ '', '', '', '', {text: 'TOTAL A PAGAR Bs.', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
+   [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?> %', bold: true, fontSize: 8 }, total_tax],
+     [ '', '', '', '', {text: 'TOTAL A PAGAR <?php  echo MONEDA ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
           
         ]
       },

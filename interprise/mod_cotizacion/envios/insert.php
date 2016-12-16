@@ -24,6 +24,7 @@ $reg_id = serialize($reg_id);
 $reg_nombre = serialize($reg_nombre);
 $reg_descripcion = serialize($reg_descripcion);
 $reg_cantidad = serialize($reg_cantidad);
+$reg_und_med = serialize($reg_und_med);
 $reg_precio = serialize($reg_precio);
 $reg_subtotal = serialize($reg_subtotal);
 $imagenes = serialize($imagenes);
@@ -49,6 +50,7 @@ $qry = "INSERT INTO `cotizacion`
 `reg_nombre`,
 `reg_descripcion`,
 `reg_cantidad`,
+`reg_und_med`,
 `reg_precio`,
 `reg_subtotal`,
 `total_parcial`,
@@ -79,6 +81,7 @@ VALUES
 '$reg_nombre',
 '$reg_descripcion',
 '$reg_cantidad',
+'$reg_und_med',
 '$reg_precio',
 '$reg_subtotal',
 '$total_parcial',

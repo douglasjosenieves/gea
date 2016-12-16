@@ -87,7 +87,7 @@ mysql_query("SET CHARACTER_SET utf");
 									<th>Codigo</th>
 								   <th>Nombre</th>
 									<th>Precio</th>
-									<th>Cantidad</th>
+									<th>Categoría</th>
 									<th>Estado</th>
 								 
 									<th>Procesos</th>
@@ -109,6 +109,7 @@ mysql_query("SET CHARACTER_SET utf");
 	                <?php 
 require_once '../asesor_funtion.php';
 	                  require_once '../status_estado.php';
+	                              require_once '../funciones/articulos_id_cat.php';
 					$i=0;
 					$resul =  mysql_query("SELECT * FROM `inventario` where anulado <> 1");
 					while($row =  mysql_fetch_array($resul) ) {
@@ -130,7 +131,7 @@ require_once '../asesor_funtion.php';
 						<td><?php echo $opciones['opciones'][$i]['codigo']; ?></td>
 						<td><?php echo $opciones['opciones'][$i]['nombre']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['precio']; ?></td>
-					    <td><?php echo $opciones['opciones'][$i]['cantidad']; ?></td>
+					    <td><?php echo id_cat($opciones['opciones'][$i]['id_cat']); ?></td>
 					    <td><?php echo statusestado($opciones['opciones'][$i]['estado']); ?></td>
 			 
 					    <td>
@@ -141,7 +142,7 @@ require_once '../asesor_funtion.php';
 								Procesos <i class="fa fa-chevron-down"></i>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="../mod_inventario/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
+								<li><a href="../mod_articulos/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
 							
 						
 								

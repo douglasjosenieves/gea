@@ -24,6 +24,7 @@ $reg_id = serialize($reg_id);
 $reg_nombre = serialize($reg_nombre);
 $reg_descripcion = serialize($reg_descripcion);
 $reg_cantidad = serialize($reg_cantidad);
+$reg_und_med = serialize($reg_und_med);
 $reg_precio = serialize($reg_precio);
 $reg_subtotal = serialize($reg_subtotal);
 $imagenes = serialize($imagenes);
@@ -49,6 +50,7 @@ $qry = "INSERT INTO `factura`
 `reg_nombre`,
 `reg_descripcion`,
 `reg_cantidad`,
+`reg_und_med`,
 `reg_precio`,
 `reg_subtotal`,
 `total_parcial`,
@@ -79,6 +81,7 @@ VALUES
 '$reg_nombre',
 '$reg_descripcion',
 '$reg_cantidad',
+'$reg_und_med',
 '$reg_precio',
 '$reg_subtotal',
 '$total_parcial',
@@ -124,7 +127,7 @@ if ($resul==1) {
   
 
 
-$resulf =  mysql_query("SELECT IF(ISNULL(max( id)+ 1),'1',max( id))  AS id FROM factura");
+$resulf =  mysql_query("SELECT IF(ISNULL(max( id)+ 1),'1',max( id))  AS id FROM factura_detalle");
 while($row =  mysql_fetch_array($resulf) ) {
 $id_siguiente= $row['id'];
 }
@@ -132,7 +135,7 @@ $id_siguiente= $row['id'];
 foreach ($reg_id as $key => $value) {
 //echo $reg_nombre[$key];
 
-$qry2 = "INSERT INTO `factura_detalle`
+$qry2 = "INSERT INTO `cotizacion_detalle`
 (
 `id_enc`,
 `reg_id`,

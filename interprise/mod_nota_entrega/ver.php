@@ -40,8 +40,15 @@ $reg='';
 foreach ($reg_id_uns as $key => $value) {
 	//[ 'Value 1', 'Value 2', 'Value 3', 'Value 4' ]
 	//{ text: 'Nombre', fontSize: 8 }
-	
-	$reg .= "['".$reg_id_uns[$key]."','".$reg_nombre_uns[$key]."', { text: '".strip_tags($reg_descripcion_uns[$key])."', fontSize: 10 },'".$reg_cantidad_uns[$key]."'], "; 
+$reg .= "[";	
+$reg .= "{ text: '".$reg_id_uns[$key]."', fontSize: 10 }, ";
+$reg .= "{ text: '".strip_tags($reg_nombre_uns[$key])."', fontSize: 10 }, ";
+$reg .= "{ text: '".strip_tags($reg_descripcion_uns[$key])."', fontSize: 10 }, ";
+$reg .= "{ text: '".$reg_cantidad_uns[$key]."', fontSize: 10 }, ";
+$reg .= "],";
+
+
+
 }
 
 
@@ -122,7 +129,7 @@ foreach ($reg_id_uns as $key => $value) {
 					
 										<div class="row">
 	
-		
+		<?php //echo $reg ?>
 
 
  <div class="col-xs-12 col-sm-2">
@@ -352,7 +359,7 @@ var docDefinition = {
         // you can declare how many rows should be treated as headers
          style: 'tableExample',
         headerRows: 1,
-  widths: [ 40, 120, '*', 50 ],
+  widths: [ 40, '*', '*', 50 ],
 
         body: [
           [ { text: 'Id', bold: true }, { text: 'Nombre', bold: true }, { text: 'Descripción', bold: true }, { text: 'Cantidad', bold: true } ],

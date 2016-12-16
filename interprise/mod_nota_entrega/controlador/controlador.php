@@ -192,7 +192,7 @@ function buscarArticulos(texto, index) {
 
 
 $.ajax({
-  url: '../mod_inventario/async/buscar_detalle.php',
+  url: '../mod_articulos/async/buscar_detalle.php',
   type: 'POST',
  
   data: {parametro: texto,index: index},

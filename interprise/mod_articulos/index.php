@@ -160,13 +160,31 @@ $data['data'][] = $row;
 
 
 
-<div class="col-xs-12 col-sm-8">
+<div class="col-xs-12 col-sm-6">
 <div class="form-group">
 <label for="basicInput">Nombre:</labe8>
 <input type="text" value="<?php echo $data['data'][0]['nombre'] ?>" required class="form-control" name="nombre" id="nombre" placeholder="Nombre:">
 </div>
 </div>
  
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+<label for="basicInput">Und Medida:</label>
+<select required id="und_med" name="und_med" data-id=""  class="js-select">
+<option  value="" >- Seleccionar -</option>
+<option  value="und" >und</option>
+<option  value="pza" >pza</option>
+<option  value="ml" >ml</option>
+<option  value="par" >par</option>
+<option  value="jgo" >jgo</option>
+<option  value="sg" >sg</option>
+
+</select>	
+</div>
+</div>
+
+
+
 </div>
 
 <div class="row">
@@ -227,13 +245,7 @@ $data['data'][] = $row;
 	</div>				 
 		
 		<div class="row">
-	<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Unidad de medida:</label>
-<input type="text" value="<?php echo $data['data'][0]['und_med'] ?>" required  class="form-control" name="und_med" id="und_med" placeholder="Ej: pza, ml, par, jgo, Und">
-</div>
-</div>
-
+ 
 
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
@@ -505,6 +517,7 @@ if ($img[0] !='') {
 $('#id_cat').val('<?php echo $data['data'][0]['id_cat'] ?>').change();
 $('#estado').val('<?php echo $data['data'][0]['estado'] ?>').change();
 $('#stock').val('<?php echo $data['data'][0]['stock'] ?>').change();
+$('#und_med').val('<?php echo $data['data'][0]['und_med'] ?>').change();
 
 		
 	 var imgr = $('#imgRemover').val();

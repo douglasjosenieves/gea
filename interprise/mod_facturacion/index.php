@@ -78,6 +78,7 @@ $data['data'][] = $row;
 
 
 	<!-- Header -->
+	<?php  require_once '../config.php'; ?>
 	<?php  require_once '../header.php'; ?>
 	
 	<?php  require_once '../tareas-pendientes.php'; ?>
@@ -273,7 +274,7 @@ $data['data'][] = $row;
 <div class="form-group">
 
 <input type="number" value="<?php echo $art['reg'][0]['reg_cantidad'] ?>" required class="form-control cantidad" name="reg_cantidad[]" id="reg_cantidad" placeholder="Cantidad">
-
+<input type="hidden" value="<?php echo $art['reg'][0]['und_med'] ?>" required class="form-control" name="reg_und_med[]" id="und_med" placeholder="und_med">
 
 
 </div>
@@ -336,13 +337,13 @@ $data['data'][] = $row;
 
 <div class="row">
 	
-	<div class="col-md-6">TOTAL TAX U/O IVA</div>
+		<div class="col-md-6">TOTAL TAX U/O IVA (<?php  echo IMPUESTO ?>)</div>
 	<div class="col-md-6" id="e_total_tax" >0</div>
 </div>
 
 <div class="row">
 	
-	<div class="col-md-6">TOTAL A CANCELAR</div>
+	<div class="col-md-6">TOTAL A CANCELAR (<?php  echo MONEDA ?>)</div>
 	<div class="col-md-6" id="e_total_total" >0</div>
 </div>
 

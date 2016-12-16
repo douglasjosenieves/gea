@@ -426,3 +426,6 @@ CREATE TABLE `usuarios` (
 ......
 
 ALTER TABLE `inventario` ADD COLUMN `und_med` VARCHAR(500) NULL  AFTER `pro_inv_min` , ADD COLUMN `por_desperdicio` VARCHAR(500) NULL  AFTER `und_med`;
+
+ALTER TABLE `cotizacion` ADD COLUMN `reg_und_med` TEXT NULL  AFTER `reg_cantidad`;
+ALTER TABLE `factura` ADD COLUMN `reg_und_med` TEXT NULL  AFTER `reg_cantidad`;

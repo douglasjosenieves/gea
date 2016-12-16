@@ -34,7 +34,7 @@
 
 <input type="number" value="<?php echo $art['reg'][0]['reg_cantidad'] ?>" required class="form-control cantidad" name="reg_cantidad[]" id="reg_cantidad" placeholder="Cantidad">
 
-
+<input type="hidden" value="<?php echo $art['reg'][0]['und_med'] ?>" required class="form-control" name="reg_und_med[]" id="und_med" placeholder="und_med">
 
 </div>
 
