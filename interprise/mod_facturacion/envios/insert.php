@@ -62,7 +62,8 @@ $qry = "INSERT INTO `factura`
 `verificado`,
 `imagenes`,
 `ip`,
-`anulado`)
+`anulado`,
+`ext1`)
 VALUES
 (
 
@@ -93,7 +94,8 @@ VALUES
 '$verificado',
 '$imagenes',
 '$ip',
-'$anulado');
+'$anulado',
+'$ext1');
 ";
  
 

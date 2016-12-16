@@ -267,7 +267,8 @@ $total_total =  $data['data'][0]['total_total'];
 	
 	<!-- Search modal -->
 <?php require_once '../buscar.php'; ?>
-
+<?php require_once '../funciones/proyectos.php'; ?>
+ 
 	<!-- JS -->
 	<script src="../assets/js/jquery-1.11.3.min.js"></script>
 	<script src="../assets/js/jquery-ui.min.js"></script>
@@ -333,7 +334,7 @@ var total_parcial = "<?php echo $total_parcial ?>";
 var total_tax = "<?php echo $total_tax ?>";
 var total_total = "<?php echo $total_total ?>";
 
-
+var ext1 = '<?php echo proyectos($data['data'][0]['ext1']) ?>';
 
   if (reg_id!=null) {
 for(var i=0;i<reg_id.length;i++)
@@ -388,8 +389,9 @@ var docDefinition = {
 
 { text: enc_lugar_emision +' '+enc_fecha_emision, fontSize: 8,  alignment: 'right',margin: [ 0, 5, 0, 0 ]},
 { text: 'Orden #: '+enc_orden, fontSize: 8,  alignment: 'right'},
-		
-{ text: 'Comentarios: '+enc_comentarios, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},
+
+{ text: 'Comentario: '+enc_comentarios, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},		
+{ text: 'Proyecto: '+ext1, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},
 
 
 /*=============================================

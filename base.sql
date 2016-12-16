@@ -429,3 +429,7 @@ ALTER TABLE `inventario` ADD COLUMN `und_med` VARCHAR(500) NULL  AFTER `pro_inv_
 
 ALTER TABLE `cotizacion` ADD COLUMN `reg_und_med` TEXT NULL  AFTER `reg_cantidad`;
 ALTER TABLE `factura` ADD COLUMN `reg_und_med` TEXT NULL  AFTER `reg_cantidad`;
+
+ALTER TABLE `cotizacion` ADD COLUMN `ext1` TEXT NULL  AFTER `anulado` , ADD COLUMN `ext2` TEXT NULL  AFTER `ext1` , ADD COLUMN `ext3` TEXT NULL  AFTER `ext2` , ADD COLUMN `ext4` TEXT NULL  AFTER `ext3` , ADD COLUMN `ext5` TEXT NULL  AFTER `ext4`;
+ALTER TABLE `factura` ADD COLUMN `ext1` TEXT NULL  AFTER `anulado` , ADD COLUMN `ext2` TEXT NULL  AFTER `ext1` , ADD COLUMN `ext3` TEXT NULL  AFTER `ext2` , ADD COLUMN `ext4` TEXT NULL  AFTER `ext3` , ADD COLUMN `ext5` TEXT NULL  AFTER `ext4`;
+

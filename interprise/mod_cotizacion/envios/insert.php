@@ -62,7 +62,9 @@ $qry = "INSERT INTO `cotizacion`
 `verificado`,
 `imagenes`,
 `ip`,
-`anulado`)
+`anulado`,
+`ext1`
+)
 VALUES
 (
 
@@ -93,7 +95,8 @@ VALUES
 '$verificado',
 '$imagenes',
 '$ip',
-'$anulado');
+'$anulado',
+'$ext1');
 ";
  
 

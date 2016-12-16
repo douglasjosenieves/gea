@@ -48,7 +48,7 @@ require_once 'nav_define.php';
 					 
 
 					  						<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-city-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Obras<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div><i class="zmdi zmdi-city-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Obras (Proyectos)<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 					<li><a href="<?php echo BASE_URL ?>mod_obras/index.php" title="#">Nuevo </a></li>
 					<li><a href="<?php echo BASE_URL ?>mod_obras/reporte.php" title="#">Ver</a></li>
