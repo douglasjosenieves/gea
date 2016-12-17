@@ -92,7 +92,7 @@ $data['data'][] = $row;
 					<a href="#" title="#">Cotización</a>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="../index.php">Panel de controlo</a></li>
+					<li><a href="../index.php">Panel de control</a></li>
 					<li class="active">Menu</li>
 				</ol>
 				

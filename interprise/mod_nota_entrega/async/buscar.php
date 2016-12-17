@@ -12,7 +12,7 @@ $texto = $_POST['parametro'];
  
 			
 				$i=0;
-$resul =  mysql_query("SELECT * FROM  nota_entrega where anulado <> 1 and enc_cliente like '%".$texto."%'");
+$resul =  mysql_query("SELECT * FROM  cotizacion where anulado <> 1 and enc_cliente like '%".$texto."%'");
 				while($row =  mysql_fetch_array($resul) ) {
 				
 								

@@ -72,6 +72,7 @@ var id = Self.data('id');
 var nombre = Self.data('nombre'); 
 var precio = Self.data('precio');
 var descripcion = Self.data('descripcion');
+var und_med = Self.data('und_med');
 var index = Self.data('index');
 //alert(index);
 
@@ -79,8 +80,10 @@ var index = Self.data('index');
 $('.itemsrow:eq( '+index +' ) input[name="reg_nombre[]"]').val(nombre);
 $('.itemsrow:eq( '+index +' ) input[name="reg_id[]"]').val(id);
 $('.itemsrow:eq( '+index +' ) input[name="reg_descripcion[]"]').val(descripcion);
-$('.itemsrow:eq( '+index +' ) input[name="reg_cantidad[]"]').focus();
 
+$('.itemsrow:eq( '+index +' ) input[name="reg_cantidad[]"]').focus();
+$('.itemsrow:eq( '+index +' ) input[name="reg_und_med[]"]').val(und_med);
+$('.itemsrow:eq( '+index +' ) input[name="reg_precio[]"]').val(precio);
 
 
 var Self = $('.itemsrow ul').hide();
@@ -195,7 +198,7 @@ $.ajax({
   url: '../mod_articulos/async/buscar_detalle.php',
   type: 'POST',
  
-  data: {parametro: texto,index: index},
+  data: {parametro: texto, index: index},
 })
 .done(function(data) {
   console.log("success");
@@ -223,15 +226,77 @@ $.ajax({
  
 
 /*========================================================
-=            Valida el producto en el listado            =
+=            sumar sub totales            =
 ========================================================*/
 
+$('#subtotal-sum').on('click', function(event) {
+  event.preventDefault();
+  sumarSubTotales();
+  /* Act on the event */
+});
 
 
-/*=====  End of Valida el producto en el listado  ======*/
+function sumarSubTotales(argument) {
+
+
+ 
 
 
 
+$('.subtotal').each(function () {
+
+var index = $( ".subtotal" ).index( this );
+// getting options from html 
+var Self = $(this);
+var cantidad = $( ".cantidad:eq( "+index +" )" ).val();
+var precio = $( ".precio:eq( "+index +" )" ).val();
+var subtotal = cantidad * precio;
+$( ".subtotal:eq( "+index +" )" ).val(roundToTwo(subtotal));
+
+ 
+
+console.log(index, cantidad );
+
+
+
+
+});
+ 
+var total_parcial = 0;
+$('.subtotal').each(function(){
+    total_parcial += parseFloat(this.value);
+});
+
+$('#total_parcial').val(roundToTwo(total_parcial));
+$('#e_total_parcial').text(roundToTwo(total_parcial));
+var impuesto = <?php  echo IMPUESTO ?> ; 
+var iva = total_parcial*impuesto/100
+$('#total_tax').val(roundToTwo(iva));
+$('#e_total_tax').text(roundToTwo(iva));
+
+
+var total_total = total_parcial + iva;
+
+$('#total_total').val(roundToTwo(total_total));
+$('#e_total_total').text(roundToTwo(total_total));
+}
+
+
+ $("body").on("change",".cantidad,.precio",function(event){
+event.preventDefault();
+sumarSubTotales();
+  
+
+  /* Act on the event */
+});
+
+
+/*=====  End of sumar sub totales  ======*/
+
+
+function roundToTwo(num) {    
+    return +(Math.round(num + "e+2")  + "e-2");
+}
   
 
 

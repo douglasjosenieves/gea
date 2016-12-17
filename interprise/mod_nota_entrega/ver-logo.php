@@ -65,12 +65,7 @@ $reg .= "{ text: '".$reg_subtotal_uns[$key]."', fontSize: 8 }, ";
 $reg .= "],";
 
 
-
-
-
-
-
-
+ 
 }
 
 
@@ -135,8 +130,9 @@ $total_total =  $data['data'][0]['total_total'];
 
 
 	<!-- Header -->
-	<?php  require_once '../config.php'; ?>
+		<?php  require_once '../config.php'; ?>
 	<?php  require_once '../header.php'; ?>
+
 	
 	<?php  require_once '../tareas-pendientes.php'; ?>
 	<!-- Page Wrap -->
@@ -268,7 +264,6 @@ $total_total =  $data['data'][0]['total_total'];
 	<!-- Search modal -->
 <?php require_once '../buscar.php'; ?>
 <?php require_once '../funciones/proyectos.php'; ?>
- 
 	<!-- JS -->
 	<script src="../assets/js/jquery-1.11.3.min.js"></script>
 	<script src="../assets/js/jquery-ui.min.js"></script>
@@ -365,7 +360,7 @@ var docDefinition = {
 	content: [
 		
 
-/*  {
+   {
        image: logo,
 		width: 150
     },
@@ -375,7 +370,7 @@ var docDefinition = {
 { text: emp_dir, fontSize: 8 ,  alignment: 'left'},
 { text: emp_tel, fontSize: 8,  alignment: 'left'},
 { text: emp_email, fontSize: 8,  alignment: 'left'},
-{ text: emp_web, fontSize: 8,  alignment: 'left'},*/
+{ text: emp_web, fontSize: 8,  alignment: 'left'},
 	 
  
 
@@ -389,10 +384,9 @@ var docDefinition = {
 
 { text: enc_lugar_emision +' '+enc_fecha_emision, fontSize: 8,  alignment: 'right',margin: [ 0, 5, 0, 0 ]},
 { text: 'Orden #: '+enc_orden, fontSize: 8,  alignment: 'right'},
-
-{ text: 'Comentario: '+enc_comentarios, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},		
+		
+{ text: 'Comentarios: '+enc_comentarios, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},
 { text: 'Proyecto: '+ext1, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},
-
 
 /*=============================================
 =            Aqui van los reglones            =
@@ -420,7 +414,7 @@ var docDefinition = {
 /*=====  End of Aqui va el siclo de los items  ======*/
 [ '', '', '', '', '', ' '],
    [ '', '', '', '', {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
-   [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?> %', bold: true, fontSize: 8 }, total_tax],
+   [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?>%', bold: true, fontSize: 8 }, total_tax],
      [ '', '', '', '', {text: 'TOTAL A PAGAR <?php  echo MONEDA ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
           
         ]
@@ -428,10 +422,10 @@ var docDefinition = {
 
       layout: {
                                                         hLineWidth: function(i, node) {
-                                                                return (i === 0 || i === node.table.body.length) ? 0 : 0;
+                                                                return (i === 0 || i === node.table.body.length) ? 2 : 1;
                                                         },
                                                         vLineWidth: function(i, node) {
-                                                                return (i === 0 || i === node.table.widths.length) ? 0 : 0;
+                                                                return (i === 0 || i === node.table.widths.length) ? 2 : 1;
                                                         },
                                                         hLineColor: function(i, node) {
                                                                 return (i === 0 || i === node.table.body.length) ? 'black' : 'gray';

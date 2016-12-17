@@ -24,6 +24,7 @@ $reg_id = serialize($reg_id);
 $reg_nombre = serialize($reg_nombre);
 $reg_descripcion = serialize($reg_descripcion);
 $reg_cantidad = serialize($reg_cantidad);
+$reg_und_med = serialize($reg_und_med);
 $reg_precio = serialize($reg_precio);
 $reg_subtotal = serialize($reg_subtotal);
 $imagenes = serialize($imagenes);
@@ -49,6 +50,7 @@ $qry = "INSERT INTO `nota_entrega`
 `reg_nombre`,
 `reg_descripcion`,
 `reg_cantidad`,
+`reg_und_med`,
 `reg_precio`,
 `reg_subtotal`,
 `total_parcial`,
@@ -60,7 +62,9 @@ $qry = "INSERT INTO `nota_entrega`
 `verificado`,
 `imagenes`,
 `ip`,
-`anulado`)
+`anulado`,
+`ext1`
+)
 VALUES
 (
 
@@ -79,18 +83,20 @@ VALUES
 '$reg_nombre',
 '$reg_descripcion',
 '$reg_cantidad',
+'$reg_und_med',
 '$reg_precio',
 '$reg_subtotal',
-0,
-0,
-0,
+'$total_parcial',
+'$total_tax',
+'$total_total',
 '$tramitido_al_crm',
 '$fecha',
 '$elaborado_por',
 '$verificado',
 '$imagenes',
 '$ip',
-'$anulado');
+'$anulado',
+'$ext1');
 ";
  
 

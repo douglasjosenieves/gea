@@ -433,3 +433,55 @@ ALTER TABLE `factura` ADD COLUMN `reg_und_med` TEXT NULL  AFTER `reg_cantidad`;
 ALTER TABLE `cotizacion` ADD COLUMN `ext1` TEXT NULL  AFTER `anulado` , ADD COLUMN `ext2` TEXT NULL  AFTER `ext1` , ADD COLUMN `ext3` TEXT NULL  AFTER `ext2` , ADD COLUMN `ext4` TEXT NULL  AFTER `ext3` , ADD COLUMN `ext5` TEXT NULL  AFTER `ext4`;
 ALTER TABLE `factura` ADD COLUMN `ext1` TEXT NULL  AFTER `anulado` , ADD COLUMN `ext2` TEXT NULL  AFTER `ext1` , ADD COLUMN `ext3` TEXT NULL  AFTER `ext2` , ADD COLUMN `ext4` TEXT NULL  AFTER `ext3` , ADD COLUMN `ext5` TEXT NULL  AFTER `ext4`;
 
+CREATE TABLE `nota_entrega` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `enc_id_cliente` varchar(500) DEFAULT NULL,
+ `enc_cliente` varchar(500) DEFAULT NULL,
+ `enc_cliente_direccion` varchar(500) DEFAULT NULL,
+ `enc_cliente_documento` varchar(500) DEFAULT NULL,
+ `enc_cliente_tel` varchar(500) DEFAULT NULL,
+ `enc_cliente_email` varchar(500) DEFAULT NULL,
+ `enc_lugar_emision` varchar(500) DEFAULT NULL,
+ `enc_fecha_emision` varchar(500) DEFAULT NULL,
+ `enc_orden` varchar(500) DEFAULT NULL,
+ `enc_comentarios` varchar(500) DEFAULT NULL,
+ `reg_id` text,
+ `reg_nombre` text,
+ `reg_descripcion` text,
+ `reg_cantidad` text,
+ `reg_und_med` text,
+ `reg_precio` text,
+ `reg_subtotal` text,
+ `total_parcial` double DEFAULT '0',
+ `total_tax` double DEFAULT '0',
+ `total_total` double DEFAULT '0',
+ `tramitido_al_crm` varchar(1) DEFAULT NULL,
+ `elaborado_por` varchar(500) DEFAULT NULL,
+ `fecha` datetime DEFAULT NULL,
+ `verificado` varchar(1) DEFAULT '0',
+ `editado_por` varchar(500) DEFAULT NULL,
+ `editado_fecha` datetime DEFAULT NULL,
+ `imagenes` text,
+ `ip` varchar(250) DEFAULT NULL,
+ `anulado` varchar(1) DEFAULT '0',
+ `ext1` text,
+ `ext2` text,
+ `ext3` text,
+ `ext4` text,
+ `ext5` text,
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
+
+
+CREATE TABLE `nota_entrega_detalle` (
+ `id` int(11) NOT NULL AUTO_INCREMENT,
+ `id_enc` int(11) NOT NULL,
+ `reg_id` text,
+ `reg_nombre` text,
+ `reg_descripcion` text,
+ `reg_cantidad` text,
+ `reg_precio` text,
+ `reg_subtotal` text,
+ `anulado` varchar(1) DEFAULT '0',
+ PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;

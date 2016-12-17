@@ -78,6 +78,7 @@ $data['data'][] = $row;
 
 
 	<!-- Header -->
+	<?php  require_once '../config.php'; ?>
 	<?php  require_once '../header.php'; ?>
 	
 	<?php  require_once '../tareas-pendientes.php'; ?>
@@ -91,7 +92,7 @@ $data['data'][] = $row;
 					<a href="#" title="#">Nota de entrega</a>
 				</h1>
 				<ol class="breadcrumb">
-					<li><a href="../index.php">Panel de controlo</a></li>
+					<li><a href="../index.php">Panel de control</a></li>
 					<li class="active">Menu</li>
 				</ol>
 				
@@ -217,7 +218,44 @@ $data['data'][] = $row;
 
 	                  </div>
 
+<!-- informacion adicional opcional -->
+<div class="row">
+	
+<!--======================================================
+=            Buscar lista en la base de datos            =
+=======================================================-->
+<?php 
+			
+$v=0;
+$dato ='';
+$datoid =array();
+$resulv =  mysql_query("SELECT * FROM obras where anulado <> 1");
+while($rowv =  mysql_fetch_array($resulv) ) { 
+$dato .= '<option value="';
+$dato .= $rowv['id'];
+$dato .= '">';
+$dato .= strtoupper($rowv['cliente']);
+$dato .= '</option>';
+$datoid[] = $rowv['id'];
+$v++;}
+?>
 
+	
+<!--====  End of Buscar lista en la base de datos  ====-->
+		
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Proyecto:</label>
+
+<select required id="ext1" name="ext1" data-id=""  class="js-select">
+<option  value="" >- Seleccionar -</option>
+<?php echo 	$dato  ?>
+</select>	
+
+</div>
+</div>
+</div>
+<!-- informacion adicional opcional -->
  
 <div class="row">
  <div class="col-xs-12 col-sm-12">
@@ -242,7 +280,7 @@ $data['data'][] = $row;
 	
 
 
-<div class="col-xs-12 col-sm-3">
+<div class="col-xs-12 col-sm-1">
 <div class="form-group">
 
 <input type="text" readonly value="<?php echo $art['reg'][0]['reg_id'] ?>" required class="form-control reg_id" name="reg_id[]" id="reg_id" placeholder="Id">
@@ -252,7 +290,7 @@ $data['data'][] = $row;
 
 
 
-<div class="col-xs-12 col-sm-6">
+<div class="col-xs-12 col-sm-4">
 <div class="form-group">
 
 <input type="text" name="reg_nombre[]"  autocomplete="off" id="reg_nombre" required  class="form-control buscaritems" />
@@ -272,10 +310,37 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 
-<input type="text" value="<?php echo $art['reg'][0]['reg_cantidad'] ?>" required class="form-control" name="reg_cantidad[]" id="reg_cantidad" placeholder="Cantidad">
+<input type="number" value="<?php echo $art['reg'][0]['reg_cantidad'] ?>" required class="form-control cantidad" name="reg_cantidad[]" id="reg_cantidad" placeholder="Cantidad">
+
+<input type="hidden" value="<?php echo $art['reg'][0]['und_med'] ?>" required class="form-control" name="reg_und_med[]" id="und_med" placeholder="und_med">
+
 </div>
 
 </div>
+
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+
+<input type="text" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
+
+
+</div>
+
+</div>
+
+
+
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+
+<input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>"  readonly  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
+
+
+</div>
+
+</div>
+
+
 
 <div class="col-xs-12 col-sm-1">
 <div class="form-group">
@@ -290,10 +355,40 @@ $data['data'][] = $row;
 
 </div><!-- Container Items -->
 
+<div class="hidden">
+<input type="text" value="" readonly class="form-control"  name="total_parcial" id="total_parcial" placeholder="total_parcial" style="font-weight: bold;">
+<input type="text" value="" readonly  class="form-control"  name="total_tax" id="total_tax" placeholder="total_tax" style="font-weight: bold;">
+<input type="text" value="" readonly class="form-control"  name="total_total" id="total_total" placeholder="total_total" style="font-weight: bold;">
+</div>
 
+<div class="row">
+	
+	<div class="col-md-6"></div>
+	<div class="col-md-6" style="font-size: 16px;font-weight: bold;">
+		
+<div class="row">
+	
+	<div class="col-md-6">TOTAL PARCIAL</div>
+	<div class="col-md-6" id="e_total_parcial">0</div>
+</div>
+
+<div class="row">
+	
+	<div class="col-md-6">TOTAL TAX U/O IVA (<?php  echo IMPUESTO ?>)</div>
+	<div class="col-md-6" id="e_total_tax" >0</div>
+</div>
+
+<div class="row">
+	
+<div class="col-md-6">TOTAL A CANCELAR (<?php  echo MONEDA ?>)</div>
+	<div class="col-md-6" id="e_total_total" >0</div>
+</div>
+
+	</div>
+</div>
 <button id="agregar-row" type="button" class="btn bg-green">+ Agregar Items</button>
  
-
+<!--  <button id="subtotal-sum" type="button" class="btn bg-green">+ sumar sub total</button>  -->
 
 				
 	</div> <!-- boxreta -->	 
@@ -386,7 +481,7 @@ $(document).ready(function() {
 
 $('#formulario').on('submit',  function(event) {
     event.preventDefault();
- 
+   sumarSubTotales();
 
  $('.reg_id').each(function(idx, el) {
     console.log($(this).val()); 

@@ -249,8 +249,8 @@ $data['data'][] = $row;
 
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
-<label for="basicInput">Porcentaje de desperdicio:</label>
-<input type="number" value="<?php echo $data['data'][0]['por_desperdicio'] ?>" required  class="form-control" name="por_desperdicio" id="por_desperdicio" placeholder="Porcentaje de desperdicio:">
+<label for="basicInput">% Desp:</label>
+<input type="number" value="<?php echo $data['data'][0]['por_desperdicio'] ?>" required  class="form-control" name="por_desperdicio" id="por_desperdicio" placeholder="% Desp:">
 </div>
 </div>		
 

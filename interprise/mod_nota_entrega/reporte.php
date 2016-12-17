@@ -20,7 +20,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Nota de entrega</title>
+	<title>Cotización</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -66,7 +66,7 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Nota de entrega </a>
+					<a href="#" title="#">Cotización </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -149,9 +149,9 @@ require_once '../asesor_funtion.php';
 								Procesos <i class="fa fa-chevron-down"></i>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="../mod_nota_entrega/ver.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i>Ver</a></li>
+								<li><a href="../mod_nota_entrega/ver.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i>Formato Blanco</a></li>
 							
-						<!-- <li><a href="../mod_facturacion/ver-logo.php?tipo=editar&id=<?php //echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i>Formato Web</a></li -->
+						<li><a href="../mod_nota_entrega/ver-logo.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i>Formato Web</a></li>
 								
 							<!-- 	<li><a href="reporte-clientes-excel.php?id=<?php //echo $opciones['opciones'][$i]['id']; ?>" title="Exportar a excel"><i class="fa fa-file-excel-o"></i> Exportar a EXCEL</a></li> -->
 							</ul>

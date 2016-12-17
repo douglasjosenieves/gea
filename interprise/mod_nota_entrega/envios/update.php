@@ -25,7 +25,7 @@ $images = serialize($imagenes);
 
 
 
-$qry = "UPDATE `nota_entrega`
+$qry = "UPDATE `cotizacion`
 SET
 
 `codigo` = '$codigo',
