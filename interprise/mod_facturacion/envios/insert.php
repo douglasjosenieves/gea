@@ -137,7 +137,7 @@ $id_siguiente= $row['id'];
 foreach ($reg_id as $key => $value) {
 //echo $reg_nombre[$key];
 
-$qry2 = "INSERT INTO `cotizacion_detalle`
+$qry2 = "INSERT INTO `factura_detalle`
 (
 `id_enc`,
 `reg_id`,

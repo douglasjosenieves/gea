@@ -116,21 +116,21 @@ $status[$row['status']] = $row['cuenta'];
 					<div class="row">
 						<div class="col-xs-12 col-md-4 i yellow">
 							<a href="#" title="#" class="c">
-								<h3 class="title">Website traffic</h3>
+								<h3 class="title">Total Cotizaciones</h3>
 								<div class="num">256,521</div>
 								<i class="icon zmdi zmdi-globe"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i pink">
 							<a href="#" title="#" class="c">
-								<h3 class="title">Files downloaded</h3>
+								<h3 class="title">Total Facturación</h3>
 								<div class="num">5,478,123</div>
 								<i class="icon zmdi zmdi-square-down"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i green">
 							<a href="#" title="#" class="c">
-								<h3 class="title">Total sales</h3>
+								<h3 class="title">Pendiente por cobrar </h3>
 								<div class="num">14,789</div>
 								<i class="icon zmdi zmdi-card"></i>
 							</a>
@@ -183,11 +183,11 @@ $status[$row['status']] = $row['cuenta'];
 									<div class="row statsInfo clearfix">
 										<div class="col-xs-6 i">
 											<div class="count">256,521</div>
-											<div class="text">monthly total</div>
+											<div class="text">Ventas acumuladas</div>
 										</div>
 										<div class="col-xs-6 i">
 											<div class="count">10,907</div>
-											<div class="text">today total</div>
+											<div class="text">Ventas del Mes</div>
 										</div>
 									</div>
 								</div>
@@ -215,14 +215,14 @@ $status[$row['status']] = $row['cuenta'];
 							<div class="col-xs-6 ct-pie-chart">
 								<div class="box box-without-padding">
 									<div id="ct-chart-1" class="ct-perfect-fourth"></div>
-									<div class="text">Free storage</div>
+									<div class="text">Objetivo del mes</div>
 									<div class="info"><span>77</span>%</div>
 								</div>
 							</div>
 							<div class="col-xs-6 ct-pie-chart">
 								<div class="box box-without-padding">
 									<div id="ct-chart-2" class="ct-perfect-fourth"></div>
-									<div class="text">Bandwidth</div>
+									<div class="text">Objetivo acumulado </div>
 									<div class="info"><span>1,5</span>Gb/s</div>
 								</div>
 							</div>
@@ -324,31 +324,31 @@ $status[$row['status']] = $row['cuenta'];
 					<div class="col-xs-12 col-sm-6 col-lg-3">
 						<div class="box box-without-padding">
 							<div class="bgTitle">
-								<h3 class="boxTitle">Sharpen</h3>
+								<h3 class="boxTitle">Análisis</h3>
 							</div>
 							<div class="simpleList simpleListLighten">
 								<ul>
 									<li>
 										<a href="#" title="#" class="clearfix">
-											<span class="pull-left"><i class="zmdi zmdi-accounts-add zmdi-hc-fw icon"></i> Followers</span>
+											<span class="pull-left"><i class="zmdi zmdi-accounts-add zmdi-hc-fw icon"></i> Clientes</span>
 											<span class="pull-right info">109,073</span>
 										</a>
 									</li>
 									<li>
 										<a href="#" title="#" class="clearfix">
-											<span class="pull-left"><i class="zmdi zmdi-accounts-list-alt zmdi-hc-fw icon"></i> Subscribers</span>
+											<span class="pull-left"><i class="zmdi zmdi-accounts-list-alt zmdi-hc-fw icon"></i> Proveedores</span>
 											<span class="pull-right info">26,114</span>
 										</a>
 									</li>
 									<li>
 										<a href="#" title="#" class="clearfix">
-											<span class="pull-left"><i class="zmdi zmdi-assignment-o zmdi-hc-fw icon"></i> Products sold</span>
+											<span class="pull-left"><i class="zmdi zmdi-assignment-o zmdi-hc-fw icon"></i> Artículos</span>
 											<span class="pull-right info">1,557,669</span>
 										</a>
 									</li>
 									<li>
 										<a href="#" title="#" class="clearfix">
-											<span class="pull-left"><i class="zmdi zmdi-bookmark zmdi-hc-fw icon"></i> Awards</span>
+											<span class="pull-left"><i class="zmdi zmdi-bookmark zmdi-hc-fw icon"></i> Proyectos</span>
 											<span class="pull-right info">14</span>
 										</a>
 									</li>
@@ -364,7 +364,7 @@ $status[$row['status']] = $row['cuenta'];
 						<div class="box box-without-padding">
 							<div id="line-chart-1-wrap" class="line-chart-wrap">
 								<div class="clearfix boxHeader">
-									<h2 class="boxTitle pull-left">Sales</h2>
+									<h2 class="boxTitle pull-left">Ventas</h2>
 									<div class="btn-group pull-right boxHeaderOptions">
 										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<i class="zmdi zmdi-more-vert"></i>
@@ -390,7 +390,7 @@ $status[$row['status']] = $row['cuenta'];
 						<div class="box box-without-padding">
 							<div id="line-chart-2-wrap" class="line-chart-wrap">
 								<div class="clearfix boxHeader">
-									<h2 class="boxTitle pull-left">Subscribers</h2>
+									<h2 class="boxTitle pull-left">Clientes</h2>
 									<div class="btn-group pull-right boxHeaderOptions">
 										<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											<i class="zmdi zmdi-more-vert"></i>
@@ -421,7 +421,7 @@ $status[$row['status']] = $row['cuenta'];
 					<div class="col-xs-12 col-lg-6">
 						<div class="box box-without-padding">
 							<div class="clearfix boxHeader boxHeaderBorders">
-								<h2 class="boxTitle pull-left">Recent orders</h2>
+								<h2 class="boxTitle pull-left">Recientes cotizaciones</h2>
 								<div class="btn-group pull-right boxHeaderOptions">
 									<button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 										<i class="zmdi zmdi-more-vert"></i>
@@ -440,9 +440,9 @@ $status[$row['status']] = $row['cuenta'];
 										<a href="#" title="#">
 											<i class="zmdi zmdi-chevron-right arrow"></i>
 											<div class="image">
-												<img src="tmp/iphone.png" alt="#" width="81" height="66">
+												<img src="img/invoice.png" alt="#" width="96" height="60">
 											</div>
-											iPhone 6s + Apple Green cover IU/T
+										        Cotización N° xxxxxxx
 											<span class="info">6 min. ago</span>
 										</a>
 									</li>
@@ -450,9 +450,9 @@ $status[$row['status']] = $row['cuenta'];
 										<a href="#" title="#">
 											<i class="zmdi zmdi-chevron-right arrow"></i>
 											<div class="image">
-												<img src="tmp/macbook.png" alt="#" width="96" height="60">
+												<img src="img/invoice.png" alt="#" width="96" height="60">
 											</div>
-											MacBook Pro 15 "Retina CZ 2014
+						                        Cotización N° xxxxxxx
 											<span class="info">9 min. ago</span>
 										</a>
 									</li>
@@ -460,9 +460,9 @@ $status[$row['status']] = $row['cuenta'];
 										<a href="#" title="#">
 											<i class="zmdi zmdi-chevron-right arrow"></i>
 											<div class="image">
-												<img src="tmp/samsung.png" alt="#" width="65" height="73">
+												<img src="img/invoice.png" alt="#" width="96" height="60">
 											</div>
-											Samsung Galaxy S6 edge (SM-G925F) 32GB Black Sapphire
+									             Cotización N° xxxxxxx 
 											<span class="info">15 min. ago</span>
 										</a>
 									</li>
