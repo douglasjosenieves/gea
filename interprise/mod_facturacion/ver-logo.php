@@ -4,6 +4,7 @@ header('Location: ../index.php');
 }
 
 require_once '../../db_connect.php';
+require_once '../config.php'; 
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -61,8 +62,8 @@ $reg .= "{ text: '".$reg_id_uns[$key]."', fontSize: 8 }, ";
 $reg .= "{ text: '".strip_tags($reg_nombre_uns[$key])."', fontSize: 8 }, ";
 $reg .= "{ text: '".strip_tags($reg_descripcion_uns[$key])."', fontSize: 8 }, ";
 $reg .= "{ text: '".$reg_cantidad_uns[$key].' '.$reg_und_med_uns[$key]."', fontSize: 8 }, ";
-$reg .= "{ text: '".$reg_precio_uns[$key]."', fontSize: 8 }, ";
-$reg .= "{ text: '".$reg_subtotal_uns[$key]."', fontSize: 8 }, ";
+$reg .= "{ text: '".MONEDA.$reg_precio_uns[$key]."', fontSize: 8 }, ";
+$reg .= "{ text: '".MONEDA.$reg_subtotal_uns[$key]."', fontSize: 8 }, ";
 $reg .= "],";
 
 }
@@ -129,7 +130,7 @@ $total_total =  $data['data'][0]['total_total'];
 
 
 	<!-- Header -->
-		<?php  require_once '../config.php'; ?>
+	 
 	<?php  require_once '../header.php'; ?>
 	
 	<?php  require_once '../tareas-pendientes.php'; ?>
@@ -323,9 +324,9 @@ var reg_descripcion = <?php echo json_encode($reg_descripcion_uns) ?>;
 var reg_cantidad = <?php echo json_encode($reg_cantidad_uns) ?>;
 var reg_precio = <?php echo json_encode($reg_precio_uns) ?>;
 var reg_subtotal = <?php echo json_encode($reg_subtotal_uns) ?>;
-var total_parcial = "<?php echo $total_parcial ?>";
-var total_tax = "<?php echo $total_tax ?>";
-var total_total = "<?php echo $total_total ?>";
+var total_parcial = "<?php echo MONEDA.$total_parcial ?>";
+var total_tax = "<?php echo MONEDA.$total_tax ?>";
+var total_total = "<?php echo MONEDA.$total_total ?>";
 
 var ext1 = '<?php echo proyectos($data['data'][0]['ext1']) ?>';
 
@@ -414,7 +415,7 @@ var docDefinition = {
 [ '', '', '', '', '', ' '],
    [ '', '', '', '', {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
    [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?>%', bold: true, fontSize: 8 }, total_tax],
-     [ '', '', '', '', {text: 'TOTAL A PAGAR <?php  echo MONEDA ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
+     [ '', '', '', '', {text: 'TOTAL A PAGAR', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
           
         ]
       },
