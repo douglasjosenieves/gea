@@ -19,7 +19,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Inventario</title>
+	<title>Artículos</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -65,7 +65,7 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Inventario </a>
+					<a href="#" title="#">Artículos </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>

@@ -12,13 +12,18 @@ $db = new DB_CONNECT();
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");  
 
-$resul =  mysql_query("SELECT distinct status, count(status) as cuenta FROM contactos_web where anulado <> 1 group by status;");
+$resul =  mysql_query("(SELECT sum(total_total) as total FROM cotizacion where anulado <> 1) union all  # TOTAL COTIZACIONES
+(SELECT sum(total_total) as total FROM factura where anulado <> 1) union all  # TOTAL FACTURACION
+(SELECT count(id) as total FROM contactos_web where anulado <> 1) union all   # TOTAL CLIENTES
+(SELECT count(id) as total FROM proveedores where anulado <> 1) union all   # TOTAL PROVEEDORES
+(SELECT count(id) as total FROM  inventario where anulado <> 1) union all   # ARTICULOS
+(SELECT count(id) as total FROM obras where anulado <> 1)  # PROYECTOS");
 
  $st = 0;
 $status = array();
  
 while($row =  mysql_fetch_array($resul) ) {
-$status[$row['status']] = $row['cuenta'];
+$indicadores[] = $row['total'];
  }
 
 
@@ -72,6 +77,7 @@ $status[$row['status']] = $row['cuenta'];
 	
 	<aside class="aside">
 		<!-- User profile -->
+			<?php require_once 'config.php'; ?>
 		<?php require_once 'usuario.php'; ?>
          <?php require_once 'nav.php'; ?>
 		
@@ -115,23 +121,23 @@ $status[$row['status']] = $row['cuenta'];
 				<div class="statsBar">
 					<div class="row">
 						<div class="col-xs-12 col-md-4 i yellow">
-							<a href="#" title="#" class="c">
+							<a href="mod_cotizacion/reporte.php" title="#" class="c">
 								<h3 class="title">Total Cotizaciones</h3>
-								<div class="num">256,521</div>
+								<div class="num"><?php  echo MONEDA.$indicadores[0]; ?></div>
 								<i class="icon zmdi zmdi-globe"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i pink">
-							<a href="#" title="#" class="c">
+							<a href="mod_facturacion/reporte.php" title="#" class="c">
 								<h3 class="title">Total Facturación</h3>
-								<div class="num">5,478,123</div>
+								<div class="num"><?php  echo MONEDA.$indicadores[1]; ?></div>
 								<i class="icon zmdi zmdi-square-down"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i green">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Pendiente por cobrar </h3>
-								<div class="num">14,789</div>
+								<div class="num"><?php  echo MONEDA.$indicadores[1]; ?></div>
 								<i class="icon zmdi zmdi-card"></i>
 							</a>
 						</div>
@@ -182,11 +188,11 @@ $status[$row['status']] = $row['cuenta'];
 
 									<div class="row statsInfo clearfix">
 										<div class="col-xs-6 i">
-											<div class="count">256,521</div>
+											<div class="count"><?php  echo MONEDA.$indicadores[1]; ?></div>
 											<div class="text">Ventas acumuladas</div>
 										</div>
 										<div class="col-xs-6 i">
-											<div class="count">10,907</div>
+											<div class="count"><?php  echo MONEDA.$indicadores[1]; ?></div>
 											<div class="text">Ventas del Mes</div>
 										</div>
 									</div>
@@ -329,27 +335,27 @@ $status[$row['status']] = $row['cuenta'];
 							<div class="simpleList simpleListLighten">
 								<ul>
 									<li>
-										<a href="#" title="#" class="clearfix">
+										<a href="mod_clientes/reporte_clientes.php" title="" class="clearfix">
 											<span class="pull-left"><i class="zmdi zmdi-accounts-add zmdi-hc-fw icon"></i> Clientes</span>
-											<span class="pull-right info">109,073</span>
+											<span class="pull-right info"><?php  echo $indicadores[2]; ?></span>
 										</a>
 									</li>
 									<li>
-										<a href="#" title="#" class="clearfix">
+										<a href="mod_proveedores/reporte.php" title="" class="clearfix">
 											<span class="pull-left"><i class="zmdi zmdi-accounts-list-alt zmdi-hc-fw icon"></i> Proveedores</span>
-											<span class="pull-right info">26,114</span>
+											<span class="pull-right info"><?php  echo $indicadores[3]; ?></span>
 										</a>
 									</li>
 									<li>
-										<a href="#" title="#" class="clearfix">
+										<a href="mod_articulos/reporte.php" title="" class="clearfix">
 											<span class="pull-left"><i class="zmdi zmdi-assignment-o zmdi-hc-fw icon"></i> Artículos</span>
-											<span class="pull-right info">1,557,669</span>
+											<span class="pull-right info"><?php  echo $indicadores[4]; ?></span>
 										</a>
 									</li>
 									<li>
-										<a href="#" title="#" class="clearfix">
+										<a href="mod_obras/reporte.php" title="" class="clearfix">
 											<span class="pull-left"><i class="zmdi zmdi-bookmark zmdi-hc-fw icon"></i> Proyectos</span>
-											<span class="pull-right info">14</span>
+											<span class="pull-right info"><?php  echo $indicadores[5]; ?></span>
 										</a>
 									</li>
 								</ul>
@@ -436,36 +442,46 @@ $status[$row['status']] = $row['cuenta'];
 
 							<div class="simpleList simpleListImages">
 								<ul>
-									<li>
-										<a href="#" title="#">
+<?php  									
+
+$i = 0;
+$resul_seg1 =  mysql_query("SELECT * FROM cotizacion where anulado <> 1 order by id desc limit 8");
+					while($row =  mysql_fetch_array($resul_seg1) ) {
+					
+									
+					// echo $row['nombre'];
+					$mysql2['cotizacion'][$i]=$row;
+
+
+ 
+	
+
+ 
+	 ?>
+
+	<li>
+										<a href="mod_cotizacion/ver.php?tipo=editar&id=<?php echo $mysql2['cotizacion'][$i]['id'] ;?>" title="#">
 											<i class="zmdi zmdi-chevron-right arrow"></i>
 											<div class="image">
 												<img src="img/invoice.png" alt="#" width="96" height="60">
 											</div>
-										        Cotización N° xxxxxxx
-											<span class="info">6 min. ago</span>
+								<?php echo $mysql2['cotizacion'][$i]['id'].' | '.$mysql2['cotizacion'][$i]['enc_cliente'] ;?>
+											<span class="info"><?php echo MONEDA.$mysql2['cotizacion'][$i]['total_total'] ;?></span>
 										</a>
 									</li>
-									<li>
-										<a href="#" title="#">
-											<i class="zmdi zmdi-chevron-right arrow"></i>
-											<div class="image">
-												<img src="img/invoice.png" alt="#" width="96" height="60">
-											</div>
-						                        Cotización N° xxxxxxx
-											<span class="info">9 min. ago</span>
-										</a>
-									</li>
-									<li>
-										<a href="#" title="#">
-											<i class="zmdi zmdi-chevron-right arrow"></i>
-											<div class="image">
-												<img src="img/invoice.png" alt="#" width="96" height="60">
-											</div>
-									             Cotización N° xxxxxxx 
-											<span class="info">15 min. ago</span>
-										</a>
-									</li>
+
+ 
+
+<?php
+ $i++;					
+} 
+?>
+
+								
+									
+
+
+
 								</ul>
 							</div>
 						</div>

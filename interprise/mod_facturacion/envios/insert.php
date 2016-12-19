@@ -2,6 +2,7 @@
 //error_reporting(0);
 //header('Content-type: application/json');
 require_once __DIR__ . '../../../../db_connect.php';
+require_once 'config.php';
 //sleep(2);
  
 // connecting to db
@@ -34,7 +35,7 @@ $imagenes = serialize($imagenes);
  
 
 
-$qry = "INSERT INTO `factura`
+$qry = "INSERT INTO `".TABLA1."`
 ( 
 `enc_id_cliente`,
 `enc_cliente`,
@@ -129,7 +130,7 @@ if ($resul==1) {
   
 
 
-$resulf =  mysql_query("SELECT IF(ISNULL(max( id)+ 1),'1',max( id))  AS id FROM factura_detalle");
+$resulf =  mysql_query("SELECT IF(ISNULL(max( id)+ 1),'1',max( id))  AS id FROM ".TABLA1."");
 while($row =  mysql_fetch_array($resulf) ) {
 $id_siguiente= $row['id'];
 }
@@ -137,7 +138,7 @@ $id_siguiente= $row['id'];
 foreach ($reg_id as $key => $value) {
 //echo $reg_nombre[$key];
 
-$qry2 = "INSERT INTO `factura_detalle`
+$qry2 = "INSERT INTO ".TABLA2."
 (
 `id_enc`,
 `reg_id`,
@@ -159,9 +160,62 @@ VALUES
 '0')";
 
 
-mysql_query($qry2);
 
+/*INSERT A LA TABLA DE MOVIMIENTO*/
+
+$qry_m = "INSERT INTO ".TABLA3." (
+ 
+`id_cliente_proveedor`,
+`id_doc`,
+`doc`,
+`fecha_documento`,
+`id_almacen`,
+`reg_id`,
+`reg_cantidad`,
+`reg_precio`,
+`elaborado_por`,
+`fecha`,
+ `ip`,
+`anulado`)
+VALUES
+(
+
+'$enc_id_cliente',
+
+'".$id_siguiente."',
+'".TIPO."',
+
+'$enc_fecha_emision',
+'1',
+'".$reg_id[$key]."',
+'".SIGNO.$reg_cantidad[$key]."',
+'".$reg_precio[$key]."',
+'$elaborado_por',
+'$fecha',
+ '$ip',
+'$anulado');";
+
+
+
+
+
+/*INSERT A LA TABLA DE MOVIMIENTO*/
+
+//echo $qry_m;
+mysql_query($qry2);
+mysql_query($qry_m);
 }
+
+
+
+
+
+
+
+
+
+
+
 
 
 echo $resul;
