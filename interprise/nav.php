@@ -112,6 +112,16 @@ require_once 'nav_define.php';
 
 
 
+		<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Compras<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_compras/index.php" title="Administracion de contactos">Nuevo</a> </li> 
+<li><a href="<?php echo BASE_URL ?>mod_compras/reporte.php" title="Administracion de contactos">Ver</a> </li> 
+
+			</ul>
+			</li>	
+
+
 	<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-plus-circle zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cta Por Cobrar<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
