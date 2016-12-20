@@ -87,13 +87,19 @@ foreach ($reg_id as $key => $value) {
 $resul_suma =  mysql_query("SELECT sum(reg_cantidad) as sum FROM ".TABLA3." where reg_id = '".$reg_id[$key]."' and anulado <> 1;");
 while($row =  mysql_fetch_array($resul_suma) ) {
 $suma = $row['sum'];
+
+if ($suma=='') {
+$suma =0;
 }
+
+
+
 
 
 $qryupdateArt = "UPDATE ".TABLA5." SET `cantidad`= '".$suma."' WHERE `id`='".$reg_id[$key]."'";
 
 mysql_query($qryupdateArt);
-
+}
 }
 
 

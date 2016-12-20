@@ -17,7 +17,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  factura where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA1." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;

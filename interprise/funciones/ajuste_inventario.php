@@ -35,7 +35,9 @@ $resul_suma =  mysql_query("SELECT sum(reg_cantidad) as sum FROM inventario_movi
 while($row =  mysql_fetch_array($resul_suma) ) {
 $suma = $row['sum'];
 
-
+if ($suma=='') {
+$suma =0;
+}
 
 $qryupdateArt = "UPDATE inventario SET `cantidad`= '".$suma."' WHERE `id`='".$fila['id']."'";
 
