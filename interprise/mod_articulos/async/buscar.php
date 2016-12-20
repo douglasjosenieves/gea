@@ -8,7 +8,7 @@ mysql_query("SET CHARACTER_SET utf");
 
 
 $texto = $_POST['parametro'];
- 
+ if ($texto!='') {
  
 			
 				$i=0;
@@ -28,5 +28,5 @@ $resul =  mysql_query("SELECT * FROM  inventario where anulado <> 1 and nombre l
 															
 					     
 			 
-					<?php $i++;  }?>
+					<?php $i++;  }}?>
 					

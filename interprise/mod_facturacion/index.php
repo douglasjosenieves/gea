@@ -4,6 +4,7 @@ header('Location: ../index.php');
 }
 
 require_once '../../db_connect.php';
+require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -18,7 +19,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  contactos_web where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA6." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
@@ -33,7 +34,7 @@ $data['data'][] = $row;
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Facturacion</title>
+	<title><?php echo TITULO ?></title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -89,7 +90,7 @@ $data['data'][] = $row;
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Facturacion</a>
+					<a href="#" title="#"><?php echo TITULO ?></a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="../index.php">Panel de control</a></li>
@@ -131,7 +132,7 @@ $data['data'][] = $row;
 
 <div class="col-xs-12 col-sm-4 col-sm-offset-2">
 <div class="form-group">
-<label for="basicInput">Buscar Cliente:</label>
+<label for="basicInput">Buscar:</label>
 <input type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
 </div>
 
@@ -312,8 +313,10 @@ $v++;}
 <div class="form-group">
 
 <input type="number" value="<?php echo $art['reg'][0]['reg_cantidad'] ?>" required class="form-control cantidad" name="reg_cantidad[]" id="reg_cantidad" placeholder="Cantidad">
+
 <input type="hidden" value="<?php echo $art['reg'][0]['und_med'] ?>" required class="form-control" name="reg_und_med[]" id="und_med" placeholder="und_med">
 
+<input type="hidden" value="<?php echo $art['reg'][0]['stock'] ?>" required class="form-control" name="reg_stock[]" id="stock" placeholder="stock">
 
 </div>
 

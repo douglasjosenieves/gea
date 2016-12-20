@@ -26,6 +26,7 @@ $reg_nombre = serialize($reg_nombre);
 $reg_descripcion = serialize($reg_descripcion);
 $reg_cantidad = serialize($reg_cantidad);
 $reg_und_med = serialize($reg_und_med);
+$reg_stock = serialize($reg_stock);
 $reg_precio = serialize($reg_precio);
 $reg_subtotal = serialize($reg_subtotal);
 $imagenes = serialize($imagenes);
@@ -52,6 +53,7 @@ $qry = "INSERT INTO `".TABLA1."`
 `reg_descripcion`,
 `reg_cantidad`,
 `reg_und_med`,
+`reg_stock`,
 `reg_precio`,
 `reg_subtotal`,
 `total_parcial`,
@@ -84,6 +86,7 @@ VALUES
 '$reg_descripcion',
 '$reg_cantidad',
 '$reg_und_med',
+'$reg_stock',
 '$reg_precio',
 '$reg_subtotal',
 '$total_parcial',
@@ -104,6 +107,8 @@ $reg_id = unserialize($reg_id);
 $reg_nombre = unserialize($reg_nombre);
 $reg_descripcion = unserialize($reg_descripcion);
 $reg_cantidad = unserialize($reg_cantidad);
+$reg_und_med = unserialize($reg_und_med);
+$reg_stock = unserialize($reg_stock);
 $reg_precio = unserialize($reg_precio);
 $reg_subtotal = unserialize($reg_subtotal);
 $imagenes = unserialize($imagenes);
@@ -188,11 +193,9 @@ VALUES
 
 mysql_query($qry_cta);
 //echo $qry_cta;
- 
+ /* FIN TABLA DE CUENTAS*/
 
 
-
-/* TABLA DE CUENTAS*/
 foreach ($reg_id as $key => $value) {
 //echo $reg_nombre[$key];
 
@@ -203,6 +206,8 @@ $qry2 = "INSERT INTO ".TABLA2."
 `reg_nombre`,
 `reg_descripcion`,
 `reg_cantidad`,
+`reg_und_med`,
+`reg_stock`,
 `reg_precio`,
 `reg_subtotal`,
 `anulado`)
@@ -213,6 +218,8 @@ VALUES
 '".$reg_nombre[$key]."',
 '".$reg_descripcion[$key]."',
 '".$reg_cantidad[$key]."',
+'".$reg_und_med[$key]."',
+'".$reg_stock[$key]."',
 '".$reg_precio[$key]."',
 '".$reg_subtotal[$key]."',
 '0')";
@@ -230,6 +237,8 @@ $qry_m = "INSERT INTO ".TABLA3." (
 `id_almacen`,
 `reg_id`,
 `reg_cantidad`,
+`reg_und_med`,
+`reg_stock`,
 `reg_precio`,
 `elaborado_por`,
 `fecha`,
@@ -247,6 +256,8 @@ VALUES
 '1',
 '".$reg_id[$key]."',
 '".SIGNO.$reg_cantidad[$key]."',
+'".$reg_und_med[$key]."',
+'".$reg_stock[$key]."',
 '".$reg_precio[$key]."',
 '$elaborado_por',
 '$fecha',

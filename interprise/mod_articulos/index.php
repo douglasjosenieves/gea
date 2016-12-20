@@ -315,7 +315,7 @@ $v++;}
 <select required id="stock" name="stock" data-id=""  class="js-select">
 <option  value="" >- Seleccionar -</option>
  <option  value="CANTIDAD" >CANTIDAD</option>
- <option  value="SIEMPRE DISPONIBLE" >SIEMPRE DISPONIBLE</option>
+ <option  value="SERVICIO" >SERVICIO</option>
 </select>	
 </div>
 </div>
