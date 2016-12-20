@@ -91,6 +91,7 @@ mysql_query("SET CHARACTER_SET utf");
 									<th>Reglog Id</th>
 								 
 									<th>Cantidad</th>
+									<th>Anulado</th>
 								
 								</tr>
 							</thead>
@@ -111,14 +112,17 @@ require_once '../asesor_funtion.php';
 	                  require_once '../status_estado.php';
 	                              require_once '../funciones/articulos_id_cat.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `inventario_movimientos` where anulado <> 1");
+					$resul =  mysql_query("SELECT * FROM `inventario_movimientos`");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
 					// echo $row['nombre'];
 					$opciones['opciones'][]=$row;
-					
-					  
+					if ($opciones['opciones'][$i]['anulado']!=1) {
+						$estado = 'ACTIVO';
+					} else {
+						$estado = 'ANULADO';
+					}
 					 ?>
 					
 
@@ -134,6 +138,7 @@ require_once '../asesor_funtion.php';
 					    
 					    <td><?php echo $opciones['opciones'][$i]['reg_id']; ?></td>
 			   <td><?php echo $opciones['opciones'][$i]['reg_cantidad']; ?></td>
+			   	   <td><?php echo statusestado($estado); ?></td>
 					  
 					</tr>
 						<?php $i++;  }?>

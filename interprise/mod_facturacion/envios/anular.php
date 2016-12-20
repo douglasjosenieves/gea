@@ -2,6 +2,7 @@
 //error_reporting(0);
 //header('Content-type: application/json');
 require_once __DIR__ . '../../../../db_connect.php';
+require_once 'config.php';
 //sleep(2);
  
 // connecting to db
@@ -25,7 +26,7 @@ $images = serialize($imagenes);
 
 
 
-$qry = "UPDATE `factura`
+$qry = "UPDATE `".TABLA1."`
 SET
 `editado_por` = '$editado_por',
 `editado_fecha` = '$fecha',
@@ -36,7 +37,7 @@ WHERE `id` = '$referencia';
  
 
 
-$qry2 = "UPDATE `factura_detalle`
+$qry2 = "UPDATE `".TABLA2."`
 SET
 
 
@@ -46,11 +47,17 @@ WHERE `id_enc` = '$referencia';
 ";
 
 
+
+
+$qry3 = "UPDATE `".TABLA3."` SET `anulado`='1' WHERE `id_doc`= '$referencia' and `doc`= '".TIPO."';";
+$qry4 = "UPDATE `".TABLA4."` SET `anulado`='1' WHERE `id_doc`= '$referencia' and `doc`= '".TIPO."';";
+
+
 $resul = mysql_query($qry);
 
 mysql_query($qry2);
-
-
+mysql_query($qry3);
+mysql_query($qry4);
 
 
 
