@@ -132,7 +132,7 @@ $data['data'][] = $row;
 
 <div class="col-xs-12 col-sm-4 col-sm-offset-2">
 <div class="form-group">
-<label for="basicInput">Buscar:</label>
+<label for="basicInput">Buscar <?php echo TITULO3 ?>:</label>
 <input type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
 </div>
 
@@ -164,8 +164,8 @@ $data['data'][] = $row;
 
 <div class="col-xs-12 col-sm-8">
 <div class="form-group">
-<label for="basicInput">Cliente:</labe8>
-<input type="text" value="<?php echo $data['data'][0]['cliente'] ?>" required class="form-control" name="enc_cliente" id="enc_cliente" placeholder="Cliente:">
+<label for="basicInput"><?php echo TITULO3 ?>:</labe8>
+<input type="text" value="<?php echo $data['data'][0]['cliente'] ?>" required class="form-control" name="enc_cliente" id="enc_cliente" placeholder="<?php echo TITULO3 ?>:">
 <div class="input-default-msg"><?php echo $data['data'][0]['direccion_oficina'] ?></div>
 
 
