@@ -86,8 +86,8 @@ mysql_query("SET CHARACTER_SET utf");
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Cod Cliente</th>
-								   <th>Cliente</th>
+									<th>Cod <?php echo TITULO3 ?></th>
+								   <th><?php echo TITULO3 ?></th>
 									<th>fecha</th>
 									<th>Orden</th>
 									 
