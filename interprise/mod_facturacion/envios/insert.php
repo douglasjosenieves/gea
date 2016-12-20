@@ -112,13 +112,6 @@ $imagenes = unserialize($imagenes);
 
 
  
-	 
-
-
-
- 
-
-
 
 $resul = mysql_query($qry);
 
@@ -135,6 +128,71 @@ while($row =  mysql_fetch_array($resulf) ) {
 $id_siguiente= $row['id'];
 }
 
+
+
+
+/* TABLA DE CUENTAS*/
+
+
+$qry_cta = "INSERT INTO ".TABLA4."
+(
+`id_cliente`,
+`id_doc`,
+`doc`,
+`enc_cliente`,
+`enc_cliente_direccion`,
+`enc_cliente_documento`,
+`enc_cliente_tel`,
+`enc_cliente_email`,
+`enc_lugar_emision`,
+`enc_fecha_emision`,
+`enc_orden`,
+`enc_comentarios`,
+`total_parcial`,
+`total_tax`,
+`total_total`,
+`saldo`,
+`status_saldo`,
+`tramitido_al_crm`,
+`elaborado_por`,
+`fecha`,
+`verificado`,
+`ip`,
+`anulado`)
+VALUES
+(
+ 
+'$enc_id_cliente',
+'".$id_siguiente."',
+'".TIPO."',
+'$enc_cliente',
+'$enc_cliente_direccion',
+'$enc_cliente_documento',
+'$enc_cliente_tel',
+'$enc_cliente_email',
+'$enc_lugar_emision',
+'$enc_fecha_emision',
+'$enc_orden',
+'$enc_comentarios',
+'$total_parcial',
+'$total_tax',
+'$total_total',
+'$total_total',
+'PENDIENTE',
+'$tramitido_al_crm',
+'$elaborado_por',
+'$fecha',
+'$verificado',
+ '$ip',
+'$anulado');";
+
+mysql_query($qry_cta);
+//echo $qry_cta;
+ 
+
+
+
+/* TABLA DE CUENTAS*/
 foreach ($reg_id as $key => $value) {
 //echo $reg_nombre[$key];
 
@@ -199,11 +257,26 @@ VALUES
 
 
 
+ 
+
 /*INSERT A LA TABLA DE MOVIMIENTO*/
 
 //echo $qry_m;
 mysql_query($qry2);
 mysql_query($qry_m);
+
+
+
+$resul_suma =  mysql_query("SELECT sum(reg_cantidad) as sum FROM ".TABLA3." where reg_id = '".$reg_id[$key]."' and anulado <> 1;");
+while($row =  mysql_fetch_array($resul_suma) ) {
+$suma = $row['sum'];
+}
+
+
+$qryupdateArt = "UPDATE ".TABLA5." SET `cantidad`= '".$suma."' WHERE `id`='".$reg_id[$key]."'";
+
+mysql_query($qryupdateArt);
+
 }
 
 

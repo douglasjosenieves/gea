@@ -26,4 +26,33 @@ return $noti;
  }
 
 
+
+
+
+ function statuCta($status)
+{
+	# code..
+ 
+
+if ($status == 'PAGADA') {
+
+	$noti = '<span class="label label-success">'.$status.'</span>';
+}
+
+
+if ($status == 'PARCIAL') {
+
+	$noti = '<span class="label label-warning">'.$status.'</span>';
+}
+
+
+if ($status == 'PENDIENTE'  ) {
+
+	$noti = '<span class="label label-danger">'.$status.'</span>';
+}
+
+return $noti;
+ }
+
+
  ?>

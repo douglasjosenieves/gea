@@ -215,7 +215,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
 <label for="basicInput">Cantidad:</label>
-<input type="number" value="<?php echo $data['data'][0]['cantidad'] ?>" required class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad:">
+<input type="number" value="<?php echo $data['data'][0]['cantidad'] ?>"  readonly class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad:">
 </div>
 </div>
 
