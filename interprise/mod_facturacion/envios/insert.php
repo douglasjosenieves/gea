@@ -116,11 +116,11 @@ $imagenes = unserialize($imagenes);
 
 
 
- 
+ if (AFECTA_VENTAS == true) {
 
 $resul = mysql_query($qry);
 
-
+}
 
 
 
@@ -135,8 +135,9 @@ $id_siguiente= $row['id'];
 
 
 
-
 /* TABLA DE CUENTAS*/
+
+	# code...
 
 
 $qry_cta = "INSERT INTO ".TABLA4."
@@ -191,8 +192,13 @@ VALUES
  '$ip',
 '$anulado');";
 
+if (AFECTA_CUENTA == true) {
 mysql_query($qry_cta);
 //echo $qry_cta;
+
+}
+
+
  /* FIN TABLA DE CUENTAS*/
 
 
@@ -224,9 +230,19 @@ VALUES
 '".$reg_subtotal[$key]."',
 '0')";
 
+if (AFECTA_VENTAS == true) {
+//echo $qry_m;
+mysql_query($qry2);
 
+}
 
 /*INSERT A LA TABLA DE MOVIMIENTO*/
+
+
+
+if ($reg_stock[$key] =='CANTIDAD') {
+	# code...
+
 
 $qry_m = "INSERT INTO ".TABLA3." (
  
@@ -264,6 +280,12 @@ VALUES
  '$ip',
 '$anulado');";
 
+if (AFECTA_MOVIMENTO_INVENTARIO == true) {
+mysql_query($qry_m);
+}
+
+
+}
 
 
 
@@ -271,10 +293,6 @@ VALUES
  
 
 /*INSERT A LA TABLA DE MOVIMIENTO*/
-
-//echo $qry_m;
-mysql_query($qry2);
-mysql_query($qry_m);
 
 
 
