@@ -5,6 +5,7 @@ header('Location: ../index.php');
 
 require_once '../../db_connect.php';
 require_once '../config.php'; 
+require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -16,7 +17,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  compras where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA1." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
@@ -84,7 +85,7 @@ $total_total =  $data['data'][0]['total_total'];
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>COMPRAS (Ver)</title>
+	<title><?php echo TITULO ?> (Ver)</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -141,7 +142,7 @@ $total_total =  $data['data'][0]['total_total'];
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">COMPRAS (Ver)</a>
+					<a href="#" title="#"><?php echo TITULO ?> (Ver)</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -149,7 +150,7 @@ $total_total =  $data['data'][0]['total_total'];
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline">COMPRAS (Ver)</h2>
+					<h2 class="boxHeadline"><?php echo TITULO ?> (Ver)</h2>
 					<h3 class="boxHeadlineSub">Generar documentos</h3>
 					
 										<div class="row">
@@ -373,7 +374,7 @@ var docDefinition = {
 	 
  
 
-{ text: 'compras # '+id+'', style:'header' ,  alignment: 'right',margin: [ 0, 20, 0, 0 ]},		
+{ text: '<?php echo TITULO2 ?> # '+id+'', style:'header' ,  alignment: 'right',margin: [ 0, 20, 0, 0 ]},		
                
 
 { text: ''+enc_cliente+' '+enc_cliente_documento, fontSize: 12, bold: true ,  alignment: 'right',margin: [ 0, 5, 0, 0 ]},

@@ -64,6 +64,7 @@ require_once 'nav_define.php';
 					<ul>
 						<li><a href="<?php echo BASE_URL ?>mod_articulos/index.php" >Nuevo</a></li>
 			 	        <li><a href="<?php echo BASE_URL ?>mod_articulos/reporte.php" title="#">Ver</a></li>
+			 	          <li><a href="<?php echo BASE_URL ?>mod_articulos/inventario.php" title="#">Inventario Actual</a></li>
 			 	        <li><a href="<?php echo BASE_URL ?>mod_articulos/movimientos.php" title="#">Movimientos</a></li>
 				 
 			</ul>
