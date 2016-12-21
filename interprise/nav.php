@@ -66,6 +66,20 @@ require_once 'nav_define.php';
 			 	        <li><a href="<?php echo BASE_URL ?>mod_articulos/reporte.php" title="#">Ver</a></li>
 			 	          <li><a href="<?php echo BASE_URL ?>mod_articulos/inventario.php" title="#">Inventario Actual</a></li>
 			 	        <li><a href="<?php echo BASE_URL ?>mod_articulos/movimientos.php" title="#">Movimientos</a></li>
+			 	        
+
+
+			 	    <li class="sub js-submenu">
+					<div class="sub-menu"><i class="zmdi zmdi-money zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Entrada<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_articulos_entrada/index.php" title="Administracion de contactos">Nuevo</a> </li> 
+<li><a href="<?php echo BASE_URL ?>mod_articulos_entrada/reporte.php" title="Administracion de contactos">Ver</a> </li> 
+
+			</ul>
+			</li>	
+
+
+
 				 
 			</ul>
 			</li>
@@ -194,7 +208,7 @@ require_once 'nav_define.php';
 					<ul >
 						<li><a href="<?php echo BASE_URL ?>mod_usuarios/user-profile.php" title="Perfil del usuario">Perfil del usuario</a></li>
 						<li><a href="<?php echo BASE_URL ?>mod_listado_whatapp/index.php" title="#">Listado whatsapp</a>  </li>
-						
+							<li><a href="<?php echo BASE_URL ?>mod_empresa/index.php" title="#">Empresa</a>  </li>
 
 						 
 					</ul>

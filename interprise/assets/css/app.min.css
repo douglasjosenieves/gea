@@ -108,3 +108,10 @@
     position: absolute;
     bottom: 25px;
 }
+
+.sub-menu {
+    display: block;
+    font-weight: 700;
+    padding: 15px 18px 15px 15px;
+}
+
