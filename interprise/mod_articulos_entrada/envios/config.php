@@ -4,6 +4,7 @@
 define('TITULO',"Entrada de Inventario");  /*TITULO DEL LAS VISTAS */
 define('TITULO2',"Entrada de Inventario"); /*TITULO DEL LAS VISTAS  DEL DOCUMENTO GENERADO*/
 define('TITULO3',"empresa"); /*TITULO DEL LAS VISTAS  DEL DOCUMENTO GENERADO*/
+define('TOTAL_A',"TOTAL"); /*TITULO DEL LAS VISTAS  DEL DOCUMENTO GENERADO*/
 define('MODULO',"mod_articulos_entrada"); /*PARA EL LINK DE LOS PROCESOS*/
 define('MODULO2',"mod_empresa"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
 define('TABLA1',"inventario_entrada"); /*LLAMADA DE TABLA EN EL ENVIO DE INFORMACION A LA BASE DE DATOS*/

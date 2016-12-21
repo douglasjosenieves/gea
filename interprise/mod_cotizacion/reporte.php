@@ -4,6 +4,7 @@ header('Location: ../index.php');
 }
 
 require_once '../../db_connect.php';
+require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -20,7 +21,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Cotización</title>
+	<title><?php echo TITULO ?></title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -66,7 +67,7 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Cotización </a>
+					<a href="#" title="#"><?php echo TITULO ?> </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -85,8 +86,8 @@ mysql_query("SET CHARACTER_SET utf");
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Cod Cliente</th>
-								   <th>Cliente</th>
+									<th>Cod <?php echo TITULO3 ?></th>
+								   <th><?php echo TITULO3 ?></th>
 									<th>fecha</th>
 									<th>Orden</th>
 									 
@@ -111,7 +112,7 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../asesor_funtion.php';
 	                  require_once '../status_estado.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `cotizacion`");
+					$resul =  mysql_query("SELECT * FROM `".TABLA1."`");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
@@ -149,9 +150,15 @@ require_once '../asesor_funtion.php';
 								Procesos <i class="fa fa-chevron-down"></i>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="../mod_cotizacion/ver.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i>Formato Blanco</a></li>
+								<li><a href="../<?php echo MODULO ?>/ver.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i>Formato Blanco</a></li>
 							
-						<li><a href="../mod_cotizacion/ver-logo.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i>Formato Web</a></li>
+						<li><a href="../<?php echo MODULO ?>/ver-logo.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i>Formato Web</a></li>
+
+<?php if (EXPORTAR == TRUE) {
+	# code...
+ ?>
+						<li><a href="../<?php echo MODULO_EXPORTAR ?>/index.php?importar=si&id_cot=<?php echo $opciones['opciones'][$i]['id']; ?>&id=<?php echo $opciones['opciones'][$i]['enc_id_cliente']; ?>" title="#"><i class="fa fa-file"></i>Exportar a <?php echo EXPORTAR_A ?></a></li>
+<?php } ?>
 								
 							<!-- 	<li><a href="reporte-clientes-excel.php?id=<?php //echo $opciones['opciones'][$i]['id']; ?>" title="Exportar a excel"><i class="fa fa-file-excel-o"></i> Exportar a EXCEL</a></li> -->
 							</ul>

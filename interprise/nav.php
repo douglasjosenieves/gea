@@ -70,7 +70,7 @@ require_once 'nav_define.php';
 
 
 			 	    <li class="sub js-submenu">
-					<div class="sub-menu"><i class="zmdi zmdi-money zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Entrada<i class="zmdi zmdi-plus plus"></i></span></div>
+					<div class="sub-menu"><i class="zmdi zmdi-download zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Entrada<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 <li><a href="<?php echo BASE_URL ?>mod_articulos_entrada/index.php" title="Administracion de contactos">Nuevo</a> </li> 
 <li><a href="<?php echo BASE_URL ?>mod_articulos_entrada/reporte.php" title="Administracion de contactos">Ver</a> </li> 
@@ -79,7 +79,14 @@ require_once 'nav_define.php';
 			</li>	
 
 
+ 	    <li class="sub js-submenu">
+					<div class="sub-menu"><i class="zmdi zmdi-upload zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Salida<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_articulos_salida/index.php" title="Administracion de contactos">Nuevo</a> </li> 
+<li><a href="<?php echo BASE_URL ?>mod_articulos_salida/reporte.php" title="Administracion de contactos">Ver</a> </li> 
 
+			</ul>
+			</li>	
 				 
 			</ul>
 			</li>

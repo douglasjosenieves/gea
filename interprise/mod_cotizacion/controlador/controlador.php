@@ -73,6 +73,7 @@ var nombre = Self.data('nombre');
 var precio = Self.data('precio');
 var descripcion = Self.data('descripcion');
 var und_med = Self.data('und_med');
+var stock = Self.data('stock');
 var index = Self.data('index');
 //alert(index);
 
@@ -83,6 +84,7 @@ $('.itemsrow:eq( '+index +' ) input[name="reg_descripcion[]"]').val(descripcion)
 
 $('.itemsrow:eq( '+index +' ) input[name="reg_cantidad[]"]').focus();
 $('.itemsrow:eq( '+index +' ) input[name="reg_und_med[]"]').val(und_med);
+$('.itemsrow:eq( '+index +' ) input[name="reg_stock[]"]').val(stock);
 $('.itemsrow:eq( '+index +' ) input[name="reg_precio[]"]').val(precio);
 
 
@@ -141,7 +143,7 @@ function buscarArticulos(texto) {
 
 
 $.ajax({
-  url: '../mod_clientes/async/buscar.php',
+  url: '../<?php echo MODULO2 ?>/async/buscar.php',
   type: 'POST',
  
   data: {parametro: texto},
@@ -269,6 +271,7 @@ $('.subtotal').each(function(){
 
 $('#total_parcial').val(roundToTwo(total_parcial));
 $('#e_total_parcial').text(roundToTwo(total_parcial));
+  
 var impuesto = <?php  echo IMPUESTO ?> ; 
 var iva = total_parcial*impuesto/100
 $('#total_tax').val(roundToTwo(iva));

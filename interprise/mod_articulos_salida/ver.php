@@ -416,7 +416,7 @@ var docDefinition = {
 [ '', '', '', '', '', ' '],
    [ '', '', '', '', {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
    [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?>%', bold: true, fontSize: 8 }, total_tax],
-     [ '', '', '', '', {text: 'TOTAL A PAGAR', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
+     [ '', '', '', '', {text: '<?php echo TOTAL_A ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
           
         ]
       },

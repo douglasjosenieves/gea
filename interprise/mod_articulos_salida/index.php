@@ -220,44 +220,7 @@ $data['data'][] = $row;
 	                  </div>
 
 
-<!-- informacion adicional opcional -->
-<div class="row">
-	
-<!--======================================================
-=            Buscar lista en la base de datos            =
-=======================================================-->
-<?php 
-			
-$v=0;
-$dato ='';
-$datoid =array();
-$resulv =  mysql_query("SELECT * FROM obras where anulado <> 1");
-while($rowv =  mysql_fetch_array($resulv) ) { 
-$dato .= '<option value="';
-$dato .= $rowv['id'];
-$dato .= '">';
-$dato .= strtoupper($rowv['cliente']);
-$dato .= '</option>';
-$datoid[] = $rowv['id'];
-$v++;}
-?>
 
-	
-<!--====  End of Buscar lista en la base de datos  ====-->
-		
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Proyecto:</label>
-
-<select required id="ext1" name="ext1" data-id=""  class="js-select">
-<option  value="" >- Seleccionar -</option>
-<?php echo 	$dato  ?>
-</select>	
-
-</div>
-</div>
-</div>
-<!-- informacion adicional opcional -->
  
 <div class="row">
  <div class="col-xs-12 col-sm-12">

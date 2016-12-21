@@ -50,7 +50,7 @@ WHERE `id_enc` = '$referencia';
 
 
 $qry3 = "UPDATE `".TABLA3."` SET `anulado`='$anulado' WHERE `id_doc`= '$referencia' and `doc`= '".TIPO."';";
-$qry4 = "UPDATE `".TABLA4."` SET `anulado`='$anulado' WHERE `id_doc`= '$referencia' and `doc`= '".TIPO."';";
+/*$qry4 = "UPDATE `".TABLA4."` SET `anulado`='$anulado' WHERE `id_doc`= '$referencia' and `doc`= '".TIPO."';";*/
 
 
 
@@ -69,7 +69,7 @@ $resul = mysql_query($qry);
 
 mysql_query($qry2);
 mysql_query($qry3);
-mysql_query($qry4);
+/*mysql_query($qry4);*/
 
 $reg_id = array();
 $resul_suma1 =  mysql_query("SELECT * FROM `".TABLA2."` WHERE id_enc = '$referencia'");

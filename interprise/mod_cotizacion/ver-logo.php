@@ -4,7 +4,8 @@ header('Location: ../index.php');
 }
 
 require_once '../../db_connect.php';
- require_once '../config.php'; 
+require_once '../config.php'; 
+require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -16,7 +17,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  cotizacion where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA1." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
@@ -35,9 +36,9 @@ $reg_id_uns =  unserialize($data['data'][0]['reg_id']);
 $reg_nombre_uns =  unserialize($data['data'][0]['reg_nombre']);
 $reg_descripcion_uns =  unserialize($data['data'][0]['reg_descripcion']);
 
-
-$reg_cantidad_uns =  unserialize($data['data'][0]['reg_cantidad']);
 $reg_und_med_uns =  unserialize($data['data'][0]['reg_und_med']);
+$reg_cantidad_uns =  unserialize($data['data'][0]['reg_cantidad']);
+
 
 $reg_precio_uns =  unserialize($data['data'][0]['reg_precio']);
 $reg_subtotal_uns =  unserialize($data['data'][0]['reg_subtotal']);
@@ -56,6 +57,7 @@ foreach ($reg_id_uns as $key => $value) {
 	//{ text: 'Nombre', fontSize: 8 }
 	
 
+
 $reg .= "[";	
 $reg .= "{ text: '".$reg_id_uns[$key]."', fontSize: 8 }, ";
 $reg .= "{ text: '".strip_tags($reg_nombre_uns[$key])."', fontSize: 8 }, ";
@@ -65,8 +67,6 @@ $reg .= "{ text: '".MONEDA.$reg_precio_uns[$key]."', fontSize: 8 }, ";
 $reg .= "{ text: '".MONEDA.$reg_subtotal_uns[$key]."', fontSize: 8 }, ";
 $reg .= "],";
 
-
- 
 }
 
 
@@ -85,7 +85,7 @@ $total_total =  $data['data'][0]['total_total'];
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Cotización (Ver)</title>
+	<title><?php echo TITULO ?> (Ver)</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -131,9 +131,8 @@ $total_total =  $data['data'][0]['total_total'];
 
 
 	<!-- Header -->
- 
+	 
 	<?php  require_once '../header.php'; ?>
-
 	
 	<?php  require_once '../tareas-pendientes.php'; ?>
 	<!-- Page Wrap -->
@@ -143,7 +142,7 @@ $total_total =  $data['data'][0]['total_total'];
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Cotización (Ver)</a>
+					<a href="#" title="#"><?php echo TITULO ?> (Ver)</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -151,7 +150,7 @@ $total_total =  $data['data'][0]['total_total'];
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline">Cotización (Ver)</h2>
+					<h2 class="boxHeadline"><?php echo TITULO ?> (Ver)</h2>
 					<h3 class="boxHeadlineSub">Generar documentos</h3>
 					
 										<div class="row">
@@ -375,7 +374,7 @@ var docDefinition = {
 	 
  
 
-{ text: 'Cotización # '+id+'', style:'header' ,  alignment: 'right',margin: [ 0, 20, 0, 0 ]},		
+{ text: '<?php echo TITULO2 ?> # '+id+'', style:'header' ,  alignment: 'right',margin: [ 0, 20, 0, 0 ]},		
                
 
 { text: ''+enc_cliente+' '+enc_cliente_documento, fontSize: 12, bold: true ,  alignment: 'right',margin: [ 0, 5, 0, 0 ]},
@@ -412,11 +411,12 @@ var docDefinition = {
 <?php echo $reg ?>
 
 
+
 /*=====  End of Aqui va el siclo de los items  ======*/
 [ '', '', '', '', '', ' '],
    [ '', '', '', '', {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
    [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?>%', bold: true, fontSize: 8 }, total_tax],
-     [ '', '', '', '', {text: 'TOTAL A PAGAR', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
+     [ '', '', '', '', {text: '<?php echo TOTAL_A ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
           
         ]
       },

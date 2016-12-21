@@ -27,6 +27,58 @@ $data['data'][] = $row;
 }
 
 ?>
+
+
+<!--===========================================================
+=            PARA CUANDO SE IMPORTE UNA COTIZACION            =
+============================================================-->
+<?php 
+$importar = $_GET['importar'];
+$id_cot = $_GET['id_cot'];
+if ($importar == 'si') {
+	# code...
+
+$i=0;
+$resul =  mysql_query("SELECT * FROM ".TABLA_IMPORTA." WHERE id=$id_cot");
+while($row =  mysql_fetch_array($resul) ) {
+$import['import'][]=$row;
+}
+
+//echo $import['import'][0]['enc_cliente'];
+
+$importada =  " | Documento Importado ".TABLA_IMPORTA.": N°".$id_cot." ".$import['import'][0]['enc_cliente'];
+$enc_fecha_emision= $import['import'][0]['enc_fecha_emision'];
+$enc_lugar_emision= $import['import'][0]['enc_lugar_emision'];
+$enc_orden= $import['import'][0]['enc_orden'];
+$enc_comentarios= $import['import'][0]['enc_comentarios'];
+$ext1= $import['import'][0]['ext1'];
+ 
+$reg_id= $import['import'][0]['reg_id'];
+$reg_nombre= $import['import'][0]['reg_nombre'];
+$reg_descripcion= $import['import'][0]['reg_descripcion'];
+$reg_cantidad= $import['import'][0]['reg_cantidad'];
+$reg_und_med= $import['import'][0]['reg_und_med'];
+$reg_stock= $import['import'][0]['reg_stock'];
+$reg_precio= $import['import'][0]['reg_precio'];
+$reg_subtotal= $import['import'][0]['reg_subtotal'];
+$imagenes= $import['import'][0]['imagenes'];
+
+$reg_id = unserialize($reg_id);
+$reg_nombre = unserialize($reg_nombre);
+$reg_descripcion = unserialize($reg_descripcion);
+$reg_cantidad = unserialize($reg_cantidad);
+$reg_und_med = unserialize($reg_und_med);
+$reg_stock = unserialize($reg_stock);
+$reg_precio = unserialize($reg_precio);
+$reg_subtotal = unserialize($reg_subtotal);
+$imagenes = unserialize($imagenes);
+}
+
+ ?>
+
+
+<!--====  End of PARA CUANDO SE IMPORTE UNA COTIZACION  ====-->
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -90,7 +142,7 @@ $data['data'][] = $row;
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#"><?php echo TITULO ?></a>
+					<a href="#" title="#"><?php echo TITULO." ".$importada ?></a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="../index.php">Panel de control</a></li>
@@ -193,7 +245,7 @@ $data['data'][] = $row;
  <div class="col-xs-12 col-sm-4">
 	                  	<div class="form-group">
 	                  	<label for="basicInput">Lugar de Emisión</label>
-	                  	<input type="text" value="<?php echo $enc['enc_contacto'][0]['enc_lugar_emision'] ?>" required class="form-control" name="enc_lugar_emision" id="enc_lugar_emision" placeholder="Lugar de Emisión">
+	                  	<input type="text" value="<?php echo $enc_lugar_emision ?>" required class="form-control" name="enc_lugar_emision" id="enc_lugar_emision" placeholder="Lugar de Emisión">
 	                  	</div>
 	                  	</div>
 
@@ -203,7 +255,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4">
  <div class="form-group">
  <label for="basicInput">Fecha de Emisión</label>
- <input type="date" value="<?php echo $enc['enc_contacto'][0]['enc_fecha_emision'] ?>" required class="form-control" name="enc_fecha_emision" id="enc_fecha_emision" placeholder="Fecha de Emision">
+ <input type="date" value="<?php echo $enc_fecha_emision ?>" required class="form-control" name="enc_fecha_emision" id="enc_fecha_emision" placeholder="Fecha de Emision">
  </div>
  </div>
  
@@ -211,7 +263,7 @@ $data['data'][] = $row;
  <div class="col-xs-12 col-sm-4">
 	                  	<div class="form-group">
 	                  	<label for="basicInput">Orden #</label>
-	                  	<input type="text" value="<?php echo $enc['enc_contacto'][0]['enc_orden'] ?>" required class="form-control" name="enc_orden" id="enc_orden" placeholder="Orden #">
+	                  	<input type="text" value="<?php echo $enc_orden ?>" required class="form-control" name="enc_orden" id="enc_orden" placeholder="Orden #">
 	                  	</div>
 	                  	</div>
  
@@ -263,7 +315,7 @@ $v++;}
  <div class="col-xs-12 col-sm-12">
 <div class="form-group">
 <label for="textarea-autosize">Comentarios:</label>
-<textarea id="enc_comentarios" name="enc_comentarios" class="js-autogrow form-control" placeholder="Comentarios...!" rows="2"><?php echo $enc['enc_contacto'][0]['enc_comentarios'] ?></textarea>
+<textarea id="enc_comentarios" name="enc_comentarios" class="js-autogrow form-control" placeholder="Comentarios...!" rows="2"><?php echo $enc_comentarios ?></textarea>
 </div>
 </div>
 </div>	 
@@ -278,6 +330,26 @@ $v++;}
 					<h2 class="boxHeadline">Items</h2>
 					<h3 class="boxHeadlineSub" id="itemsBuscado"></h3>
 <div id="container-items">
+
+
+<!--====================================================
+=            PARA IMPORTAR AQUI VA EL BUCLE            =
+=====================================================-->
+
+
+<?php 
+
+if (isset($importar)) {
+	require_once 'items_import.php';
+} else {
+
+
+
+ 
+
+ 	?>
+
+
 <div class="row itemsrow">
 	
 
@@ -356,6 +428,8 @@ $v++;}
 
 
 </div>
+<?php } ?>
+<!--====  End of PARA IMPORTAR AQUI VA EL BUCLE  ====-->
 
 </div><!-- Container Items -->
 
@@ -479,6 +553,9 @@ $v++;}
 
 
 $(document).ready(function() {
+
+
+	$('#ext1').val('<?php echo $ext1 ?>').change();
 
 //enc_lugar_emision
 
