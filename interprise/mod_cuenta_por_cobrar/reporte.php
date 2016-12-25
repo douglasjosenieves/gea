@@ -5,6 +5,7 @@ header('Location: ../../index.php');
 //echo $_SESSION['usuario']['Tipo'].$_SESSION['usuario']['Nombre'].$_SESSION['usuario']['Apellido'].'asdasdasdsas' ;
 require_once '../../db_connect.php';
 require_once '../../PHPPaging.lib.php';
+require_once 'envios/config.php';
 
 // connecting to db
 $con = new DB_CONNECT();
@@ -19,7 +20,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Reporte</title>
+	<title><?php echo TITULO ?></title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -65,18 +66,18 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Reporte </a>
+					<a href="#" title="#"><?php echo TITULO ?> </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
-					<li class="active">Reportes</li>
+					<li class="active"><?php echo TITULO ?></li>
 				</ol>
 				
 			
 				<!-- Data Table -->
 				<div class="box box-without-bottom-padding">
 					<h2 class="boxHeadline">Table</h2>
-					<h3 class="boxHeadlineSub">Reporte</h3>
+					<h3 class="boxHeadlineSub"><?php echo TITULO ?></h3>
 				 
 					
 					<div class="tableWrap dataTable table-responsive js-select">
@@ -84,13 +85,24 @@ mysql_query("SET CHARACTER_SET utf");
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Id Documento</th>
+									<th>Id_doc</th>
 								   <th>Documento</th>
-									<th>Total</th>
-									<th>Saldo</th>
-									<th>Estatus Saldo</th>
+									<th>id_cliente</th>
+									<th>cliente</th>
+
+										<th>Total parcial</th>
+											<th>Total Tax</th>
+												<th>Total</th>
+
+													<th>Saldo</th>
+
+														<th>Status Saldo</th>
+
+
+									<th>Anulado</th>
+									<th>Gestionar</th>
 								 
-									<th>Procesos</th>
+									 
 								
 								</tr>
 							</thead>
@@ -110,13 +122,17 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../asesor_funtion.php';
 	                  require_once '../status_estado.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `cuenta_por_cobrar` where anulado <> 1");
+					$resul =  mysql_query("SELECT * FROM `".TABLA_PRINCIPAL."`");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
 					// echo $row['nombre'];
 					$opciones['opciones'][]=$row;
-					
+					if ($opciones['opciones'][$i]['anulado']!=1) {
+						$estado = 'ACTIVO';
+					} else {
+						$estado = 'ANULADO';
+					}
 					  
 					 ?>
 					
@@ -129,10 +145,18 @@ require_once '../asesor_funtion.php';
 						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
 						<td><?php echo $opciones['opciones'][$i]['id_doc']; ?></td>
 						<td><?php echo $opciones['opciones'][$i]['doc']; ?></td>
-					    <td><?php echo $opciones['opciones'][$i]['total_total']; ?></td>
-					    <td><?php echo $opciones['opciones'][$i]['saldo']; ?></td>
-					    <td><?php echo statuCta($opciones['opciones'][$i]['status_saldo']); ?></td>
-			 
+
+
+
+
+					    <td><?php echo $opciones['opciones'][$i]['id_cliente']; ?></td>
+					    <td><?php echo $opciones['opciones'][$i]['enc_cliente']; ?></td>
+					      <td><?php echo $opciones['opciones'][$i]['total_parcial']; ?></td>
+					      <td><?php echo $opciones['opciones'][$i]['total_tax']; ?></td>
+					      <td><?php echo $opciones['opciones'][$i]['total_total']; ?></td>
+					      <td><?php echo $opciones['opciones'][$i]['saldo']; ?></td>
+					      <td><?php echo $opciones['opciones'][$i]['status_saldo']; ?></td>
+					    <td><?php echo statusestado($estado) ?></td>
 					    <td>
 					    	
 					 <!-- Button Extra small -->
@@ -141,7 +165,7 @@ require_once '../asesor_funtion.php';
 								Procesos <i class="fa fa-chevron-down"></i>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="#" title="#"><i class="fa fa-eye"></i> Cobrar</a></li>
+								<li><a href="../<?php echo MODULO ?>/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
 							
 						
 								
@@ -154,6 +178,8 @@ require_once '../asesor_funtion.php';
 
 
 					    </td>
+			 
+					   
 					</tr>
 						<?php $i++;  }?>
 					<!--====  End of AQUI VA LA CONSULTA A LA BASE DE DATOS  ====-->

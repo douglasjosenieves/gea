@@ -1,0 +1,13 @@
+<?php 
+
+/*LOS NOMBRE DE LAS TABLAS QUE AFECTAN*/
+define('TITULO',"Cuentas por cobrar");  /*TITULO DEL LAS VISTAS */
+ 
+define('MODULO',"mod_cuenta_por_cobrar"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+
+define('TABLA_PRINCIPAL',"cuenta_por_cobrar"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+define('TABLA',"contactos_web"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+
+
+?>
+

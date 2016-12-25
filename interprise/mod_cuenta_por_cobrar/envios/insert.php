@@ -2,9 +2,8 @@
 //error_reporting(0);
 //header('Content-type: application/json');
 require_once __DIR__ . '../../../../db_connect.php';
- require_once 'config.php';
 //sleep(2);
- 
+ require_once 'config.php';
 // connecting to db
 $db = new DB_CONNECT();
 //sleep(10);
@@ -20,11 +19,57 @@ extract ($_POST);
 
 
  
- //TABLA  # ESTA ES LA TABLA
+ 
 
 
 
-$qry = "";
+$qry = "INSERT INTO `".TABLA."`
+( 
+`descripcion`,
+`tipo`,
+`numero_cuenta`,
+`direccion`,
+`ejecutivo`,
+`saldo_inicial`,
+
+`tramitido_al_crm`,
+`elaborado_por`,
+`fecha`,
+`verificado`,
+`editado_por`,
+`editado_fecha`,
+`imagenes`,
+`ip`,
+`anulado`,
+`ext1`,
+`ext2`,
+`ext3`,
+`ext4`,
+`ext5`)
+VALUES
+( 
+'$descripcion',
+'$tipo',
+'$numero_cuenta',
+'$direccion',
+'$ejecutivo',
+'$saldo_inicial',
+
+'$tramitido_al_crm',
+'$elaborado_por',
+'$fecha',
+'$verificado',
+'$editado_por',
+'$editado_fecha',
+'$imagenes',
+'$ip',
+'$anulado', 
+'$ext1',
+'$ext2',
+'$ext3',
+'$ext4',
+'$ext5');
+";
  
 
 $resul = mysql_query($qry);

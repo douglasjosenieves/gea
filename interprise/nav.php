@@ -145,6 +145,19 @@ require_once 'nav_define.php';
 			</li>	
 
 
+
+	<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-balance zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cajas y Bancos<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+			<li><a href="<?php echo BASE_URL ?>mod_cajas_bancos/index.php" title="#">Nuevo</a></li> 
+           <li><a href="<?php echo BASE_URL ?>mod_cajas_bancos/reporte.php" title="#">Ver</a></li>
+
+			</ul>
+			</li>
+
+
+
+
 	<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-plus-circle zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cta Por Cobrar<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>

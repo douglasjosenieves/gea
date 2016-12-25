@@ -2,9 +2,8 @@
 //error_reporting(0);
 //header('Content-type: application/json');
 require_once __DIR__ . '../../../../db_connect.php';
- require_once 'config.php';
 //sleep(2);
- 
+ require_once 'config.php';
 // connecting to db
 $db = new DB_CONNECT();
 //sleep(10);
@@ -20,11 +19,32 @@ extract ($_POST);
 
 
  
- //TABLA  # ESTA ES LA TABLA
+ 
 
 
 
-$qry = "";
+$qry = "UPDATE `".TABLA."`
+SET
+
+`descripcion` = '$descripcion',
+`tipo` = '$tipo',
+`numero_cuenta` = '$numero_cuenta',
+`direccion` = '$direccion',
+`ejecutivo` = '$ejecutivo',
+`saldo_inicial` = '$saldo_inicial',
+`editado_por` = '$editado_por',
+`editado_fecha` = '$fecha',
+`imagenes` = '$imagenes',
+`ip` = '$ip',
+`anulado` = '$anulado',
+`ext1` = '$ext1',
+`ext2` = '$ext2',
+`ext3` = '$ext3',
+`ext4` = '$ext4',
+`ext5` = '$ext5'
+WHERE `id` = '$referencia';
+
+";
  
 
 $resul = mysql_query($qry);

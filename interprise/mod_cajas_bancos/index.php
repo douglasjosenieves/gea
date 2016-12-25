@@ -16,7 +16,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  ".TABLA_PRINCIPAL." where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
@@ -143,11 +143,89 @@ $data['data'][] = $row;
 					 =            AQUI VA EL CONTENIDO DEL SITE-            =
 					 =====================================================-->
 				
- 	
+<div class="row">
+
+<div class="col-xs-12 col-sm-4 i">
+<div class="form-group">
+<label>Tipo</label>
+<select id="tipo" required name="tipo" class="js-select ">
  
+<option value="" >- Seleccione tipo -</option>
+<option value="CAJA">CAJA</option>								
+<option value="BANCO">BANCO</option>
  
 
-<!-- <div class="row">
+
+
+</select>
+</div>
+</div>
+
+					 
+<div class="col-xs-12 col-sm-8">
+<div class="form-group">
+<label for="basicInput">Descripción</label>
+<input type="text" value="<?php echo $data['data'][0]['descripcion'] ?>" required class="form-control" name="descripcion" id="descripcion" placeholder="Descripción">
+</div>
+</div>
+					 	 
+</div>		
+		<div class="row">
+			
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Numero de Cuentas / *Si es un Banco</label>
+<input type="text" value="<?php echo $data['data'][0]['numero_cuenta'] ?>"  class="form-control" name="numero_cuenta" id="numero_cuenta" placeholder="Numero de Cuentas / *Si es un Banco">
+</div>
+</div>
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Dirección / *Si es un Banco</label>
+<input type="text" value="<?php echo $data['data'][0]['direccion'] ?>"  class="form-control" name="direccion" id="direccion" placeholder="Dirección / *Si es un Banco">
+</div>
+</div>
+
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Ejecutivo nombre / *Si es un Banco</label>
+<input type="text" value="<?php echo $data['data'][0]['ejecutivo'] ?>"  class="form-control" name="ejecutivo" id="ejecutivo" placeholder="Ejecutivo nombre / *Si es un Banco">
+</div>
+</div>
+
+</div>	
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-6">
+<div class="form-group">
+<label for="basicInput">Saldo inicial</label>
+<input type="number"  value="<?php echo $data['data'][0]['saldo_inicial'] ?>" required class="form-control" name="saldo_inicial" id="saldo_inicial" placeholder="Saldo inicial">
+</div>
+</div>
+
+
+				 
+<div class="col-xs-12 col-sm-6">
+<div class="form-group">
+<label for="basicInput">Saldo final</label>
+<input type="number" readonly value="<?php echo $data['data'][0]['saldo_final'] ?>" required class="form-control" name="saldo_final" id="saldo_final" placeholder="Saldo final">
+</div>
+</div>
+
+
+</div>
+
+<div class="row">
 	
 <div class="col-xs-12 col-sm-3 i">
 <div class="form-group">
@@ -167,207 +245,12 @@ $data['data'][] = $row;
 </div>
 
 
-</div> -->
-				
+</div>
+					
 					
  
 				
 				</div><!-- box rate -->
-
-
-				<div class="box rate">
-				 
-<input type="hidden" id="id_doc" name="id_doc" value="<?php echo $data['data'][0]['id_doc'] ?>">
-<input type="hidden" id="doc" name="doc" value="<?php echo $data['data'][0]['doc'] ?>">
-
-<input type="hidden" id="id_cliente" name="id_cliente" value="<?php echo $data['data'][0]['id_cliente'] ?>">
-<input type="hidden" id="banco_caja" name="banco_caja" value="">
-
-
-<div class="row">
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Documento</label>
-<input type="text"  readonly value="<?php echo $data['data'][0]['doc'].' N:'.$data['data'][0]['id_doc'] ?>" required class="form-control" name="doc_ref" id="doc_ref" placeholder="Documento">
-</div>
-</div>
-
-
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Cliente</label>
-<input type="text" readonly  value="<?php echo $data['data'][0]['enc_cliente'] ?>" required class="form-control" name="enc_cliente" id="enc_cliente" placeholder="Cliente">
-</div>
-</div>
-
-
-<!--======================================================
-=            Buscar lista en la base de datos            =
-=======================================================-->
-<?php 
-			
-$v=0;
-$dato ='';
-$datoid =array();
-$resulv =  mysql_query("SELECT * FROM cajas_bancos where anulado <> 1");
-while($rowv =  mysql_fetch_array($resulv) ) { 
-$dato .= '<option value="';
-$dato .= $rowv['id'];
-$dato .= '">';
-$dato .= strtoupper($rowv['descripcion']);
-$dato .= '</option>';
-$datoid[] = $rowv['id'];
-$v++;}
-?>
-
-	
-<!--====  End of Buscar lista en la base de datos  ====-->
-		
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Banco O Caja</label>
-
-<select required id="id_banco_caja" name="id_banco_caja" data-id=""  class="js-select">
-<option  value="" >- Seleccionar -</option>
-<?php echo 	$dato  ?>
-</select>	
-
-</div>
-</div>
-
-
-
-
-</div>
-
-
-<div class="row">
-	
-
-<div class="col-xs-12 col-sm-4 i">
-<div class="form-group">
-<label>Tipo</label>
-<select id="tipo" required name="tipo" class="js-select ">
- 
-<option value="" >- Seleccione tipo -</option>
-<option value="TRANSFERENCIA">TRANSFERENCIA</option>								
-<option value="DEPOSITO">DEPOSITO</option>
-<option value="EFECTIVO">EFECTIVO</option>
-<option value="CHEQUE">CHEQUE</option>
- 
-
-
-
-</select>
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-8">
-<div class="form-group">
-<label for="basicInput">Numero de Referencia</label>
-<input type="text" value="<?php echo $data['data'][0]['numero_ref'] ?>" required class="form-control" name="numero_ref" id="numero_ref" placeholder="Numero de Referencia">
-</div>
-</div>
-
-
-</div>
-
-<div class="row">
-	
-
-
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Fecha</label>
-<input type="date" value="" required class="form-control" name="enc_fecha_emision" id="enc_fecha_emision" placeholder="snippet">
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-8">
-<div class="form-group">
-<label for="basicInput">Comentarios</label>
-<input type="text" value=""  class="form-control" name="enc_comentarios" id="enc_comentarios" placeholder="Comentarios">
-</div>
-</div>
-
-
-</div>
-
-				</div>
-
-
-				<div class="box rate">
-
-<div class="row">
-
-
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Total Parcial</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['total_parcial'] ?>" required class="form-control" name="total_parcial" id="total_parcial" placeholder="Total Parcial">
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Total Tax</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['total_tax'] ?>" required class="form-control" name="total_tax" id="total_tax" placeholder="Total Tax">
-</div>
-</div>
-
-
-
-
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Total</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['total_total'] ?>" required class="form-control" name="total_total" id="total_total" placeholder="Total">
-</div>
-</div>
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Saldo</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['saldo'] ?>" required class="form-control" name="saldo" id="saldo" placeholder="Saldo">
-</div>
-</div>
-
-
-
-
-</div>
-
-<div class="row">
-	
-
-
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Abono</label>
-<input type="number" value="<?php echo $data['data'][0]['abono'] ?>" required class="form-control" name="abono" id="abono" placeholder="Abono">
-</div>
-</div>
-
-
-
-
-</div>
-				</div>
 
 <!--====  End of AQUI VA EL CONTENIDO DEL SITE 1.1-  ====-->
 
@@ -400,7 +283,8 @@ $v++;}
 
 					
 				</div> <!-- box  -->
-	 </div> <!-- container -->
+				 </div> <!-- container -->
+
 <!--====  End of COMANDOS  ====-->
 				
 
@@ -474,15 +358,6 @@ $(document).ready(function() {
 });
 
 
-
-$('#id_banco_caja').on('change', function(event) {
-	event.preventDefault();
-	var titulo = $(this).find('option:selected').text();
-	
-	$('#banco_caja').val(titulo);
-
-
-});
 
 $('#formulario').on('submit', function(e){
 e.preventDefault();

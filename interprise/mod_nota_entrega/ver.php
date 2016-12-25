@@ -5,6 +5,7 @@ header('Location: ../index.php');
 
 require_once '../../db_connect.php';
 require_once '../config.php'; 
+require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -16,7 +17,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  nota_entrega where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA1." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
@@ -56,6 +57,7 @@ foreach ($reg_id_uns as $key => $value) {
 	//{ text: 'Nombre', fontSize: 8 }
 	
 
+
 $reg .= "[";	
 $reg .= "{ text: '".$reg_id_uns[$key]."', fontSize: 8 }, ";
 $reg .= "{ text: '".strip_tags($reg_nombre_uns[$key])."', fontSize: 8 }, ";
@@ -64,13 +66,6 @@ $reg .= "{ text: '".$reg_cantidad_uns[$key].' '.$reg_und_med_uns[$key]."', fontS
 $reg .= "{ text: '".MONEDA.$reg_precio_uns[$key]."', fontSize: 8 }, ";
 $reg .= "{ text: '".MONEDA.$reg_subtotal_uns[$key]."', fontSize: 8 }, ";
 $reg .= "],";
-
-
-
-
-
-
-
 
 }
 
@@ -90,7 +85,7 @@ $total_total =  $data['data'][0]['total_total'];
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Nota de Entrega (Ver)</title>
+	<title><?php echo TITULO ?> (Ver)</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -147,7 +142,7 @@ $total_total =  $data['data'][0]['total_total'];
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Nota de Entrega (Ver)</a>
+					<a href="#" title="#"><?php echo TITULO ?> (Ver)</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -155,7 +150,7 @@ $total_total =  $data['data'][0]['total_total'];
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline">Nota de Entrega (Ver)</h2>
+					<h2 class="boxHeadline"><?php echo TITULO ?> (Ver)</h2>
 					<h3 class="boxHeadlineSub">Generar documentos</h3>
 					
 										<div class="row">
@@ -269,7 +264,6 @@ $total_total =  $data['data'][0]['total_total'];
 	<!-- Search modal -->
 <?php require_once '../buscar.php'; ?>
 <?php require_once '../funciones/proyectos.php'; ?>
- 
 	<!-- JS -->
 	<script src="../assets/js/jquery-1.11.3.min.js"></script>
 	<script src="../assets/js/jquery-ui.min.js"></script>
@@ -380,7 +374,7 @@ var docDefinition = {
 	 
  
 
-{ text: 'Nota de Entrega # '+id+'', style:'header' ,  alignment: 'right',margin: [ 0, 20, 0, 0 ]},		
+{ text: '<?php echo TITULO2 ?> # '+id+'', style:'header' ,  alignment: 'right',margin: [ 0, 20, 0, 0 ]},		
                
 
 { text: ''+enc_cliente+' '+enc_cliente_documento, fontSize: 12, bold: true ,  alignment: 'right',margin: [ 0, 5, 0, 0 ]},
@@ -390,10 +384,9 @@ var docDefinition = {
 
 { text: enc_lugar_emision +' '+enc_fecha_emision, fontSize: 8,  alignment: 'right',margin: [ 0, 5, 0, 0 ]},
 { text: 'Orden #: '+enc_orden, fontSize: 8,  alignment: 'right'},
-
-{ text: 'Comentario: '+enc_comentarios, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},		
+		
+{ text: 'Comentarios: '+enc_comentarios, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},
 { text: 'Proyecto: '+ext1, fontSize: 10,  alignment: 'left',margin: [ 0, 5, 0, 20 ]},
-
 
 /*=============================================
 =            Aqui van los reglones            =
@@ -418,11 +411,12 @@ var docDefinition = {
 <?php echo $reg ?>
 
 
+
 /*=====  End of Aqui va el siclo de los items  ======*/
 [ '', '', '', '', '', ' '],
    [ '', '', '', '', {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
-   [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?> %', bold: true, fontSize: 8 }, total_tax],
-     [ '', '', '', '', {text: 'TOTAL A PAGAR', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
+   [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?>%', bold: true, fontSize: 8 }, total_tax],
+     [ '', '', '', '', {text: '<?php echo TOTAL_A ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
           
         ]
       },

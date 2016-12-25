@@ -2,6 +2,7 @@
 //error_reporting(0);
 //header('Content-type: application/json');
 require_once __DIR__ . '../../../../db_connect.php';
+ require_once 'config.php';
 //sleep(2);
  
 // connecting to db
@@ -19,7 +20,7 @@ extract ($_POST);
 
 
  
- 
+ //TABLA  # ESTA ES LA TABLA
 
 
 
