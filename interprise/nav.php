@@ -163,6 +163,8 @@ require_once 'nav_define.php';
 					<ul>
 			<li><a href="<?php echo BASE_URL ?>mod_cuenta_por_cobrar/index.php" title="#">Nuevo</a></li> 
            <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_cobrar/reporte.php" title="#">Ver</a></li>
+           <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_cobrar/procesados.php" title="#">Procesados</a></li>
+                <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_cobrar/movimientos.php" title="#">Movimientos</a></li>
 
 			</ul>
 			</li>

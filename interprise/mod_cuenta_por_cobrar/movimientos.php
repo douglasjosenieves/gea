@@ -66,18 +66,18 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#"><?php echo TITULO ?> </a>
+					<a href="#" title="#"><?php echo 'Movimiento de Cajas y Bancos' ?> </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
-					<li class="active"><?php echo TITULO ?></li>
+					<li class="active"><?php echo 'Movimiento de Cajas y Bancos' ?></li>
 				</ol>
 				
 			
 				<!-- Data Table -->
 				<div class="box box-without-bottom-padding">
-					<h2 class="boxHeadline">Table</h2>
-					<h3 class="boxHeadlineSub"><?php echo TITULO ?></h3>
+					<h2 class="boxHeadline">Movimientos </h2>
+					<h3 class="boxHeadlineSub"><?php // echo TITULO ?></h3>
 				 
 					
 					<div class="tableWrap dataTable table-responsive js-select">
@@ -87,21 +87,18 @@ mysql_query("SET CHARACTER_SET utf");
 									<th >Id</th>
 									<th>Id_doc</th>
 								   <th>Documento</th>
-								<!-- 	<th>id_cliente</th> -->
-									<th>cliente</th>
-
-									<!-- 	<th>Total parcial</th>
-											<th>Total Tax</th> -->
-												<th>Total</th>
-
-													<th>Saldo</th>
-
-														<th>Status Saldo</th>
-
-
-									<th>Anulado</th>
-									<th>Gestionar</th>
 								 
+									<th>cliente</th>
+ 
+												<th>Abono</th>
+ 
+
+												
+
+	<th>Tipo</th>
+								 
+									<th>Anulado</th>
+								
 									 
 								
 								</tr>
@@ -122,7 +119,7 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../asesor_funtion.php';
 	                  require_once '../status_estado.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `".TABLA."`");
+					$resul =  mysql_query("SELECT * FROM `".TABLA3."`");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
@@ -149,43 +146,15 @@ require_once '../asesor_funtion.php';
 
 
 
-					 <!--    <td><?php // echo $opciones['opciones'][$i]['id_cliente']; ?></td> -->
+		 
 					    <td><?php echo $opciones['opciones'][$i]['enc_cliente']; ?></td>
-					<!--       <td><?php// echo $opciones['opciones'][$i]['total_parcial']; ?></td>
-					      <td><?php// echo $opciones['opciones'][$i]['total_tax']; ?></td> -->
-					      <td><?php echo $opciones['opciones'][$i]['total_total']; ?></td>
-					      <td><?php echo $opciones['opciones'][$i]['saldo']; ?></td>
-
-					      <td><?php echo statuSaldo($opciones['opciones'][$i]['status_saldo']); ?></td>
+			 
+					      <td><?php echo $opciones['opciones'][$i]['abono']; ?></td>
+					 
+					<td><?php echo $opciones['opciones'][$i]['tipo']; ?></td>
 					    <td><?php echo statusestado($estado) ?></td>
-					    
-
-					    <td>
-					     <?php if ($opciones['opciones'][$i]['status_saldo']!='LISTO') {
-  	# code...
-   ?>
-			
-					 <!-- Button Extra small -->
-						<div class="btn-group">
-							<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-								Procesos <i class="fa fa-chevron-down"></i>
-							</button>
-							<ul class="dropdown-menu">
-								
- 						<li><a href="../<?php echo MODULO ?>/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
-							
-						
-								
-							<!-- 	<li><a href="reporte-clientes-excel.php?id=<?php //echo $opciones['opciones'][$i]['id']; ?>" title="Exportar a excel"><i class="fa fa-file-excel-o"></i> Exportar a EXCEL</a></li> -->
-							</ul>
-						</div>
-					  
 					     
-
-
- <?php } ?>
-					    </td>
-			
+			 
 					   
 					</tr>
 						<?php $i++;  }?>

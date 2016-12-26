@@ -16,10 +16,17 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  ".TABLA." where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA2." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
+
+
+if ($data['data'][0]['anulado']!=1) {
+						$estado = 'ACTIVO';
+					} else {
+						$estado = 'ANULADO';
+					}
 }
 }
 
@@ -96,7 +103,7 @@ $data['data'][] = $row;
 				
 				<div class="box rte">
 					<h2 class="boxHeadline"><?php echo TITULO ?></h2>
-					<h3 class="boxHeadlineSub">Proceso</h3>
+					<h3 class="boxHeadlineSub">Anular Documento</h3>
 <div class="row">
 
 
@@ -123,10 +130,10 @@ $data['data'][] = $row;
 </div>
 </div>
 
-<div class="col-xs-12 col-sm-4 col-sm-offset-2">
+<!-- <div class="col-xs-12 col-sm-4 col-sm-offset-2">
 <div class="form-group">
 <label for="basicInput">Buscar:</label>
-<input type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+<input type="text" value="<?php //echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
 </div>
 
 <div >
@@ -134,7 +141,7 @@ $data['data'][] = $row;
 		 
 	</ul>
 </div>
-</div>
+</div> -->
 
 
 </div>
@@ -144,47 +151,7 @@ $data['data'][] = $row;
 					 =====================================================-->
 				
  	
- 
- 
-
-<!-- <div class="row">
-	
-<div class="col-xs-12 col-sm-3 i">
-<div class="form-group">
-<label>Anulado?</label>
-<select id="anulado"  required name="anulado" class="js-select ">
- <option value="" >- Select -</option>
- 
-<option value="0">ACTIVO</option>
-<option value="1">ANULADO</option>								
-
- 
-
-
-
-</select>
-</div>
-</div>
-
-
-</div> -->
-				
-					
- 
-				
-				</div><!-- box rate -->
-
-
-				<div class="box rate">
-				 
-<input type="hidden" id="id_doc" name="id_doc" value="<?php echo $data['data'][0]['id_doc'] ?>">
-<input type="hidden" id="doc" name="doc" value="<?php echo $data['data'][0]['doc'] ?>">
-
-<input type="hidden" id="id_cliente" name="id_cliente" value="<?php echo $data['data'][0]['id_cliente'] ?>">
-<input type="hidden" id="banco_caja" name="banco_caja" value="">
-
-
-<div class="row">
+ <div class="row">
 
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
@@ -202,283 +169,46 @@ $data['data'][] = $row;
 </div>
 </div>
 
-
-<!--======================================================
-=            Buscar lista en la base de datos            =
-=======================================================-->
-<?php 
-			
-$v=0;
-$dato ='';
-$datoid =array();
-$resulv =  mysql_query("SELECT * FROM cajas_bancos where anulado <> 1");
-while($rowv =  mysql_fetch_array($resulv) ) { 
-$dato .= '<option value="';
-$dato .= $rowv['id'];
-$dato .= '">';
-$dato .= strtoupper($rowv['descripcion']);
-$dato .= '</option>';
-$datoid[] = $rowv['id'];
-$v++;}
-?>
-
-	
-<!--====  End of Buscar lista en la base de datos  ====-->
-		
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Banco O Caja</label>
-
-<select required id="id_banco_caja" name="id_banco_caja" data-id=""  class="js-select">
-<option  value="" >- Seleccionar -</option>
-<?php echo 	$dato  ?>
-</select>	
-
-</div>
-</div>
-
-
-
-
-</div>
-
-
-<div class="row">
-	
-
-<div class="col-xs-12 col-sm-4 i">
-<div class="form-group">
-<label>Tipo</label>
-<select id="tipo" required name="tipo" class="js-select ">
  
-<option value="" >- Seleccione tipo -</option>
-<option value="TRANSFERENCIA">TRANSFERENCIA</option>								
-<option value="DEPOSITO">DEPOSITO</option>
-<option value="EFECTIVO">EFECTIVO</option>
-<option value="CHEQUE">CHEQUE</option>
- 
-
-
-
-</select>
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-8">
-<div class="form-group">
-<label for="basicInput">Numero de Referencia</label>
-<input type="text" value="<?php echo $data['data'][0]['numero_ref'] ?>" required class="form-control" name="numero_ref" id="numero_ref" placeholder="Numero de Referencia">
-</div>
-</div>
-
-
-</div>
-
-<div class="row">
-	
-
-
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Fecha</label>
-<input type="date" value="" required class="form-control" name="enc_fecha_emision" id="enc_fecha_emision" placeholder="snippet">
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-8">
-<div class="form-group">
-<label for="basicInput">Comentarios</label>
-<input type="text" value=""  class="form-control" name="enc_comentarios" id="enc_comentarios" placeholder="Comentarios">
-</div>
-</div>
-
-
-</div>
-
-				</div>
-
-
-				<div class="box rate">
-
-<div class="row">
-
-
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Total Parcial</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['total_parcial'] ?>" required class="form-control" name="total_parcial" id="total_parcial" placeholder="Total Parcial">
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Total Tax</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['total_tax'] ?>" required class="form-control" name="total_tax" id="total_tax" placeholder="Total Tax">
-</div>
-</div>
-
-
-
-
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Total</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['total_total'] ?>" required class="form-control" name="total_total" id="total_total" placeholder="Total">
-</div>
-</div>
-
-<div class="col-xs-12 col-sm-3">
-<div class="form-group">
-<label for="basicInput">Saldo</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['saldo'] ?>" required class="form-control" name="saldo" id="saldo" placeholder="Saldo">
-</div>
-</div>
-
-
-
-
-</div>
-
-<div class="row">
-	
-
 
 
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Abono</label>
-<input type="number" value="<?php echo $data['data'][0]['abono'] ?>" required class="form-control" name="abono" id="abono" placeholder="Abono">
+<input type="text" readonly  value="<?php echo $data['data'][0]['abono'] ?>" required class="form-control" name="enc_cliente" id="enc_cliente" placeholder="Abono">
 </div>
 </div>
 
 
-
-
 </div>
-<hr>
-<h2 class="boxHeadline">Retenciones</h2>
+
+ 
 <div class="row">
-	
-	
-	<div class="col-xs-12 col-sm-3">
-	<div class="form-group">
-	<label for="basicInput">Retención Monto 1</label>
-	<input type="text" value="<?php echo $data['data'][0]['ret1'] ?>"  class="form-control" name="ret1" id="ret1" placeholder="Retención Monto 1">
-	</div>
-	</div>
-
-		<div class="col-xs-12 col-sm-3">
-	<div class="form-group">
-	<label for="basicInput">Retención Descripción 1</label>
-	<input type="text" value="<?php echo $data['data'][0]['ret_desc1'] ?>"  class="form-control" name="ret_desc1" id="ret_desc1" placeholder="Retención Descripción 1">
-	</div>
-	</div>
-
-
-
-		<div class="col-xs-12 col-sm-3">
-	<div class="form-group">
-	<label for="basicInput">Retención Monto 2</label>
-	<input type="text" value="<?php echo $data['data'][0]['ret2'] ?>"  class="form-control" name="ret2" id="ret2" placeholder="Retención Monto 2">
-	</div>
-	</div>
-
-		<div class="col-xs-12 col-sm-3">
-	<div class="form-group">
-	<label for="basicInput">Retención Descripción 2</label>
-	<input type="text" value="<?php echo $data['data'][0]['ret_desc2'] ?>"  class="form-control" name="ret_desc2" id="ret_desc2" placeholder="Retención Descripción 2">
-	</div>
-	</div>
-	
+	<?php    require_once '../status_estado.php'; ?>
+ 	<div class="col-xs-12 col-sm-4 i">
+								<div class="form-group">
+									<label>El documento se encuentra: <?php echo statusestado($estado); ?></label>
+									<select id="anular" class="js-select">
+										<option value="">- Seleccione -</option>
+										<option value="1">ANULADO</option>
+										<option value="0">ACTIVADO</option>
+								 
+									</select>
+								</div>
+							</div>
 
 </div>
-
-
-<div class="row">
-	
-	
-	<div class="col-xs-12 col-sm-3">
-	<div class="form-group">
-	<label for="basicInput">Retención Monto 3</label>
-	<input type="text" value="<?php echo $data['data'][0]['ret3'] ?>"  class="form-control" name="ret3" id="ret3" placeholder="Retención Monto 3">
-	</div>
-	</div>
-
-		<div class="col-xs-12 col-sm-3">
-	<div class="form-group">
-	<label for="basicInput">Retención Descripción 3</label>
-	<input type="text" value="<?php echo $data['data'][0]['ret_desc3'] ?>"  class="form-control" name="ret_desc3" id="ret_desc3" placeholder="Retención Descripción 3">
-	</div>
-	</div>
-
-
-
-		<div class="col-xs-12 col-sm-3">
-	<div class="form-group">
-	<label for="basicInput">Retención Monto 4</label>
-	<input type="text" value="<?php echo $data['data'][0]['ret4'] ?>"  class="form-control" name="ret4" id="ret4" placeholder="Retención Monto 4">
-	</div>
-	</div>
-
-		<div class="col-xs-12 col-sm-3">
-	<div class="form-group">
-	<label for="basicInput">Retención Descripción 4</label>
-	<input type="text" value="<?php echo $data['data'][0]['ret_desc4'] ?>"  class="form-control" name="ret_desc4" id="ret_desc4" placeholder="Retención Descripción 4">
-	</div>
-	</div>
-	
-
-</div>
-
-				</div>
+					 
+					
+ 
+				
+				</div><!-- box rate -->
 
 <!--====  End of AQUI VA EL CONTENIDO DEL SITE 1.1-  ====-->
 
-<!--==============================
-=            COMANDOS            =
-===============================-->
-
-			<div class="box rte">
-			 
-<?php 
-
- if (isset($_GET['id'])) {
- 	$botonNombre= 'Guardar';
- 	$url= 'envios/insert.php';
- 	
- }
-
- else{
-$botonNombre= 'Busque un documento!';
-$url= 'envios/update.php';
-$disable = 'disabled="true" ';
-
- }
- ?>
  
-
-<input type="reset" value="Reset" class="btn bg-gray">
-<button type="submit"   <?php echo $disable; ?> id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button><span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
-					 
-
-
-
-					
-				</div> <!-- box  -->
-	 </div> <!-- container -->
-<!--====  End of COMANDOS  ====-->
+</div> <!-- container -->
+ 
 				
 
 				
@@ -546,20 +276,11 @@ $disable = 'disabled="true" ';
 		
 $(document).ready(function() {
 	$('.cargando').hide();
-	$('#tipo').val('<?php echo $data['data'][0]['tipo'] ?>').change();
-	$('#anulado').val('<?php echo $data['data'][0]['anulado'] ?>').change();
+/*	$('#tipo').val('<?php //echo $data['data'][0]['tipo'] ?>').change();
+	$('#anulado').val('<?php// echo $data['data'][0]['anulado'] ?>').change();*/
 });
 
 
-
-$('#id_banco_caja').on('change', function(event) {
-	event.preventDefault();
-	var titulo = $(this).find('option:selected').text();
-	
-	$('#banco_caja').val(titulo);
-
-
-});
 
 $('#formulario').on('submit', function(e){
 e.preventDefault();
@@ -654,7 +375,61 @@ $.ajax({
 
 });
 /*=====  End of Buscar   ======*/
+/*========================================
+=            Anular Ducumento            =
+========================================*/
 
+$('#anular').on('change', function(event) {
+	event.preventDefault();
+
+	var valor = $(this).val();
+	var id = <?php echo $id ?>;
+	//alert('vAs a anular un ducumento!');
+
+$.ajax({
+	url: 'envios/anular.php',
+	type: 'POST',
+
+	data: {referencia: id, anulado:valor, editado_por:usuarioOnline},
+})
+.done(function(data) {
+	console.log("success");
+	console.log(data);
+
+	    if (data==1) {
+
+swal({ 
+  title: "Enviado!",
+   text: "Se ha procesado con éxito!",
+    type: "success" 
+  },
+  function(){
+
+location.reload();
+});
+
+}
+
+ 
+
+else {
+
+sweetAlert("Oops...", "Consulte este error con su programador!", "error");
+}
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+
+});
+
+
+
+/*=====  End of Anular Ducumento  ======*/
 	</script>
 	
  

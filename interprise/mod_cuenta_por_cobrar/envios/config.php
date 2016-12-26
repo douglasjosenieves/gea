@@ -5,9 +5,14 @@ define('TITULO',"Cuentas por cobrar");  /*TITULO DEL LAS VISTAS */
  
 define('MODULO',"mod_cuenta_por_cobrar"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
 
-define('TABLA_PRINCIPAL',"cuenta_por_cobrar"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
-define('TABLA',"contactos_web"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
 
+define('TABLA',"cuenta_por_cobrar"); /*PARA LA BUSQUEDA ASYNC Y PARA LOS ENVIE DE INFORMACION A LA BASE DE DATOS*/
+define('TABLA2',"cobros"); /*PARA INSERTAR EN LA TABLA*/
+define('TABLA3',"cajas_bancos_movimientos"); /*LA TABLA DE MOVIMIENTOS*/
+define('TABLA4',"facturas"); /*ACTUALIZA EL SALDO EN*/
+define('TIPO',"INGRESO"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+define('SIGNO',""); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+ 
 
 ?>
 

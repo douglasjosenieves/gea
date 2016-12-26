@@ -13,7 +13,7 @@ $texto = $_POST['parametro'];
  
 			
 				$i=0;
-$resul =  mysql_query("SELECT * FROM  ".TABLA." where anulado <> 1 and cliente like '%".$texto."%' OR nombres like '%".$texto."%'  OR  apellidos like '%".$texto."%'  ");
+$resul =  mysql_query("SELECT * FROM  ".TABLA." where anulado <> 1 and enc_cliente like '%".$texto."%' and saldo <> 0 and anulado <> 1  ");
 				while($row =  mysql_fetch_array($resul) ) {
 				
 								
@@ -23,7 +23,7 @@ $resul =  mysql_query("SELECT * FROM  ".TABLA." where anulado <> 1 and cliente l
 				 //$imagen = explode(';',$opciones['opciones'][0]['capture1']) ;
 				 ?>
 				
-	<li><a href="?tipo=editar&id=<?php echo $opciones['contacto'][$i]['id']  ?>"><?php echo $opciones['contacto'][$i]['id'].' '.$opciones['contacto'][$i]['cliente']  ?></a></li>
+	<li><a href="?tipo=editar&id=<?php echo $opciones['contacto'][$i]['id']  ?>"><?php echo 'N°:'.$opciones['contacto'][$i]['id'].'  |  CLIENTE:'.$opciones['contacto'][$i]['enc_cliente'].' | SALDO: '.$opciones['contacto'][$i]['saldo']  ?></a></li>
 
 			 
 															
