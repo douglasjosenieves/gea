@@ -193,15 +193,10 @@ $resta_abono =  $total_total-$sumar;
 
 /*ACTUALIZA LA TABLA CXC O CXP*/
 
-if ($resta_abono > 1) {
-	$status_saldo= ", `status_saldo`='PARCIAL' ";
-}
-else if ($resta_abono == 0) {
-	$status_saldo= ", `status_saldo`='LISTO' ";
-}
 
 
-$qryupdateArt = "UPDATE ".TABLA." SET `saldo`= '".$resta_abono."'  $status_saldo WHERE `id`='".$id_doc."'";
+
+$qryupdateArt = "UPDATE ".TABLA." SET `saldo`= '".SIGNO.$resta_abono."' WHERE `id`='".$id_doc."'";
 
 //echo $qryupdateArt;
 mysql_query($qryupdateArt);
@@ -209,8 +204,19 @@ mysql_query($qryupdateArt);
 
 
 
+/*ACTUALIZA EL SALDO FINAL*/
 
+$resul_caja_banco =  mysql_query("SELECT sum(abono) as sum FROM ".TABLA3." where id_banco_caja = '$id_banco_caja' and anulado <> 1");
+while($row2 =  mysql_fetch_array($resul_caja_banco) ) {
+$suma = $row2['sum'];
+}
 
+$qryCajas = "UPDATE ".TABLA5." SET `saldo_final`='$suma' WHERE `id`='$id_banco_caja'";
+
+//echo $qryupdateArt;
+mysql_query($qryCajas);
+
+/*ACTUALIZA EL SALDO FINAL* FIN/
 
  /*UPDATE CUENTA POR COBRAR O PAGAR FIN*/
 

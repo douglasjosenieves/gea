@@ -359,7 +359,7 @@ $v++;}
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Abono</label>
-<input type="number" value="<?php echo $data['data'][0]['abono'] ?>" required class="form-control" name="abono" id="abono" placeholder="Abono">
+<input type="number" value="<?php echo $data['data'][0]['saldo'] ?>" required class="form-control" name="abono" id="abono" placeholder="Abono">
 </div>
 </div>
 

@@ -156,7 +156,23 @@ require_once '../asesor_funtion.php';
 					      <td><?php echo $opciones['opciones'][$i]['total_total']; ?></td>
 					      <td><?php echo $opciones['opciones'][$i]['saldo']; ?></td>
 
-					      <td><?php echo statuSaldo($opciones['opciones'][$i]['status_saldo']); ?></td>
+					      <td>
+
+<?php if ($opciones['opciones'][$i]['total_total']== $opciones['opciones'][$i]['saldo']) {
+	$status_saldo= 'PENDIENTE';
+}
+
+
+else if ($opciones['opciones'][$i]['saldo'] == '0') {
+	$status_saldo= 'LISTO';  }
+
+
+	else if ($opciones['opciones'][$i]['saldo'] <  $opciones['opciones'][$i]['total_total']) {
+	$status_saldo= 'PARCIAL';  } 
+?>
+
+
+					      <?php echo statuSaldo($status_saldo); ?></td>
 					    <td><?php echo statusestado($estado) ?></td>
 					    
 

@@ -170,14 +170,22 @@ require_once 'nav_define.php';
 			</li>
 
 
-<li class="sub js-submenu">
+
+
+	<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-minus-circle zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cta Por Pagar<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 			<li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar/index.php" title="#">Nuevo</a></li> 
            <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar/reporte.php" title="#">Ver</a></li>
+           <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar/procesados.php" title="#">Procesados</a></li>
+                <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar/movimientos.php" title="#">Movimientos</a></li>
 
 			</ul>
 			</li>
+
+
+
+ 
 
 						
 <li class="sub js-submenu">
