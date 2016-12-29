@@ -42,11 +42,16 @@ $resul = mysql_query($qry);
 
 /*ANULA MOVIMIENTO CAJA Y BANCO*/
 $qry2 = "UPDATE `".TABLA3."`
-SET `anulado` = '$anulado'
-WHERE `id_doc` = '$id_documento' and id = '$referencia'  and tipo = '".TIPO."';
+SET `anulado` = '1'
+WHERE `id_doc` = '$id_documento'  and tipo = '".TIPO."' and fecha ='$fechai' and abono = '$abonoi';
 ";
 
+
+
+
 /*echo $qry2;*/
+
+//echo ($qry2);
 mysql_query($qry2);
 /*ANULA MOVIMIENTO CAJA Y BANCO*/
 

@@ -25,6 +25,9 @@ $id_doc = $data['data'][0]['id_doc'];
 $id_banco_caja = $data['data'][0]['id_banco_caja'];
 $total_total = $data['data'][0]['total_total'];
 
+$fecha = $data['data'][0]['fecha'];
+$abono = $data['data'][0]['abono'];
+
 if ($data['data'][0]['anulado']!=1) {
 						$estado = 'ACTIVO';
 					} else {
@@ -391,6 +394,8 @@ $('#anular').on('change', function(event) {
 	var id_doc = <?php echo $id_doc  ?>;
 	var id_banco_caja = <?php echo $id_banco_caja  ?>;
 var total_total = <?php echo $total_total  ?>;
+var fecha = "<?php echo $fecha  ?>";
+var abono = "<?php echo $abono  ?>";
 
 
 	
@@ -400,7 +405,7 @@ $.ajax({
 	url: 'envios/anular.php',
 	type: 'POST',
 
-	data: {referencia: id, anulado:valor, id_documento:id_doc, caja_banco:id_banco_caja, total_total_envio:total_total, editado_por:usuarioOnline},
+	data: {referencia: id, anulado:valor, id_documento:id_doc, caja_banco:id_banco_caja, total_total_envio:total_total, fechai:fecha, abonoi:abono, editado_por:usuarioOnline},
 })
 .done(function(data) {
 	console.log("success");
