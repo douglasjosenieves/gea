@@ -170,14 +170,55 @@ VALUES
 
 $resul = mysql_query($qry2);
 
-/*UPDATE CAJAS Y BANCOS*/
-require_once 'update_cajas_bancos.php';
+/*MOVIMIENTOS DE CAJA Y BANCOS FIN*/
+
+/*UPDATE CUENTA POR COBRAR O PAGAR*/
+$resul_suma =  mysql_query("SELECT sum(abono) as sum FROM ".TABLA3." where id_doc = '$id_doc' and tipo ='".TIPO."' and anulado <> 1");
+while($row =  mysql_fetch_array($resul_suma) ) {
+$suma = $row['sum'];
+}
+
+/*3000 el PARCIAL
+472 el otro abono
+ctc saldo 472
+*/
+$sumar = $suma ;
+
+
+$resta_abono =  $total_total-$sumar;
 
 
 
-/*UPDATE CXX*/
-require_once 'update_cxx.php';
 
+
+/*ACTUALIZA LA TABLA CXC O CXP*/
+
+
+
+
+$qryupdateArt = "UPDATE ".TABLA." SET `saldo`= '".SIGNO.$resta_abono."' WHERE `id`='".$id_doc."'";
+
+//echo $qryupdateArt;
+mysql_query($qryupdateArt);
+/*ACTUALIZA LA TABLA CXC O CXP*/
+
+
+
+/*ACTUALIZA EL SALDO FINAL*/
+
+$resul_caja_banco =  mysql_query("SELECT sum(abono) as sum FROM ".TABLA3." where id_banco_caja = '$id_banco_caja' and anulado <> 1");
+while($row2 =  mysql_fetch_array($resul_caja_banco) ) {
+$suma = $row2['sum'];
+}
+
+$qryCajas = "UPDATE ".TABLA5." SET `saldo_final`='$suma' WHERE `id`='$id_banco_caja'";
+
+//echo $qryupdateArt;
+mysql_query($qryCajas);
+
+/*ACTUALIZA EL SALDO FINAL* FIN/
+
+ /*UPDATE CUENTA POR COBRAR O PAGAR FIN*/
 
 if ($resul==1) {
   

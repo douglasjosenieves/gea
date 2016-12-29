@@ -33,10 +33,6 @@ $qry_t = "UPDATE `".TABLA."` SET `saldo`= '".$total_total_envio."' WHERE `id`='"
 $resul_t = mysql_query($qry_t);
 
 
-
-
-
-
 $resul_cxx =  mysql_query("SELECT id_doc,  id_banco_caja, sum(abono) as sum FROM `".TABLA3."` where doc = '".TIPO2."' and anulado <> 1 group by (id_doc)");
 while($row_cxx =  mysql_fetch_array($resul_cxx) ) {
 $suma = $row_cxx['sum'];
