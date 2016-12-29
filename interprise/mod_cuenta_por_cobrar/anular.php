@@ -23,6 +23,7 @@ $data['data'][] = $row;
 
 $id_doc = $data['data'][0]['id_doc'];
 $id_banco_caja = $data['data'][0]['id_banco_caja'];
+$total_total = $data['data'][0]['total_total'];
 
 if ($data['data'][0]['anulado']!=1) {
 						$estado = 'ACTIVO';
@@ -389,6 +390,9 @@ $('#anular').on('change', function(event) {
 
 	var id_doc = <?php echo $id_doc  ?>;
 	var id_banco_caja = <?php echo $id_banco_caja  ?>;
+var total_total = <?php echo $total_total  ?>;
+
+
 	
 	//alert('vAs a anular un ducumento!');
 
@@ -396,7 +400,7 @@ $.ajax({
 	url: 'envios/anular.php',
 	type: 'POST',
 
-	data: {referencia: id, anulado:valor, id_documento:id_doc, caja_banco:id_banco_caja, editado_por:usuarioOnline},
+	data: {referencia: id, anulado:valor, id_documento:id_doc, caja_banco:id_banco_caja, total_total_envio:total_total, editado_por:usuarioOnline},
 })
 .done(function(data) {
 	console.log("success");

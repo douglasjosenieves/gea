@@ -36,74 +36,37 @@ WHERE `id` = '$referencia';
 ";
  
 $resul = mysql_query($qry);
-
-
 /*ANULA COBROS Y PAGOS FIN*/
 
 
 
 /*ANULA MOVIMIENTO CAJA Y BANCO*/
 $qry2 = "UPDATE `".TABLA3."`
-SET
-
-
-`anulado` = '$anulado'
-WHERE `id_doc` = '$id_documento' and tipo = '".TIPO."';
+SET `anulado` = '$anulado'
+WHERE `id_doc` = '$id_documento' and id = '$referencia'  and tipo = '".TIPO."';
 ";
 
-
 /*echo $qry2;*/
-
 mysql_query($qry2);
-
 /*ANULA MOVIMIENTO CAJA Y BANCO*/
 
 
 
 
-/*UPDATE LA TABLA DE CXC I CXP*/
-
-$resul_suma =  mysql_query("SELECT sum(abono) as sum FROM `".TABLA3."` where id_doc = '".$id_documento."' and tipo = '".TIPO."' and anulado <> 1;");
-while($row =  mysql_fetch_array($resul_suma) ) {
-$suma = $row['sum'];
-
-if ($suma=='') {
-$suma =0;
-}
-
-$qryupdateArt = "UPDATE `".TABLA5."` SET `saldo_final`= '".$suma."' WHERE `id`='".$caja_banco."'";
-/*echo $qryupdateArt.'<br>';*/
-mysql_query($qryupdateArt);
 
 
-}
-/*UPDATE LA TABLA DE CXC I CXP*/
 
-/*SELECT total_total FROM erp.cuenta_por_cobrar WHERE id = 5;
-select sum(abono) from cajas_bancos_movimientos where id_doc =5*/
+/*UPDATE CAJAS Y BANCOS*/
+require_once 'update_cajas_bancos.php';
 
 
-/*$cxc_result =  mysql_query("SELECT total_total FROM `".TABLA."` WHERE id = $id_documento");
-while($row1 =  mysql_fetch_array($cxc_result) ) {
 
-$total_c = $row1['total_total'];
-
-}
+/*UPDATE CXX*/
+require_once 'update_cxx.php';
 
 
-$bm_result =  mysql_query("select sum(abono) as sum from `".TABL3."` where id_doc =$id_documento");
-while($row2 =  mysql_fetch_array($bm_result) ) {
-
-$total_b = $row2['sum'];
-
-}
 
 
-$total_saldo = $total_c - $total_b;
-$qrycxc = "UPDATE `".TABLA."` SET `saldo`= '".$suma."' WHERE `id_doc`='".$id_documento."'";
-
-//echo $qrycxc;
-mysql_query($qrycxc);*/
 
 
 

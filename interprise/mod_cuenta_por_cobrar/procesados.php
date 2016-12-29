@@ -20,7 +20,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title><?php echo TITULO ?></title>
+	<title><?php echo TITULO.' procesados' ?></title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -66,18 +66,18 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#"><?php echo TITULO ?> </a>
+					<a href="#" title="#"><?php echo TITULO.' procesados' ?> </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
-					<li class="active"><?php echo TITULO ?></li>
+					<li class="active"><?php echo TITULO.' procesados' ?></li>
 				</ol>
 				
 			
 				<!-- Data Table -->
 				<div class="box box-without-bottom-padding">
 					<h2 class="boxHeadline">Table</h2>
-					<h3 class="boxHeadlineSub"><?php echo TITULO ?></h3>
+					<h3 class="boxHeadlineSub"><?php echo TITULO.' procesados' ?></h3>
 				 
 					
 					<div class="tableWrap dataTable table-responsive js-select">
