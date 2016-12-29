@@ -1,3 +1,9 @@
+delete FROM cotizacion;
+delete FROM cotizacion_detalle;
+ALTER TABLE `cotizacion` 
+AUTO_INCREMENT = 1;
+ALTER TABLE `cotizacion_detalle` 
+AUTO_INCREMENT = 1;
 
 
 delete FROM factura;
