@@ -173,33 +173,33 @@ $resul = mysql_query($qry2);
 /*MOVIMIENTOS DE CAJA Y BANCOS FIN*/
 
 /*UPDATE CUENTA POR COBRAR O PAGAR*/
-$resul_suma =  mysql_query("SELECT sum(abono) as sum FROM ".TABLA3." where id_doc = '$id_doc' and tipo ='".TIPO."' and anulado <> 1");
+$qry_cxx = "SELECT sum(abono) as sum FROM ".TABLA3." where id_doc = '$id_doc' and tipo ='".TIPO."' and anulado <> 1";
+$resul_suma =  mysql_query($qry_cxx);
 while($row =  mysql_fetch_array($resul_suma) ) {
 $suma = $row['sum'];
 }
 
-/*3000 el PARCIAL
-472 el otro abono
-ctc saldo 472
-*/
-$sumar = $suma ;
+
+/*PASO SOLO PARA CUENTA POR PAGA*/
+$sumar = $suma * CAMBIASIGNO ;
 
 
 $resta_abono =  $total_total-$sumar;
 
+//echo $qry_cxx ;
 
-
-
+/*define('TABLA',"cuenta_por_pagar"); 
+define('TABLA2',"pagos");  
+define('TABLA3',"cajas_bancos_movimientos"); 
+define('TABLA5',"cajas_bancos"); */
 
 /*ACTUALIZA LA TABLA CXC O CXP*/
 
-
-
-
-$qryupdateArt = "UPDATE ".TABLA." SET `saldo`= '".SIGNO.$resta_abono."' WHERE `id_doc`='".$id_doc."'";
+$qryupdateArt = "UPDATE ".TABLA." SET `saldo`= '".$resta_abono."' WHERE `id_doc`='".$id_doc."'";
 
 //echo $qryupdateArt;
 mysql_query($qryupdateArt);
+//echo $qryupdateArt ;
 /*ACTUALIZA LA TABLA CXC O CXP*/
 
 

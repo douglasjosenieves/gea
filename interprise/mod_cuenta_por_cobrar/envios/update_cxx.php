@@ -43,7 +43,11 @@ $id = $row_cxx['id_doc'];
 //echo 'id'.$id.' :'.$suma.'<br>';
 
 /*CUENTAS CXX*/
-$resta_abono =   $total_total_envio - $suma;
+$sumar = $suma * CAMBIASIGNO ;
+
+
+
+$resta_abono =   $total_total_envio - $sumar;
 
 $qryupdateArt_cxx = "UPDATE `".TABLA."` SET `saldo`= '".$resta_abono."' WHERE `id_doc`='".$id."' and doc = '".TIPO2."'";
 //echo $qryupdateArt_cxx.'<br>';
