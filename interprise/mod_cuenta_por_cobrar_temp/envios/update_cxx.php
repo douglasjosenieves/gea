@@ -21,17 +21,15 @@ $images = serialize($imagenes);*/
 
  
 
-/*
-$id_documento = '7';
 
-$total_total_envio = '54723.2';*/
+ 
 
 
 
 
-$qry_t = "UPDATE `".TABLA."` SET `saldo`= '".$total_total_envio."' WHERE `id_doc`='".$id_documento."' and doc = '".TIPO2."'";
 
-//echo $qry_t;
+
+$qry_t = "UPDATE `".TABLA."` SET `saldo`= '".$total_total_envio."' WHERE `id`='".$id_documento."' and doc = '".TIPO2."'";
 $resul_t = mysql_query($qry_t);
 
 
@@ -45,10 +43,10 @@ $id = $row_cxx['id_doc'];
 /*CUENTAS CXX*/
 $resta_abono =   $total_total_envio - $suma;
 
-$qryupdateArt_cxx = "UPDATE `".TABLA."` SET `saldo`= '".$resta_abono."' WHERE `id_doc`='".$id."' and doc = '".TIPO2."'";
+$qryupdateArt_cxx = "UPDATE `".TABLA."` SET `saldo`= '".$resta_abono."' WHERE `id`='".$id."' and doc = '".TIPO2."'";
 //echo $qryupdateArt_cxx.'<br>';
 $resul2 = mysql_query($qryupdateArt_cxx);
-//echo $qryupdateArt_cxx;
+
 }
 
 

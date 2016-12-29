@@ -177,7 +177,7 @@ else if ($opciones['opciones'][$i]['saldo'] == '0') {
 					    
 
 					    <td>
-					     <?php if ($opciones['opciones'][$i]['status_saldo']!='LISTO' AND $estado != 'ANULADO') {
+					     <?php if ($opciones['opciones'][$i]['status_saldo']!='LISTO') {
   	# code...
    ?>
 			
