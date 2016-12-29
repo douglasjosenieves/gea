@@ -1,4 +1,4 @@
-<?php /* session_start();  
+<?php  /*session_start();  
 //error_reporting(0);
 //header('Content-type: application/json');
 require_once __DIR__ . '../../../../db_connect.php';
@@ -17,9 +17,9 @@ $fecha = date("Y-m-d H:i:s");
 $ip=$_SERVER['REMOTE_ADDR'];
 extract ($_POST);
 $images = serialize($imagenes);
-*/
 
- 
+
+ */
 
 
  
@@ -33,12 +33,12 @@ $resul1 = mysql_query($qryupdateArt1);
 
 
 
-$result0001 =  mysql_query("SELECT id,  id_banco_caja, sum(abono) as sum FROM `".TABLA3."` where doc = '".TIPO2."' and anulado <> 1 group by (id_banco_caja)");
+$result0001 =  mysql_query("SELECT id,  id_banco_caja, sum(abono) as sum FROM `".TABLA3."` where anulado <> 1 group by (id_banco_caja)");
 while($row0001 =  mysql_fetch_array($result0001) ) {
 $suma = $row0001['sum'];
 $id = $row0001['id'];
 
-/*echo 'id'.$id.' :'.$suma.'<br>';*/
+//echo 'id'.$id.' :'.$suma.'<br>';
 
 /*UPDATE CAJA BANCOS*/
 
