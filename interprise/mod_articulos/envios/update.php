@@ -20,7 +20,20 @@ $images = serialize($imagenes);
 
  
 
+$cantidad = ($cantidad=='') ? '0': $cantidad ;
 
+$pro_inv_max = ($pro_inv_max=='') ? '0': $pro_inv_max ;
+$pro_inv_min = ($pro_inv_min=='') ? '0': $pro_inv_min ;
+
+
+$precio1 = ($precio1=='') ? '0': $precio1 ;
+$precio2 = ($precio2=='') ? '0': $precio2 ;
+$precio3 = ($precio3=='') ? '0': $precio3 ;
+$precio_compra = ($precio_compra=='') ? '0': $precio_compra ;
+
+
+$islr = ($islr=='') ? '0': $islr ;
+$tax = ($tax=='') ? '0': $tax ;
  
 
 
