@@ -226,7 +226,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
 <label for="basicInput">Promedio Mínimo:</label>
-<input type="number" value="<?php echo $data['data'][0]['pro_inv_min'] ?>" required  class="form-control" name="pro_inv_min" id="pro_inv_min" placeholder="Promedio Minimo:">
+<input type="number" value="<?php echo $data['data'][0]['pro_inv_min'] ?>"   class="form-control" name="pro_inv_min" id="pro_inv_min" placeholder="Promedio Minimo:">
 </div>
 </div>
 
@@ -235,7 +235,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
 <label for="basicInput">Promedio Máximo</label>
-<input type="number" value="<?php echo $data['data'][0]['pro_inv_max'] ?>" required class="form-control" name="pro_inv_max" id="pro_inv_max" placeholder="Promedio Maximo">
+<input type="number" value="<?php echo $data['data'][0]['pro_inv_max'] ?>"  class="form-control" name="pro_inv_max" id="pro_inv_max" placeholder="Promedio Maximo">
 </div>
 </div>
 
@@ -250,7 +250,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
 <label for="basicInput">% Desp:</label>
-<input type="number" value="<?php echo $data['data'][0]['por_desperdicio'] ?>" required  class="form-control" name="por_desperdicio" id="por_desperdicio" placeholder="% Desp:">
+<input type="number" value="<?php echo $data['data'][0]['por_desperdicio'] ?>"   class="form-control" name="por_desperdicio" id="por_desperdicio" placeholder="% Desp:">
 </div>
 </div>		
 
@@ -336,7 +336,7 @@ $v++;}
  <div class="col-xs-12 col-sm-3">
  <div class="form-group">
  <label for="basicInput">Precio de compra:</label>
- <input type="number" value="<?php echo $data['data'][0]['precio_compra'] ?>"  required class="form-control" name="precio_compra" id="precio_compra" placeholder="Precio de compra:">
+ <input type="number" value="<?php echo $data['data'][0]['precio_compra'] ?>"   class="form-control" name="precio_compra" id="precio_compra" placeholder="Precio de compra:">
  </div>
  </div>
  
@@ -345,14 +345,14 @@ $v++;}
 	<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio1:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio1'] ?>"  required class="form-control" name="precio1" id="precio1" placeholder="Precio1:">
+		<input type="number" value="<?php echo $data['data'][0]['precio1'] ?>"   class="form-control" name="precio1" id="precio1" placeholder="Precio1:">
 		</div>
 		</div>
 
 		<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio2:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio2'] ?>"  required class="form-control" name="precio2" id="precio2" placeholder="Precio2:">
+		<input type="number" value="<?php echo $data['data'][0]['precio2'] ?>"   class="form-control" name="precio2" id="precio2" placeholder="Precio2:">
 		</div>
 		</div>
 
@@ -360,7 +360,7 @@ $v++;}
 		<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio3:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio3'] ?>"  required class="form-control" name="precio3" id="precio3" placeholder="Precio3:">
+		<input type="number" value="<?php echo $data['data'][0]['precio3'] ?>"   class="form-control" name="precio3" id="precio3" placeholder="Precio3:">
 		</div>
 		</div>	
 
@@ -375,7 +375,7 @@ $v++;}
 	
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
-	<label for="basicInput">Tax:</label>
+	<label for="basicInput">Tax u/o IVA</label>
 	<input type="number" value="<?php echo $data['data'][0]['tax'] ?>" required class="form-control" name="tax" id="tax" placeholder="Tax:">
 	</div>
 	</div>
@@ -385,7 +385,7 @@ $v++;}
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
 	<label for="basicInput">ISLR:</label>
-	<input type="number" value="<?php echo $data['data'][0]['islr'] ?>"  required class="form-control" name="islr" id="islr" placeholder="ISLR:">
+	<input type="number" value="<?php echo $data['data'][0]['islr'] ?>"   class="form-control" name="islr" id="islr" placeholder="ISLR:">
 	</div>
 	</div>
 	
