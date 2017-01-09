@@ -7,7 +7,7 @@ $(document).ready(function() {
  sumarSubTotales();
 
 /*====================================
-=            Borrar items            =
+=            Borrar items     HYSSSS       =
 ====================================*/
 
 $("body").on("click",".borrar-row",function(event){
