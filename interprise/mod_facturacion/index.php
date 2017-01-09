@@ -30,7 +30,7 @@ $data['data'][] = $row;
 
 
 <!--===========================================================
-=            PARA CUANDO SE IMPORTE UNA COTIZACION  s          =
+=            PARA CUANDO SE IMPORTE UNA COTIZACION            =
 ============================================================-->
 <?php 
 $importar = $_GET['importar'];
