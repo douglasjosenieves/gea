@@ -60,6 +60,8 @@ $reg_cantidad= $import['import'][0]['reg_cantidad'];
 $reg_und_med= $import['import'][0]['reg_und_med'];
 $reg_stock= $import['import'][0]['reg_stock'];
 $reg_precio= $import['import'][0]['reg_precio'];
+$reg_tax= $import['import'][0]['reg_tax'];
+$reg_tax_monto= $import['import'][0]['reg_tax_monto'];
 $reg_subtotal= $import['import'][0]['reg_subtotal'];
 $imagenes= $import['import'][0]['imagenes'];
 
@@ -70,6 +72,8 @@ $reg_cantidad = unserialize($reg_cantidad);
 $reg_und_med = unserialize($reg_und_med);
 $reg_stock = unserialize($reg_stock);
 $reg_precio = unserialize($reg_precio);
+$reg_tax = unserialize($reg_tax);
+$reg_tax_monto = unserialize($reg_tax_monto);
 $reg_subtotal = unserialize($reg_subtotal);
 $imagenes = unserialize($imagenes);
 }
@@ -390,6 +394,9 @@ if (isset($importar)) {
 
 <input type="hidden" value="<?php echo $art['reg'][0]['stock'] ?>" required class="form-control" name="reg_stock[]" id="stock" placeholder="stock">
 
+
+<input type="hidden" value="<?php echo $art['reg'][0]['tax'] ?>" required class="form-control tax" name="reg_tax[]" id="tax" placeholder="tax">
+
 </div>
 
 </div>
@@ -398,7 +405,7 @@ if (isset($importar)) {
 <div class="form-group">
 
 <input type="text" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
-
+<div class="textinf  etiqueta_tax">Tax: 0</div>
 
 </div>
 
@@ -410,10 +417,15 @@ if (isset($importar)) {
 <div class="form-group">
 
 <input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>"  readonly  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
+<div class="textinf  subtotalmastax">Tax: <span class="totalcontax"></span> | <span class="totalcontax2"></span></div>
+
+
+<input type="hidden" value="<?php echo $art['reg'][0]['reg_tax_monto'] ?>"  readonly  class="form-control reg_tax_monto"  name="reg_tax_monto[]" id="reg_tax_monto" placeholder="reg_tax_monto">
+
+<input type="hidden" value="<?php echo $art['reg'][0]['reg_subtotal_con_tax'] ?>"  readonly  class="form-control reg_subtotal_con_tax"  name="reg_subtotal_con_tax[]" id="reg_subtotal_con_tax" placeholder="reg_subtotal_con_tax">
 
 
 </div>
-
 </div>
 
 
@@ -452,7 +464,7 @@ if (isset($importar)) {
 
 <div class="row">
 	
-		<div class="col-md-6">TOTAL TAX U/O IVA (<?php  echo IMPUESTO ?>)</div>
+		<div class="col-md-6">TOTAL TAX U/O IVA </div>
 	<div class="col-md-6" id="e_total_tax" >0</div>
 </div>
 

@@ -4,7 +4,7 @@
 
 $(document).ready(function() {
 
-
+ sumarSubTotales();
 
 /*====================================
 =            Borrar items            =
@@ -74,6 +74,7 @@ var precio = Self.data('precio');
 var descripcion = Self.data('descripcion');
 var und_med = Self.data('und_med');
 var stock = Self.data('stock');
+var tax = Self.data('tax');
 var index = Self.data('index');
 //alert(index);
 
@@ -85,10 +86,15 @@ $('.itemsrow:eq( '+index +' ) input[name="reg_descripcion[]"]').val(descripcion)
 $('.itemsrow:eq( '+index +' ) input[name="reg_cantidad[]"]').focus();
 $('.itemsrow:eq( '+index +' ) input[name="reg_und_med[]"]').val(und_med);
 $('.itemsrow:eq( '+index +' ) input[name="reg_stock[]"]').val(stock);
+$('.itemsrow:eq( '+index +' ) input[name="reg_tax[]"]').val(tax);
 $('.itemsrow:eq( '+index +' ) input[name="reg_precio[]"]').val(precio);
+
+$('.itemsrow:eq( '+index +' ) .etiqueta_tax').html('Tax: '+tax+'%');
+
 
 
 var Self = $('.itemsrow ul').hide();
+sumarSubTotales();
   /* Act on the event */
 });
   
@@ -151,6 +157,7 @@ $.ajax({
 .done(function(data) {
   console.log("success");
   $('#resultado_busqueda').html(data);
+
 //alert(data);
 
 })
@@ -207,6 +214,7 @@ $.ajax({
 
  
   $('.respuestaItems:eq('+index+')').html(data);
+
 //alert(data);
 
 })
@@ -252,11 +260,18 @@ var index = $( ".subtotal" ).index( this );
 var Self = $(this);
 var cantidad = $( ".cantidad:eq( "+index +" )" ).val();
 var precio = $( ".precio:eq( "+index +" )" ).val();
+var tax = $( ".tax:eq( "+index +" )" ).val();
 var subtotal = cantidad * precio;
+
+var totalcontax = subtotal * tax / 100;
+var totalcontaxtotal = totalcontax + subtotal;
+
 $( ".subtotal:eq( "+index +" )" ).val(roundToTwo(subtotal));
+$( ".reg_tax_monto:eq( "+index +" )" ).val(roundToTwo(totalcontax));
 
- 
-
+$('.totalcontax:eq( '+index +' )').html(roundToTwo(totalcontax));
+$('.totalcontax2:eq( '+index +' )').html(roundToTwo(totalcontaxtotal)); 
+$( ".reg_subtotal_con_tax:eq( "+index +" )" ).val(roundToTwo(totalcontaxtotal));
 console.log(index, cantidad );
 
 
@@ -269,16 +284,24 @@ $('.subtotal').each(function(){
     total_parcial += parseFloat(this.value);
 });
 
+var tax = 0;
+$('.reg_tax_monto').each(function(){
+    tax += parseFloat(this.value);
+});
+
+
+
+
 $('#total_parcial').val(roundToTwo(total_parcial));
 $('#e_total_parcial').text(roundToTwo(total_parcial));
   
 var impuesto = <?php  echo IMPUESTO ?> ; 
-var iva = total_parcial*impuesto/100
-$('#total_tax').val(roundToTwo(iva));
-$('#e_total_tax').text(roundToTwo(iva));
+
+$('#total_tax').val(roundToTwo(tax));
+$('#e_total_tax').text(roundToTwo(tax));
 
 
-var total_total = total_parcial + iva;
+var total_total = total_parcial + tax;
 
 $('#total_total').val(roundToTwo(total_total));
 $('#e_total_total').text(roundToTwo(total_total));

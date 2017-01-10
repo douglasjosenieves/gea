@@ -28,7 +28,10 @@ $reg_cantidad = serialize($reg_cantidad);
 $reg_und_med = serialize($reg_und_med);
 $reg_stock = serialize($reg_stock);
 $reg_precio = serialize($reg_precio);
+$reg_tax = serialize($reg_tax);
+$reg_tax_monto = serialize($reg_tax_monto);
 $reg_subtotal = serialize($reg_subtotal);
+$reg_subtotal_con_tax = serialize($reg_subtotal_con_tax);
 $imagenes = serialize($imagenes);
 
 
@@ -55,7 +58,10 @@ $qry = "INSERT INTO `".TABLA1."`
 `reg_und_med`,
 `reg_stock`,
 `reg_precio`,
+`reg_tax`,
+`reg_tax_monto`,
 `reg_subtotal`,
+`reg_subtotal_con_tax`,
 `total_parcial`,
 `total_tax`,
 `total_total`,
@@ -88,7 +94,10 @@ VALUES
 '$reg_und_med',
 '$reg_stock',
 '$reg_precio',
+'$reg_tax',
+'$reg_tax_monto',
 '$reg_subtotal',
+'$reg_subtotal_con_tax',
 '$total_parcial',
 '$total_tax',
 '$total_total',
@@ -110,7 +119,10 @@ $reg_cantidad = unserialize($reg_cantidad);
 $reg_und_med = unserialize($reg_und_med);
 $reg_stock = unserialize($reg_stock);
 $reg_precio = unserialize($reg_precio);
+$reg_tax = unserialize($reg_tax);
+$reg_tax_monto = unserialize($reg_tax_monto);
 $reg_subtotal = unserialize($reg_subtotal);
+$reg_subtotal_con_tax = unserialize($reg_subtotal_con_tax);
 $imagenes = unserialize($imagenes);
  
 
@@ -215,7 +227,10 @@ $qry2 = "INSERT INTO ".TABLA2."
 `reg_und_med`,
 `reg_stock`,
 `reg_precio`,
+`reg_tax`,
+`reg_tax_monto`,
 `reg_subtotal`,
+`reg_subtotal_con_tax`,
 `anulado`)
 VALUES
 (
@@ -227,7 +242,10 @@ VALUES
 '".$reg_und_med[$key]."',
 '".$reg_stock[$key]."',
 '".$reg_precio[$key]."',
+'".$reg_tax[$key]."',
+'".$reg_tax_monto[$key]."',
 '".$reg_subtotal[$key]."',
+'".$reg_subtotal_con_tax[$key]."',
 '0')";
 
 if (AFECTA_VENTAS == true) {

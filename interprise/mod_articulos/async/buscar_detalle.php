@@ -32,7 +32,7 @@ $resul =  mysql_query("SELECT * FROM  inventario where anulado <> 1 and nombre l
 
 
 
-	<a href="#" class="arti st" data-index="<?php echo $index?>" data-id="<?php echo $opciones['contacto'][$i]['id']?>" data-nombre="<?php echo $opciones['contacto'][$i]['nombre']?>" data-descripcion="<?php echo $opciones['contacto'][$i]['descripcion']?>" data-precio="<?php echo $opciones['contacto'][$i]['precio']?>" data-und_med="<?php echo $opciones['contacto'][$i]['und_med']?>" data-stock="<?php echo $opciones['contacto'][$i]['stock']?>">
+	<a href="#" class="arti st" data-index="<?php echo $index?>" data-id="<?php echo $opciones['contacto'][$i]['id']?>" data-nombre="<?php echo $opciones['contacto'][$i]['nombre']?>" data-descripcion="<?php echo $opciones['contacto'][$i]['descripcion']?>" data-precio="<?php echo $opciones['contacto'][$i]['precio']?>" data-und_med="<?php echo $opciones['contacto'][$i]['und_med']?>" data-stock="<?php echo $opciones['contacto'][$i]['stock']?>" data-tax="<?php echo $opciones['contacto'][$i]['tax']?>">
 
 
 	<?php echo $opciones['contacto'][$i]['id'] .' '.$opciones['contacto'][$i]['nombre'].': '.$opciones['contacto'][$i]['cantidad']  ?>

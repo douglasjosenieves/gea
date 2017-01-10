@@ -33,8 +33,13 @@
 <div class="form-group">
 
 <input type="number" value="<?php echo $art['reg'][0]['reg_cantidad'] ?>" required class="form-control cantidad" name="reg_cantidad[]" id="reg_cantidad" placeholder="Cantidad">
+
 <input type="hidden" value="<?php echo $art['reg'][0]['und_med'] ?>" required class="form-control" name="reg_und_med[]" id="und_med" placeholder="und_med">
+
 <input type="hidden" value="<?php echo $art['reg'][0]['stock'] ?>" required class="form-control" name="reg_stock[]" id="stock" placeholder="stock">
+
+
+<input type="hidden" value="<?php echo $art['reg'][0]['tax'] ?>" required class="form-control tax" name="reg_tax[]" id="tax" placeholder="tax">
 
 </div>
 
@@ -44,7 +49,7 @@
 <div class="form-group">
 
 <input type="text" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
-
+<div class="textinf  etiqueta_tax">Tax: 0</div>
 
 </div>
 
@@ -55,11 +60,16 @@
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 
-<input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>" readonly  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
+<input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>"  readonly  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
+<div class="textinf  subtotalmastax">Tax: <span class="totalcontax"></span> | <span class="totalcontax2"></span></div>
+
+
+<input type="hidden" value="<?php echo $art['reg'][0]['reg_tax_monto'] ?>"  readonly  class="form-control reg_tax_monto"  name="reg_tax_monto[]" id="reg_tax_monto" placeholder="reg_tax_monto">
+
+<input type="hidden" value="<?php echo $art['reg'][0]['reg_subtotal_con_tax'] ?>"  readonly  class="form-control reg_subtotal_con_tax"  name="reg_subtotal_con_tax[]" id="reg_subtotal_con_tax" placeholder="reg_subtotal_con_tax">
 
 
 </div>
-
 </div>
 
 
