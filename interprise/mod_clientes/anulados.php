@@ -129,7 +129,7 @@ $teleoid[] = $rowv['id'];
 
 
 require_once '../asesor_funtion.php';
-require_once '../status_funtion.php';
+ 
 
 	                  require_once '../status_funtion.php';
 					$i=0;

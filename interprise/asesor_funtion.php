@@ -2,7 +2,7 @@
 
  function 	nombreAsessor($id)
 {
-require_once __DIR__ . '../../db_connect.php';
+
 
 if ($id=='website') {
 $user = 'website';	# code...

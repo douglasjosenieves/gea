@@ -244,20 +244,20 @@ $data['data'][] = $row;
 
 	</div>				 
 		
-		<div class="row">
+	<!--	<div class="row">
  
 
-<div class="col-xs-12 col-sm-3">
+ <div class="col-xs-12 col-sm-3">
 <div class="form-group">
 <label for="basicInput">% Desp:</label>
-<input type="number" value="<?php echo $data['data'][0]['por_desperdicio'] ?>"   class="form-control" name="por_desperdicio" id="por_desperdicio" placeholder="% Desp:">
+<input type="number" value="<?php //echo $data['data'][0]['por_desperdicio'] ?>"   class="form-control" name="por_desperdicio" id="por_desperdicio" placeholder="% Desp:">
 </div>
 </div>		
 
 
 
 
-		</div>			 
+		</div>	 -->		 
  
 	<div class="row">
 		
@@ -376,7 +376,7 @@ $v++;}
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
 	<label for="basicInput">Tax u/o IVA</label>
-	<input type="number" value="<?php echo $data['data'][0]['tax'] ?>" required class="form-control" name="tax" id="tax" placeholder="Tax:">
+	<input type="number" value="<?php echo $data['data'][0]['tax'] ?>"  class="form-control" name="tax" id="tax" placeholder="Tax:">
 	</div>
 	</div>
 

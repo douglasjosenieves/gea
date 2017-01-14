@@ -189,7 +189,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">E-mail:</label>
-<input type="email" value="<?php echo $data['data'][0]['email'] ?>" required class="form-control" name="email" id="email" placeholder="E-mail:">
+<input type="email" value="<?php echo $data['data'][0]['email'] ?>"   class="form-control" name="email" id="email" placeholder="E-mail:">
 </div>
 </div>
 

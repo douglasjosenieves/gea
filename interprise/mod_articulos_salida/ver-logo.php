@@ -42,7 +42,8 @@ $reg_cantidad_uns =  unserialize($data['data'][0]['reg_cantidad']);
 
 $reg_precio_uns =  unserialize($data['data'][0]['reg_precio']);
 $reg_subtotal_uns =  unserialize($data['data'][0]['reg_subtotal']);
-
+$reg_subtotal_con_tax_uns =  unserialize($data['data'][0]['reg_subtotal_con_tax']);
+$reg_tax_uns =  unserialize($data['data'][0]['reg_tax']);
 $reg='';
 
 
@@ -57,14 +58,14 @@ foreach ($reg_id_uns as $key => $value) {
 	//{ text: 'Nombre', fontSize: 8 }
 	
 
-
 $reg .= "[";	
-$reg .= "{ text: '".$reg_id_uns[$key]."', fontSize: 8 }, ";
+$reg .= "{ text: '".$reg_id_uns[$key].' | %'.$reg_tax_uns[$key]."', fontSize: 8 }, ";
 $reg .= "{ text: '".strip_tags($reg_nombre_uns[$key])."', fontSize: 8 }, ";
 $reg .= "{ text: '".strip_tags($reg_descripcion_uns[$key])."', fontSize: 8 }, ";
-$reg .= "{ text: '".$reg_cantidad_uns[$key].' '.$reg_und_med_uns[$key]."', fontSize: 8 }, ";
-$reg .= "{ text: '".MONEDA.$reg_precio_uns[$key]."', fontSize: 8 }, ";
+$reg .= "{ text: '".$reg_cantidad_uns[$key].$reg_und_med_uns[$key].' x '.$reg_precio_uns[$key].MONEDA."', fontSize: 8 }, ";
+ 
 $reg .= "{ text: '".MONEDA.$reg_subtotal_uns[$key]."', fontSize: 8 }, ";
+$reg .= "{ text: '".MONEDA.$reg_subtotal_con_tax_uns[$key]."', fontSize: 8 }, ";
 $reg .= "],";
 
 }
@@ -325,6 +326,7 @@ var reg_descripcion = <?php echo json_encode($reg_descripcion_uns) ?>;
 var reg_cantidad = <?php echo json_encode($reg_cantidad_uns) ?>;
 var reg_precio = <?php echo json_encode($reg_precio_uns) ?>;
 var reg_subtotal = <?php echo json_encode($reg_subtotal_uns) ?>;
+var reg_subtotal_con_tax = <?php echo json_encode($reg_subtotal_con_tax_uns) ?>;
 var total_parcial = "<?php echo MONEDA.$total_parcial ?>";
 var total_tax = "<?php echo MONEDA.$total_tax ?>";
 var total_total = "<?php echo MONEDA.$total_total ?>";
@@ -397,10 +399,17 @@ var docDefinition = {
         // you can declare how many rows should be treated as headers
          style: 'tableExample',
         headerRows: 1,
-  widths: [ 40, '*', 80, 50 , 70, 70],
+   widths: [ 40, '*', 80, 60 , 60, 60],
 
         body: [
-          [ { text: 'Id', bold: true }, { text: 'Nombre', bold: true }, { text: 'Descripción', bold: true }, { text: 'Cantidad', bold: true }, { text: 'Precio', bold: true }, { text: 'Subtotal', bold: true } ],
+          [ { text: 'Id | Tax', bold: true }, 
+          { text: 'Nombre', bold: true }, 
+          { text: 'Descripción', bold: true }, 
+          { text: 'Cantidad', bold: true }, 
+        
+          { text: 'Subtotal', bold: true },  
+          { text: 'Total', bold: true },  
+          ],
 
 /*=====================================================
 =            Aqui va el siclo de los items            =
@@ -414,9 +423,9 @@ var docDefinition = {
 
 /*=====  End of Aqui va el siclo de los items  ======*/
 [ '', '', '', '', '', ' '],
-   [ '', '', '', '', {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
-   [ '', '', '', '', {text: 'TAX: <?php  echo IMPUESTO ?>%', bold: true, fontSize: 8 }, total_tax],
-     [ '', '', '', '', {text: '<?php echo TOTAL_A ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
+   [ '', '', '', '',  {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
+   [ '', '', '', '',  {text: 'TAX:', bold: true, fontSize: 8 }, total_tax],
+     [ '', '', '', '',  {text: '<?php echo TOTAL_A ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
           
         ]
       },

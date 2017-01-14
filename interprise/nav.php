@@ -1,8 +1,7 @@
 <?php
 require_once 'nav_define.php';
 ?>
-<?php//  if ($_SESSION['usuario']['Tipo'] == 'administrador') {?>
-<?php// } ?>
+
 
 
 		<nav class="simpleList asideNavigation">
@@ -91,22 +90,38 @@ require_once 'nav_define.php';
 			</ul>
 			</li>
 
-
+<!-- 
 				<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-assignment zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Servicio<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
-			 		<li><a href="<?php echo BASE_URL ?>mod_servicios/index.php" title="#">Nuevo</a></li>
-				 	<li><a href="<?php echo BASE_URL ?>mod_servicios/reporte.php" title="#">Ver</a></li>
+			 		<li><a href="<?php //echo BASE_URL ?>mod_servicios/index.php" title="#">Nuevo</a></li>
+				 	<li><a href="<?php //echo BASE_URL ?>mod_servicios/reporte.php" title="#">Ver</a></li>
 			</ul>
-			</li>
+			</li> -->
 					
+<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Compras<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_compras/index.php" title="Administracion de contactos">Nuevo</a> </li> 
+<li><a href="<?php echo BASE_URL ?>mod_compras/reporte.php" title="Administracion de contactos">Ver</a> </li> 
 
+			</ul>
+			</li>	
 						<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-file-text zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cotización<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
 			 <li><a href="<?php echo BASE_URL ?>mod_cotizacion/index.php" title="Administracion de contactos">Nuevo</a> </li> <li><a href="<?php echo BASE_URL ?>mod_cotizacion/reporte.php" title="Administracion de contactos">Ver</a> </li>
 			</ul>
 			</li>	
+
+	<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-accounts-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Nota de Entrega<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+			<li><a href="<?php echo BASE_URL ?>mod_nota_entrega/index.php" title="#">Nuevo</a></li> 
+           <li><a href="<?php echo BASE_URL ?>mod_nota_entrega/reporte.php" title="#">Ver</a></li>
+
+			</ul>
+			</li>
 
 				<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-money zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Facturación<i class="zmdi zmdi-plus plus"></i></span></div>
@@ -124,25 +139,11 @@ require_once 'nav_define.php';
 
 
 
-			<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-accounts-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Nota de Entrega<i class="zmdi zmdi-plus plus"></i></span></div>
-					<ul>
-			<li><a href="<?php echo BASE_URL ?>mod_nota_entrega/index.php" title="#">Nuevo</a></li> 
-           <li><a href="<?php echo BASE_URL ?>mod_nota_entrega/reporte.php" title="#">Ver</a></li>
-
-			</ul>
-			</li>
+		
 
 
 
-		<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Compras<i class="zmdi zmdi-plus plus"></i></span></div>
-					<ul>
-<li><a href="<?php echo BASE_URL ?>mod_compras/index.php" title="Administracion de contactos">Nuevo</a> </li> 
-<li><a href="<?php echo BASE_URL ?>mod_compras/reporte.php" title="Administracion de contactos">Ver</a> </li> 
-
-			</ul>
-			</li>	
+		
 
 
 

@@ -204,8 +204,8 @@ $data['data'][] = $row;
 
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
-<label for="basicInput">Fecha de nacimiento:</label>
-<input type="date" value="<?php echo $data['data'][0]['fecha_nacimiento'] ?>"  class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento:">
+<label for="basicInput">Fecha de Inicio:</label>
+<input type="date" value="<?php echo $data['data'][0]['fecha_nacimiento'] ?>"  class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de inicio:">
 </div>
 </div>
 
@@ -231,7 +231,7 @@ $data['data'][] = $row;
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
 									<label for="basicInput">Documento:</label>
-			<input type="text" value="<?php echo $data['data'][0]['documento'] ?>"  class="form-control"  required  name="documento" id="documento" placeholder="Documento:">
+			<input type="text" value="<?php echo $data['data'][0]['documento'] ?>"  class="form-control"    name="documento" id="documento" placeholder="Documento:">
 								</div>
 							</div>
 
@@ -269,7 +269,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-6">
 <div class="form-group">
 <label for="basicInput">E-mail:</label>
-<input type="email" value="<?php echo $data['data'][0]['email2'] ?>" required class="form-control" name="email2" id="email2" placeholder="E-mail:">
+<input type="email" value="<?php echo $data['data'][0]['email2'] ?>"  class="form-control" name="email2" id="email2" placeholder="E-mail:">
 </div>
 </div>
 
