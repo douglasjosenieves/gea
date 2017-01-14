@@ -66,7 +66,7 @@ body{
 
                     <div style="margin-bottom: 25px" class="input-group">
                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="email" required type="text" class="form-control" name="email" value="douglasjosenieves@gmail.com"
+                        <input id="email" required type="text" class="form-control" name="email" value="super@gmail.com"
                                placeholder="username or email">
                     </div>
 

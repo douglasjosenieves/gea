@@ -89,10 +89,23 @@ $_SESSION['usuario']['Tipo']=='ADMINISTRADOR'
 				<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-dialpad zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Articulos<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
+			
+
 						<li><a href="<?php echo BASE_URL ?>mod_articulos/index.php" >Nuevo</a></li>
 			 	        <li><a href="<?php echo BASE_URL ?>mod_articulos/reporte.php" title="#">Ver</a></li>
-			 	          <li><a href="<?php echo BASE_URL ?>mod_articulos/inventario.php" title="#">Inventario Actual</a></li>
-			 	        <li><a href="<?php echo BASE_URL ?>mod_articulos/movimientos.php" title="#">Movimientos</a></li>
+
+
+			   <li class="sub js-submenu">
+					<div class="sub-menu"><i class="zmdi zmdi-layers zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Categorias<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_articulos_cat/index.php" >Nuevo</a></li>
+<li><a href="<?php echo BASE_URL ?>mod_articulos_cat/reporte.php" >Ver</a></li>
+
+			</ul>
+			</li>	
+
+
+			 	        
 			 	        
 
 
@@ -115,6 +128,10 @@ $_SESSION['usuario']['Tipo']=='ADMINISTRADOR'
 			</ul>
 			</li>	
 				 
+
+<li><a href="<?php echo BASE_URL ?>mod_articulos/inventario.php" title="#">Inventario Actual</a></li>
+<li><a href="<?php echo BASE_URL ?>mod_articulos/movimientos.php" title="#">Movimientos</a></li>
+
 			</ul>
 			</li>
 <?php endif ?>
@@ -202,6 +219,7 @@ $_SESSION['usuario']['Tipo']=='PAGOS'
 					<ul>
 			<li><a href="<?php echo BASE_URL ?>mod_cajas_bancos/index.php" title="#">Nuevo</a></li> 
            <li><a href="<?php echo BASE_URL ?>mod_cajas_bancos/reporte.php" title="#">Ver</a></li>
+              <li><a href="<?php echo BASE_URL ?>mod_cajas_bancos/movimientos.php" title="#">Movimientos</a></li>
 
 			</ul>
 			</li>
@@ -220,7 +238,7 @@ $_SESSION['usuario']['Tipo']=='COBROS'
 	<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-plus-circle zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cta Por Cobrar<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
-			<li><a href="<?php echo BASE_URL ?>mod_cuenta_por_cobrar/index.php" title="#">Nuevo</a></li> 
+			<!-- <li><a href="<?php // echo BASE_URL ?>mod_cuenta_por_cobrar/index.php" title="#">Nuevo</a></li>  -->
            <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_cobrar/reporte.php" title="#">Ver</a></li>
            <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_cobrar/procesados.php" title="#">Procesados</a></li>
                 <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_cobrar/movimientos.php" title="#">Movimientos</a></li>
@@ -239,10 +257,22 @@ $_SESSION['usuario']['Tipo']=='PAGOS'
 	<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-minus-circle zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cta Por Pagar<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
-			<li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar/index.php" title="#">Nuevo</a></li> 
+<!-- 			<li><a href="<?php // echo BASE_URL ?>mod_cuenta_por_pagar/index.php" title="#">Nuevo</a></li>  -->
            <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar/reporte.php" title="#">Ver</a></li>
+
+     
+
            <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar/procesados.php" title="#">Procesados</a></li>
                 <li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar/movimientos.php" title="#">Movimientos</a></li>
+
+      	   <li class="sub js-submenu">
+					<div class="sub-menu"><i class="zmdi zmdi-money zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Crear Pagos<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar_doc/index.php" >Nuevo</a></li>
+<li><a href="<?php echo BASE_URL ?>mod_cuenta_por_pagar_doc/reporte.php" >Ver</a></li>
+
+			</ul>
+			</li>
 
 			</ul>
 			</li>

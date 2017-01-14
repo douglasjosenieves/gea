@@ -20,7 +20,7 @@ extract ($_POST);
 
  
  
-
+$saldo_final = $saldo_inicial;
 
 
 $qry = "INSERT INTO `".TABLA."`
@@ -31,6 +31,7 @@ $qry = "INSERT INTO `".TABLA."`
 `direccion`,
 `ejecutivo`,
 `saldo_inicial`,
+`saldo_final`,
 
 `tramitido_al_crm`,
 `elaborado_por`,
@@ -54,6 +55,7 @@ VALUES
 '$direccion',
 '$ejecutivo',
 '$saldo_inicial',
+'$saldo_final',
 
 '$tramitido_al_crm',
 '$elaborado_por',
@@ -77,20 +79,84 @@ $resul = mysql_query($qry);
 
 
 
-
-
-
-
- 
-
 if ($resul==1) {
-  
-echo $resul;
+
+
+$rs = mysql_query("SELECT  descripcion, id  AS id FROM ".TABLA."  order by id desc limit 1;");
+while($row =  mysql_fetch_array($rs) ) {
+$id_banco_caja = $row['id'];
+$banco_caja = $row['descripcion'];
+}
+
+$abono= $saldo_inicial ;
+
+$qry2 = "INSERT INTO ".TABLA2."
+( 
+`id_doc`,
+`doc`,
+`id_cliente`,
+`enc_cliente`,
+`id_banco_caja`,
+`banco_caja`,
+`tipo`,
+`abono`,
+`elaborado_por`,
+`fecha`,
+`verificado`,
+ 
+`imagenes`,
+`ip`,
+`anulado`,
+`ext1`,
+`ext2`,
+`ext3`,
+`ext4`,
+`ext5`)
+VALUES
+( 
+'$id_doc',
+'$doc',
+'$id_cliente',
+'$enc_cliente',
+'$id_banco_caja',
+'$banco_caja',
+'$tipo_movimiento',
+'$abono',
+'$elaborado_por',
+'$fecha',
+'$verificado',
+ 
+'$imagenes',
+'$ip',
+'$anulado',
+'$ext1',
+'$ext2',
+'$ext3',
+'$ext4',
+'$ext5');
+";
+
+
+
+$resul2 = mysql_query($qry2);
+
 }
 
 else
 {
 echo 'false'.$qry;
+}
+
+
+
+if ($resul2==1) {
+  
+echo $resul2;
+}
+
+else
+{
+echo 'false'.$qry2;
 
 
 }

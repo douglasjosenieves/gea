@@ -5,7 +5,7 @@ header('Location: ../../index.php');
 //echo $_SESSION['usuario']['Tipo'].$_SESSION['usuario']['Nombre'].$_SESSION['usuario']['Apellido'].'asdasdasdsas' ;
 require_once '../../db_connect.php';
 require_once '../../PHPPaging.lib.php';
-require_once 'envios/config.php';
+require_once 'config.php';
 
 // connecting to db
 $con = new DB_CONNECT();
@@ -66,18 +66,18 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#"><?php echo 'Movimiento de Cajas y Bancos' ?> </a>
+					<a href="#" title="#"><?php echo TITULO ?> </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
-					<li class="active"><?php echo 'Movimiento de Cajas y Bancos' ?></li>
+					<li class="active"><?php echo TITULO ?></li>
 				</ol>
 				
 			
 				<!-- Data Table -->
 				<div class="box box-without-bottom-padding">
-					<h2 class="boxHeadline">Movimientos </h2>
-					<h3 class="boxHeadlineSub"><?php // echo TITULO ?></h3>
+					<h2 class="boxHeadline">Table</h2>
+					<h3 class="boxHeadlineSub"><?php echo TITULO ?></h3>
 				 
 					
 					<div class="tableWrap dataTable table-responsive js-select">
@@ -85,21 +85,11 @@ mysql_query("SET CHARACTER_SET utf");
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Id_doc</th>
-								   <th>Documento</th>
-								 
-									<th>cliente</th>
-									<th>Banco o Caja</th>
- 
-												<th>Abono</th>
- 
-
-												
-
-	<th>Tipo</th>
-								 
+									<th>Nombre</th>
+								  
 									<th>Anulado</th>
-								
+									<th>Gestionar</th>
+								 
 									 
 								
 								</tr>
@@ -120,7 +110,7 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../asesor_funtion.php';
 	                  require_once '../status_estado.php';
 					$i=0;
-						$resul =  mysql_query("SELECT * FROM `".TABLA3."` WHERE tipo = '".TIPO."'");
+					$resul =  mysql_query("SELECT * FROM `".TABLA."`");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
@@ -141,21 +131,31 @@ require_once '../asesor_funtion.php';
 					
 					<tr>
 						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
-						<td><?php echo $opciones['opciones'][$i]['id_doc']; ?></td>
-						<td><?php echo $opciones['opciones'][$i]['doc']; ?></td>
-
-
-
-
-		 
-					    <td><?php echo $opciones['opciones'][$i]['enc_cliente']; ?></td>
-					    	    <td><?php echo $opciones['opciones'][$i]['banco_caja']; ?></td>
-			 
-					      <td><?php echo $opciones['opciones'][$i]['abono']; ?></td>
-					 
-					<td><?php echo $opciones['opciones'][$i]['tipo']; ?></td>
+						<td><?php echo $opciones['opciones'][$i]['nombre']; ?></td>
+						 
+					       
 					    <td><?php echo statusestado($estado) ?></td>
+					    <td>
+					    	
+					 <!-- Button Extra small -->
+						<div class="btn-group">
+							<button type="button" class="btn btn-primary btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Procesos <i class="fa fa-chevron-down"></i>
+							</button>
+							<ul class="dropdown-menu">
+								<li><a href="../<?php echo MODULO ?>/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
+							
+						
+								
+							<!-- 	<li><a href="reporte-clientes-excel.php?id=<?php //echo $opciones['opciones'][$i]['id']; ?>" title="Exportar a excel"><i class="fa fa-file-excel-o"></i> Exportar a EXCEL</a></li> -->
+							</ul>
+						</div>
+					  
 					     
+
+
+
+					    </td>
 			 
 					   
 					</tr>

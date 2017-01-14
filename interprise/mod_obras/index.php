@@ -239,8 +239,8 @@ $data['data'][] = $row;
 
 <div class="col-xs-12 col-sm-8">
 <div class="form-group">
-<label for="basicInput">Obra (Nombre)</label>
-<input type="text" required  value="<?php echo $data['data'][0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre del Cliente Fiscal">
+<label for="basicInput">Obra / Proyecto (Nombre)</label>
+<input type="text" required  value="<?php echo $data['data'][0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre">
 </div>
 </div>
 

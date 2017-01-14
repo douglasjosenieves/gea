@@ -120,7 +120,7 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../asesor_funtion.php';
 	                  require_once '../status_estado.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `".TABLA3."`");
+					$resul =  mysql_query("SELECT * FROM `".TABLA3."` WHERE tipo = '".TIPO."'");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									

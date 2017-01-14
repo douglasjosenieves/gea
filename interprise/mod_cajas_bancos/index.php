@@ -206,13 +206,17 @@ $data['data'][] = $row;
 
 <div class="row">
 
+<?php if ($_GET['tipo']!='editar'): ?>
+	
+
+
 <div class="col-xs-12 col-sm-6">
 <div class="form-group">
 <label for="basicInput">Saldo inicial</label>
 <input type="number"  value="<?php echo $data['data'][0]['saldo_inicial'] ?>" required class="form-control" name="saldo_inicial" id="saldo_inicial" placeholder="Saldo inicial">
 </div>
 </div>
-
+<?php endif ?>
 
 				 
 <div class="col-xs-12 col-sm-6">
@@ -247,7 +251,61 @@ $data['data'][] = $row;
 
 </div>
 					
-					
+			
+			<div class="row hidden">
+				
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">id_doc</label>
+<input type="text" value="0" required class="form-control" name="id_doc" id="id_doc" placeholder="id_doc">
+</div>
+</div>
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">doc</label>
+<input type="text" value="SALDO INICIAL" required class="form-control" name="doc" id="doc" placeholder="doc">
+</div>
+</div>
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">id_cliente</label>
+<input type="text" value="0" required class="form-control" name="id_cliente" id="id_cliente" placeholder="id_cliente">
+</div>
+</div>
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">tipo</label>
+<input type="text" value="INGRESO" required class="form-control" name="tipo_movimiento" id="tipo_movimiento" placeholder="tipo">
+</div>
+</div>
+
+
+
+ 
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">enc_cliente</label>
+<input type="text" value="SALDO INICIAL" required class="form-control" name="enc_cliente" id="enc_cliente" placeholder="enc_cliente">
+</div>
+</div>
+
+
+
+			</div>		
  
 				
 				</div><!-- box rate -->
