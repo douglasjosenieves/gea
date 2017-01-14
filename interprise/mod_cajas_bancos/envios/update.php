@@ -31,7 +31,7 @@ SET
 `numero_cuenta` = '$numero_cuenta',
 `direccion` = '$direccion',
 `ejecutivo` = '$ejecutivo',
-`saldo_inicial` = '$saldo_inicial',
+ 
 `editado_por` = '$editado_por',
 `editado_fecha` = '$fecha',
 `imagenes` = '$imagenes',
