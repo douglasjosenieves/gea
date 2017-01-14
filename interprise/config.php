@@ -1,6 +1,6 @@
 <?php
 
-define('MONEDA',"Bs.");
+define('MONEDA',"$.");
 define('IMPUESTO',12);
   
 ?>
