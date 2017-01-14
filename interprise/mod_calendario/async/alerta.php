@@ -64,7 +64,7 @@ $uno_Min = date_format($uno_f, 'Y-m-d H:i');
 
 
 
-$qry2 = "INSERT INTO chat (`id_para`, `id_de`, `mensaje`, `fecha_envio`, `ip`) SELECT id , '".$id_usuario."', '".'Calendario recordatorio: Titulo:'.$titulo.' Nombre:'.$nombre.' '.$tipo.' '.$descripcion.' '.$start."', '".$fecha."', '".$ip."' FROM usuarios where anulado <> 1 and tipo = 'administrador';";
+$qry2 = "INSERT INTO chat (`id_para`, `id_de`, `mensaje`, `fecha_envio`, `ip`) SELECT id , '".$id_usuario."', '".'Calendario recordatorio: Titulo:'.$titulo.' Nombre:'.$nombre.' '.$tipo.' '.$descripcion.' '.$start."', '".$fecha."', '".$ip."' FROM usuarios where anulado <> 1 and tipo = 'ADMINISTRADOR';";
 $resul2 = mysql_query($qry2);
 
 $qry3 = "UPDATE `calendario` SET `notificado`='1' WHERE `id`='$id'";

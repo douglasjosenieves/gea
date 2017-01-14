@@ -3,7 +3,7 @@
 //header('Content-type: application/json');
 require_once __DIR__ . '../../../../db_connect.php';
 //sleep(2);
- require_once 'config.php';
+ require_once '../config.php';
 // connecting to db
 $db = new DB_CONNECT();
 //sleep(10);
@@ -23,26 +23,26 @@ extract ($_POST);
 
 
 
-$qry = "UPDATE `".TABLA."`
+$qry = "UPDATE ".TABLA."
 SET
-
-`descripcion` = '$descripcion',
+ 
+`nombre` = '$nombre',
+`apellido` = '$apellido',
+`sexo` = '$sexo',
+`email` = '$email',
+`tel` = '$tel',
+ 
+ 
+ 
+ 
+`foto` = '$foto',
+`color` = '$color',
+`pais` = '$pais',
 `tipo` = '$tipo',
-`numero_cuenta` = '$numero_cuenta',
-`direccion` = '$direccion',
-`ejecutivo` = '$ejecutivo',
-`saldo_inicial` = '$saldo_inicial',
-`editado_por` = '$editado_por',
-`editado_fecha` = '$fecha',
-`imagenes` = '$imagenes',
-`ip` = '$ip',
-`anulado` = '$anulado',
-`ext1` = '$ext1',
-`ext2` = '$ext2',
-`ext3` = '$ext3',
-`ext4` = '$ext4',
-`ext5` = '$ext5'
+`cargo` = '$cargo',
+`anulado` = '$anulado'
 WHERE `id` = '$referencia';
+
 
 ";
  

@@ -8,7 +8,14 @@ require_once 'nav_define.php';
 			<ul>
 				<li class="active"><a href="../index.php" title="#"><i class="zmdi zmdi-apps zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Panel de Control</span></a></li>
 				
-				
+			
+
+			<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' OR 
+$_SESSION['usuario']['Tipo']=='VENTAS' 
+
+): ?>	
 
 				<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-account-add zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Clientes<i class="zmdi zmdi-plus plus"></i></span></div>
@@ -20,6 +27,16 @@ require_once 'nav_define.php';
 			
 			</ul>
 			</li>
+<?php endif ?>
+
+
+			<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' OR 
+$_SESSION['usuario']['Tipo']=='COMPRAS' 
+
+): ?>
+ 
 						
 
 								<li class="sub js-submenu">
@@ -33,6 +50,17 @@ require_once 'nav_define.php';
 			</ul>
 			</li>
 					 
+<?php endif ?>
+
+			<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' 
+
+
+): ?>	
+
+
+
 
 					 						<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-accounts-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Instaladores<i class="zmdi zmdi-plus plus"></i></span></div>
@@ -89,7 +117,7 @@ require_once 'nav_define.php';
 				 
 			</ul>
 			</li>
-
+<?php endif ?>
 <!-- 
 				<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-assignment zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Servicio<i class="zmdi zmdi-plus plus"></i></span></div>
@@ -98,7 +126,12 @@ require_once 'nav_define.php';
 				 	<li><a href="<?php //echo BASE_URL ?>mod_servicios/reporte.php" title="#">Ver</a></li>
 			</ul>
 			</li> -->
-					
+
+<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' OR
+$_SESSION['usuario']['Tipo']=='COMPRAS' 
+): ?>				
 <li class="sub js-submenu">
 					<div><i class="zmdi zmdi-shopping-cart-plus zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Compras<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
@@ -107,6 +140,18 @@ require_once 'nav_define.php';
 
 			</ul>
 			</li>	
+						
+
+	<?php endif ?>
+
+<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' OR
+$_SESSION['usuario']['Tipo']=='VENTAS' 
+): ?>
+
+
+
 						<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-file-text zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cotización<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
@@ -133,11 +178,7 @@ require_once 'nav_define.php';
 			</li>	
 
 			
-
-
-		
-
-
+	<?php endif ?>
 
 		
 
@@ -145,6 +186,15 @@ require_once 'nav_define.php';
 
 		
 
+
+
+		
+<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' OR
+$_SESSION['usuario']['Tipo']=='COBROS' OR
+$_SESSION['usuario']['Tipo']=='PAGOS' 
+): ?>
 
 
 	<li class="sub js-submenu">
@@ -157,6 +207,14 @@ require_once 'nav_define.php';
 			</li>
 
 
+	<?php endif ?>
+
+	<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' OR
+$_SESSION['usuario']['Tipo']=='COBROS' 
+ 
+): ?>
 
 
 	<li class="sub js-submenu">
@@ -170,9 +228,14 @@ require_once 'nav_define.php';
 			</ul>
 			</li>
 
+<?php endif ?>
 
-
-
+	<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' OR
+$_SESSION['usuario']['Tipo']=='PAGOS' 
+ 
+): ?>
 	<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-minus-circle zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Cta Por Pagar<i class="zmdi zmdi-plus plus"></i></span></div>
 					<ul>
@@ -184,7 +247,7 @@ require_once 'nav_define.php';
 			</ul>
 			</li>
 
-
+<?php endif ?>
 
  
 
@@ -226,11 +289,22 @@ require_once 'nav_define.php';
 					</ul>
 				</li>
 
+ <?php if ($_SESSION['usuario']['Tipo']=='SUPERUSER'): ?>
+ 	
+ 
+ 	
+ 
 
+<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-accounts-add zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Usuarios<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_usuarios/index.php" title="Administracion de contactos">Nuevo</a> </li> 
+<li><a href="<?php echo BASE_URL ?>mod_usuarios/reporte.php" title="Administracion de contactos">Ver</a> </li> 
 
+			</ul>
+			</li>	
 
-
-		
+	<?php endif ?>	
 				
 				
 				<li class="sub js-submenu">
@@ -238,9 +312,17 @@ require_once 'nav_define.php';
 
 					<ul >
 						<li><a href="<?php echo BASE_URL ?>mod_usuarios/user-profile.php" title="Perfil del usuario">Perfil del usuario</a></li>
+
+			<?php if (
+$_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' 
+
+
+): ?>	
+
 						<li><a href="<?php echo BASE_URL ?>mod_listado_whatapp/index.php" title="#">Listado whatsapp</a>  </li>
 							<li><a href="<?php echo BASE_URL ?>mod_empresa/index.php" title="#">Empresa</a>  </li>
-
+<?php endif ?>	
 						 
 					</ul>
 				</li>
