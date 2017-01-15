@@ -208,9 +208,8 @@ $_SESSION['usuario']['Tipo']=='VENTAS'
 		
 <?php if (
 $_SESSION['usuario']['Tipo']=='SUPERUSER'  OR 
-$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' OR
-$_SESSION['usuario']['Tipo']=='COBROS' OR
-$_SESSION['usuario']['Tipo']=='PAGOS' 
+$_SESSION['usuario']['Tipo']=='ADMINISTRADOR' 
+
 ): ?>
 
 
@@ -221,7 +220,32 @@ $_SESSION['usuario']['Tipo']=='PAGOS'
            <li><a href="<?php echo BASE_URL ?>mod_cajas_bancos/reporte.php" title="#">Ver</a></li>
               <li><a href="<?php echo BASE_URL ?>mod_cajas_bancos/movimientos.php" title="#">Movimientos</a></li>
 
+
+
+ 	    <li class="sub js-submenu">
+					<div class="sub-menu"><i class="zmdi zmdi-download zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Entrada<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_cajas_bancos_entrada/index.php" title="Administracion de contactos">Nuevo</a> </li> 
+<li><a href="<?php echo BASE_URL ?>mod_cajas_bancos_entrada/reporte.php" title="Administracion de contactos">Ver</a> </li> 
+
 			</ul>
+			</li>	
+
+
+ 	    <li class="sub js-submenu">
+					<div class="sub-menu"><i class="zmdi zmdi-upload zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Salida<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_cajas_bancos_salida/index.php" title="Administracion de contactos">Nuevo</a> </li> 
+<li><a href="<?php echo BASE_URL ?>mod_cajas_bancos_salida/reporte.php" title="Administracion de contactos">Ver</a> </li> 
+
+			</ul>
+			</li>	
+			</ul>
+
+	
+
+
+
 			</li>
 
 

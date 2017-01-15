@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 14-01-2017 a las 18:20:58
+-- Tiempo de generación: 15-01-2017 a las 19:36:19
 -- Versión del servidor: 5.7.11
 -- Versión de PHP: 5.6.19
 
@@ -48,6 +48,56 @@ CREATE TABLE `cajas_bancos` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `cajas_bancos_entrada`
+--
+
+CREATE TABLE `cajas_bancos_entrada` (
+  `id` int(11) NOT NULL,
+  `id_doc` varchar(500) DEFAULT NULL,
+  `doc` varchar(500) DEFAULT NULL,
+  `id_cliente` varchar(500) DEFAULT NULL,
+  `enc_cliente` varchar(500) DEFAULT NULL,
+  `id_banco_caja` varchar(500) DEFAULT NULL,
+  `banco_caja` varchar(500) DEFAULT NULL,
+  `tipo` varchar(500) DEFAULT NULL,
+  `numero_ref` text,
+  `enc_fecha_emision` varchar(500) DEFAULT NULL,
+  `enc_comentarios` varchar(500) DEFAULT NULL,
+  `total_parcial` double DEFAULT '0',
+  `total_tax` double DEFAULT '0',
+  `total_total` double DEFAULT '0',
+  `saldo` double DEFAULT '0',
+  `abono` double DEFAULT '0',
+  `status` varchar(500) DEFAULT NULL,
+  `ret1` text,
+  `ret_desc1` text,
+  `ret2` text,
+  `ret_desc2` text,
+  `ret3` text,
+  `ret_desc3` text,
+  `ret4` text,
+  `ret_desc4` text,
+  `ret5` text,
+  `ret_desc5` text,
+  `tramitido_al_crm` varchar(1) DEFAULT NULL,
+  `elaborado_por` varchar(500) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `verificado` varchar(1) DEFAULT '0',
+  `editado_por` varchar(500) DEFAULT NULL,
+  `editado_fecha` datetime DEFAULT NULL,
+  `imagenes` text,
+  `ip` varchar(250) DEFAULT NULL,
+  `anulado` varchar(1) DEFAULT '0',
+  `ext1` text,
+  `ext2` text,
+  `ext3` text,
+  `ext4` text,
+  `ext5` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cajas_bancos_movimientos`
 --
 
@@ -61,6 +111,56 @@ CREATE TABLE `cajas_bancos_movimientos` (
   `banco_caja` varchar(500) DEFAULT NULL,
   `tipo` varchar(500) DEFAULT NULL,
   `abono` double DEFAULT '0',
+  `elaborado_por` varchar(500) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `verificado` varchar(1) DEFAULT '0',
+  `editado_por` varchar(500) DEFAULT NULL,
+  `editado_fecha` datetime DEFAULT NULL,
+  `imagenes` text,
+  `ip` varchar(250) DEFAULT NULL,
+  `anulado` varchar(1) DEFAULT '0',
+  `ext1` text,
+  `ext2` text,
+  `ext3` text,
+  `ext4` text,
+  `ext5` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `cajas_bancos_salida`
+--
+
+CREATE TABLE `cajas_bancos_salida` (
+  `id` int(11) NOT NULL,
+  `id_doc` varchar(500) DEFAULT NULL,
+  `doc` varchar(500) DEFAULT NULL,
+  `id_cliente` varchar(500) DEFAULT NULL,
+  `enc_cliente` varchar(500) DEFAULT NULL,
+  `id_banco_caja` varchar(500) DEFAULT NULL,
+  `banco_caja` varchar(500) DEFAULT NULL,
+  `tipo` varchar(500) DEFAULT NULL,
+  `numero_ref` text,
+  `enc_fecha_emision` varchar(500) DEFAULT NULL,
+  `enc_comentarios` varchar(500) DEFAULT NULL,
+  `total_parcial` double DEFAULT '0',
+  `total_tax` double DEFAULT '0',
+  `total_total` double DEFAULT '0',
+  `saldo` double DEFAULT '0',
+  `abono` double DEFAULT '0',
+  `status` varchar(500) DEFAULT NULL,
+  `ret1` text,
+  `ret_desc1` text,
+  `ret2` text,
+  `ret_desc2` text,
+  `ret3` text,
+  `ret_desc3` text,
+  `ret4` text,
+  `ret_desc4` text,
+  `ret5` text,
+  `ret_desc5` text,
+  `tramitido_al_crm` varchar(1) DEFAULT NULL,
   `elaborado_por` varchar(500) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
   `verificado` varchar(1) DEFAULT '0',
@@ -1187,9 +1287,21 @@ ALTER TABLE `cajas_bancos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `cajas_bancos_entrada`
+--
+ALTER TABLE `cajas_bancos_entrada`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `cajas_bancos_movimientos`
 --
 ALTER TABLE `cajas_bancos_movimientos`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `cajas_bancos_salida`
+--
+ALTER TABLE `cajas_bancos_salida`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1400,9 +1512,19 @@ ALTER TABLE `usuarios`
 ALTER TABLE `cajas_bancos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `cajas_bancos_entrada`
+--
+ALTER TABLE `cajas_bancos_entrada`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `cajas_bancos_movimientos`
 --
 ALTER TABLE `cajas_bancos_movimientos`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `cajas_bancos_salida`
+--
+ALTER TABLE `cajas_bancos_salida`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `calendario`
@@ -1564,8 +1686,6 @@ ALTER TABLE `servicios_cat`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-
 
   INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `email`, `tel`, `fecha_emis`, `fecha_login`, `usuario`, `clave`, `foto`, `color`, `pais`, `tipo`, `cargo`, `anulado`) VALUES
 (1, 'SUPER', 'USUARIO', 'M', 'super@gmail.com', '04141331946', '2016-10-18 00:00:00', '2017-01-14 12:45:51', 'super@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'hombre.jpg', '#212121', 'venezuela', 'SUPERUSER', 'PROGRAMADOR', '0'),

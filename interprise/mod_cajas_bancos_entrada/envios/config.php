@@ -1,0 +1,19 @@
+<?php 
+
+/*LOS NOMBRE DE LAS TABLAS QUE AFECTAN*/
+define('TITULO',"Ajuste de entrada Cajas y Bancos ");  /*TITULO DEL LAS VISTAS */
+ 
+define('MODULO',"mod_cajas_bancos_entrada"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+
+
+define('TABLA',"cajas_bancos_entrada"); /*PARA LA BUSQUEDA ASYNC Y PARA LOS ENVIE DE INFORMACION A LA BASE DE DATOS*/
+define('TABLA2',"cajas_bancos_entrada"); /*PARA INSERTAR EN LA TABLA*/
+define('TABLA3',"cajas_bancos_movimientos"); /*LA TABLA DE MOVIMIENTOS*/
+define('TABLA5',"cajas_bancos"); /*ACTUALIZA EL SALDO EN*/
+define('TIPO',"AJUSTE ENTRADA"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+define('TIPO2',"FACTURA"); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+define('SIGNO',""); /*PARA LA BUSQUEDA ASYNC DE LOS CLIENTES O PROVEEDORE*/
+define('CAMBIASIGNO',+1); /*MENOS SI EN CXP*/
+
+?>
+
