@@ -8,7 +8,7 @@ define('MONEDA',"Bs.");
 define('IMPUESTO',12);
 define('RIF','RUC');
 define('IVA','ITBMS');
-$iva_tex_items = 'ITBMS';
+
 
 
 ?>

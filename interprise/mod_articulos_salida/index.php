@@ -400,7 +400,7 @@ if (isset($importar)) {
 <div class="form-group">
 
 <input type="text" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
-<div class="textinf  etiqueta_tax">Tax: 0</div>
+<div class="textinf  etiqueta_tax"><?php  echo IVA ?>: 0</div>
 
 </div>
 
@@ -412,7 +412,7 @@ if (isset($importar)) {
 <div class="form-group">
 
 <input type="text" value="<?php echo $art['reg'][0]['reg_subtotal'] ?>"  readonly  class="form-control subtotal"  name="reg_subtotal[]" id="reg_subtotal" placeholder="subtotal">
-<div class="textinf  subtotalmastax">Tax: <span class="totalcontax"></span> | <span class="totalcontax2"></span></div>
+<div class="textinf  subtotalmastax"><?php  echo IVA ?>: <span class="totalcontax"></span> | <span class="totalcontax2"></span></div>
 
 
 <input type="hidden" value="<?php echo $art['reg'][0]['reg_tax_monto'] ?>"  readonly  class="form-control reg_tax_monto"  name="reg_tax_monto[]" id="reg_tax_monto" placeholder="reg_tax_monto">
