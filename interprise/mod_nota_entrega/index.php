@@ -459,7 +459,7 @@ if (isset($importar)) {
 
 <div class="row">
 	
-		<div class="col-md-6">TOTAL TAX U/O IVA </div>
+	<div class="col-md-6">TOTAL <?php  echo IVA ?></div>
 	<div class="col-md-6" id="e_total_tax" >0</div>
 </div>
 
