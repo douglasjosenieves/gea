@@ -4,7 +4,7 @@ header('Location: ../index.php');
 }
 
 require_once '../../db_connect.php';
-require_once '../config.php'; 
+
 require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
@@ -404,7 +404,7 @@ var docDefinition = {
         headerRows: 1,
   widths: [ 40, '*', 80, 60 , 60, 60],
    body: [
-          [ { text: 'Id | Tax', bold: true }, 
+          [ { text: 'Id', bold: true }, 
           { text: 'Nombre', bold: true }, 
           { text: 'Descripción', bold: true }, 
           { text: 'Cantidad', bold: true }, 
@@ -427,7 +427,7 @@ var docDefinition = {
 /*=====  End of Aqui va el siclo de los items  ======*/
 [ '', '', '', '', '', ' '],
    [ '', '', '', '',  {text: 'SUB-TOTAL:', bold: true, fontSize: 8 }, total_parcial ],
-   [ '', '', '', '',  {text: 'TAX:', bold: true, fontSize: 8 }, total_tax],
+   [ '', '', '', '',  {text: '<?php echo IVA ?>:', bold: true, fontSize: 8 }, total_tax],
      [ '', '', '', '',  {text: '<?php echo TOTAL_A ?>', bold: true, fontSize: 12 }, {text: total_total, bold: true }],
           
         ]
