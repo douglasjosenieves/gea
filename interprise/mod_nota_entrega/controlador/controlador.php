@@ -89,7 +89,7 @@ $('.itemsrow:eq( '+index +' ) input[name="reg_stock[]"]').val(stock);
 $('.itemsrow:eq( '+index +' ) input[name="reg_tax[]"]').val(tax);
 $('.itemsrow:eq( '+index +' ) input[name="reg_precio[]"]').val(precio);
 
-$('.itemsrow:eq( '+index +' ) .etiqueta_tax').html('Tax: '+tax+'%');
+$('.itemsrow:eq( '+index +' ) .etiqueta_tax').html('<?php  echo IVA ?>: '+tax+'%');
 
 
 
