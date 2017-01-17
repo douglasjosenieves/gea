@@ -135,7 +135,6 @@ $imagenes = unserialize($imagenes);
 
 
 	<!-- Header -->
-	<?php  require_once '../config.php'; ?>
 	<?php  require_once '../header.php'; ?>
 	
 	<?php  require_once '../tareas-pendientes.php'; ?>

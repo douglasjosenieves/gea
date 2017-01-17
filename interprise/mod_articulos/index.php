@@ -204,7 +204,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio'] ?>" required class="form-control" name="precio" id="precio" placeholder="Precio:">
+		<input type="number" step="0.01" value="<?php echo $data['data'][0]['precio'] ?>" required class="form-control" name="precio" id="precio" placeholder="Precio:">
 		</div>
 		</div>
 
@@ -336,7 +336,7 @@ $v++;}
  <div class="col-xs-12 col-sm-3">
  <div class="form-group">
  <label for="basicInput">Precio de compra:</label>
- <input type="number" value="<?php echo $data['data'][0]['precio_compra'] ?>"   class="form-control" name="precio_compra" id="precio_compra" placeholder="Precio de compra:">
+ <input type="number" step="0.01" value="<?php echo $data['data'][0]['precio_compra'] ?>"   class="form-control" name="precio_compra" id="precio_compra" placeholder="Precio de compra:">
  </div>
  </div>
  
@@ -345,14 +345,14 @@ $v++;}
 	<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio1:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio1'] ?>"   class="form-control" name="precio1" id="precio1" placeholder="Precio1:">
+		<input type="number" step="0.01" value="<?php echo $data['data'][0]['precio1'] ?>"   class="form-control" name="precio1" id="precio1" placeholder="Precio1:">
 		</div>
 		</div>
 
 		<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio2:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio2'] ?>"   class="form-control" name="precio2" id="precio2" placeholder="Precio2:">
+		<input type="number" step="0.01" value="<?php echo $data['data'][0]['precio2'] ?>"   class="form-control" name="precio2" id="precio2" placeholder="Precio2:">
 		</div>
 		</div>
 
@@ -360,7 +360,7 @@ $v++;}
 		<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio3:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio3'] ?>"   class="form-control" name="precio3" id="precio3" placeholder="Precio3:">
+		<input type="number" step="0.01" value="<?php echo $data['data'][0]['precio3'] ?>"   class="form-control" name="precio3" id="precio3" placeholder="Precio3:">
 		</div>
 		</div>	
 
@@ -375,8 +375,8 @@ $v++;}
 	
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
-	<label for="basicInput">Tax u/o IVA</label>
-	<input type="number" value="<?php echo $data['data'][0]['tax'] ?>"  class="form-control" name="tax" id="tax" placeholder="Tax:">
+	<label for="basicInput"><?php echo IVA ?></label>
+	<input type="number" step="0.01" value="<?php echo $data['data'][0]['tax'] ?>"  class="form-control" name="tax" id="tax" placeholder="<?php echo IVA ?>">
 	</div>
 	</div>
 
@@ -385,7 +385,7 @@ $v++;}
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
 	<label for="basicInput">ISLR:</label>
-	<input type="number" value="<?php echo $data['data'][0]['islr'] ?>"   class="form-control" name="islr" id="islr" placeholder="ISLR:">
+	<input type="number" step="0.01" value="<?php echo $data['data'][0]['islr'] ?>"   class="form-control" name="islr" id="islr" placeholder="ISLR:">
 	</div>
 	</div>
 	

@@ -77,7 +77,7 @@ $indicadores[] = $row['total'];
 	
 	<aside class="aside">
 		<!-- User profile -->
-			<?php require_once 'config.php'; ?>
+	
 		<?php require_once 'usuario.php'; ?>
          <?php require_once 'nav.php'; ?>
 		

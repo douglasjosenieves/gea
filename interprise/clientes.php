@@ -207,8 +207,8 @@ mysql_query("SET CHARACTER_SET utf");
 
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label for="basicInput">Documento:</label>
-			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['documento'] ?>"  class="form-control" name="documento" id="documento" placeholder="Documento:">
+									<label for="basicInput"><?php echo RIF ?>:</label>
+			<input type="text" value="<?php echo $ficha['ficha_contacto'][0]['documento'] ?>"  class="form-control" name="documento" id="documento" placeholder="<?php echo RIF ?>:">
 								</div>
 							</div>
 
