@@ -323,8 +323,8 @@ $v++;}
 
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
-<label for="basicInput">Total Tax</label>
-<input type="text" readonly="true" value="<?php echo $data['data'][0]['total_tax'] ?>" required class="form-control" name="total_tax" id="total_tax" placeholder="Total Tax">
+<label for="basicInput">Total <?php echo IVA ?></label>
+<input type="text" readonly="true" value="<?php echo $data['data'][0]['total_tax'] ?>" required class="form-control" name="total_tax" id="total_tax" placeholder="Total <?php echo IVA ?>">
 </div>
 </div>
 
@@ -359,7 +359,7 @@ $v++;}
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">Abono</label>
-<input type="text" max="<?php echo $data['data'][0]['saldo'] ?>" value="<?php echo $data['data'][0]['saldo'] ?>" required class="form-control" name="abono" id="abono" placeholder="Abono">
+<input type="number" step="0.01" max="<?php echo $data['data'][0]['saldo'] ?>" value="<?php echo $data['data'][0]['saldo'] ?>" required class="form-control" name="abono" id="abono" placeholder="Abono">
 </div>
 </div>
 
