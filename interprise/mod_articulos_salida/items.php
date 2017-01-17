@@ -49,7 +49,7 @@
 <div class="col-xs-12 col-sm-2">
 <div class="form-group">
 
-<input type="text" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
+<input type="number" step="0.01" value="<?php echo $art['reg'][0]['reg_precio'] ?>" required class="form-control precio" name="reg_precio[]" id="reg_precio" placeholder="Precio">
 <div class="textinf  etiqueta_tax"><?php  echo IVA ?>: 0</div>
 
 </div>
