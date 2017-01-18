@@ -21,7 +21,8 @@ while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
 }
 }
-
+$id_cliente = unserialize($data['data'][0]['id_cliente']);
+$des_cliente = unserialize($data['data'][0]['des_cliente']);
 
 ?>
 <!doctype html>
@@ -362,6 +363,20 @@ $data['data'][] = $row;
 							</thead>
 							<tbody>
 								
+<?php if (isset($_GET['tipo'])): if ($id_cliente!='') {
+	# code...
+ ?>
+
+	<?php foreach ($id_cliente as $key => $value) { ?>
+	<tr>
+									<th># <?php echo $key?></th>
+									<th><?php echo $id_cliente[$key]?></th>
+									<th><?php echo $des_cliente[$key]?></th>
+									<th><a class='text-danger borrar-row delete' href='#'><i class='fa fa-trash'></i> Borrar</a></th>
+									 
+								</tr>
+<?php }} endif ?>
+
 							
 							</tbody>
 						</table>
@@ -485,6 +500,7 @@ $(document).ready(function() {
 	$('.cargando').hide();
 	$('#pais').val('<?php echo $data['data'][0]['pais'] ?>').change();
 	$('#status').val('<?php echo $data['data'][0]['status'] ?>').change();
+	$('#tipos').val('<?php echo $data['data'][0]['tipos'] ?>').change();
 });
 
 

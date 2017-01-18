@@ -52,6 +52,10 @@ $anulado=$_REQUEST['anulado'];
 
 
 $pre_informacion = serialize($pre_informacion);
+
+
+
+
 $fecha = date("Y-m-d H:i:s");
 $ip=$_SERVER['REMOTE_ADDR'];
 
@@ -114,15 +118,25 @@ $hijos_fecha_nacimiento_array=serialize($hijos_fecha_nacimiento);
 $hijos_documentos_array=serialize($hijos_documentos);
 
 
+$id_cliente=$_REQUEST['id_cliente'];
+$des_cliente=$_REQUEST['des_cliente'];
 
+$comentarios=$_REQUEST['comentarios'];
+$fecha_terminacion=$_REQUEST['fecha_terminacion'];
+$tipos=$_REQUEST['tipos'];
+$id_cliente = serialize($id_cliente);
+$des_cliente = serialize($des_cliente);
 
 /*INSERT INTO `erp`.`obras` (`nombres`, `apellidos`, `pais`, `email`, `movil`, `status`, `fecha`, `ip`, `elaborado_por`, `documento`, `cliente`, `fecha_nacimiento`, `direccion_domicilio`, `direccion_oficina`) VALUES ('nombre', 'apellido', 'VENEZUELA', 'prueba@gmail.com', '04141331946', 'FORMULARIO', '2016-10-09 12:29:51', '186.93.81.61', 'DOUGLAS', 'J3032511554', 'TUWEBLINK .CA', '1984-11-09', 'DIRECCION DOMICILIO', 'DIRECCION OFICINA');
 */
 
 
 
-$qry = "INSERT INTO `obras` (`nombres`, `apellidos`, `pais`, `email`, `email2`,`movil`,`movil2`, `status`, `fecha`, `ip`, `elaborado_por`, `documento`, `cliente`, `fecha_nacimiento`, `direccion_oficina`) VALUES 
-('$nombres', '$apellidos', '$pais', '$email', '$email2', '$movil', '$movil2', '$status', '$fecha', '$ip', '$elaborado_por', '$documento', '$cliente', '$fecha_nacimiento',  '$direccion_oficina');";
+$qry = "INSERT INTO `obras` (`nombres`, `apellidos`, `pais`, `email`, `email2`,`movil`,`movil2`, `status`, `fecha`, `ip`, `elaborado_por`, `documento`, `cliente`, `fecha_nacimiento`, `direccion_oficina`, `id_cliente`, `des_cliente`, `comentarios`, `fecha_terminacion`, `tipos`) 
+
+
+VALUES 
+('$nombres', '$apellidos', '$pais', '$email', '$email2', '$movil', '$movil2', '$status', '$fecha', '$ip', '$elaborado_por', '$documento', '$cliente', '$fecha_nacimiento',  '$direccion_oficina', '$id_cliente', '$des_cliente', '$comentarios', '$fecha_terminacion', '$tipos' );";
 
 
 
