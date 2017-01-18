@@ -282,17 +282,97 @@ $data['data'][] = $row;
 
 <div class="row">
 	
-	<div class="col-xs-12 col-sm-12">
+	<div class="col-xs-12 col-sm-6">
 															<div class="form-group">
 																<label for="basicInput">Dirección</label>
 										<input type="text" value="<?php echo $data['data'][0]['direccion_oficina'] ?>"  class="form-control" name="direccion_oficina"  required  id="direccion_oficina" placeholder="Dirección">
 															</div>
 														</div>
+
+
+														<div class="col-xs-12 col-sm-6">
+															<div class="form-group">
+																<label for="basicInput">Comentarios</label>
+										<input type="text" value="<?php echo $data['data'][0]['comentarios'] ?>"  class="form-control" name="comentarios"    id="comentarios" placeholder="Comentarios">
+															</div>
+														</div>
 </div>
 
 <div class="row">
-	
 <div class="col-xs-12 col-sm-4 i">
+<div class="form-group">
+<label>Status de obra</label>
+<select id="tipos" required name="tipos" class="js-select ">
+ 
+<option value="" >- Select Status -</option>
+<option value="EJECUCION">EJECUCIÓN</option>
+<option value="TERMINADA">TERMINADA</option>								
+<option value="FACTURADA">FACTURADA</option>
+
+
+
+</select>
+</div>
+</div>	
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Fecha de Terminación</label>
+<input type="date" value="<?php echo $data['data'][0]['fecha_terminacion'] ?>" required class="form-control" name="fecha_terminacion" id="fecha_terminacion" placeholder="Fecha de Terminacion">
+</div>
+</div>
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Agregue clientes a su obra</label>
+<input type="text" value="<?php echo $data['data'][0]['buscar_cliente'] ?>"  class="form-control" name="buscar_cliente" id="buscar_cliente" placeholder="Agregue clientes a su obra. Escriba aqui">
+</div>
+
+<ul id="resultado_busqueda2">
+		 
+	</ul>
+</div>
+
+
+
+</div>
+<hr>
+<div class="row">
+	
+<div class="box rte box-without-bottom-padding">
+					<h2 class="boxHeadline">Clientes Agregados</h2>
+					 
+					
+					<div class="tableWrap table-responsive">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th># N°</th>
+									<th>Id</th>
+									<th>Nombre</th>
+									<th>Borrar</th>
+									 
+								</tr>
+							</thead>
+							<tbody>
+								
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+</div>
+
+<hr>
+<div class="row">
+	<div class="col-xs-12 col-sm-4 i">
 <div class="form-group">
 <label>Status</label>
 <select id="status" required name="status" class="js-select ">
@@ -307,7 +387,6 @@ $data['data'][] = $row;
 </select>
 </div>
 </div>
-
 </div>
 
 
@@ -399,7 +478,7 @@ $data['data'][] = $row;
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
 
-
+<?php  require_once 'controlador/controlador.php'; ?>
 	<script type="text/javascript">
 		
 $(document).ready(function() {
@@ -472,6 +551,12 @@ $('#buscar').on('keyup',  function(event) {
 	/* Act on the event */
 });
 
+$('#buscar_cliente').on('keyup',  function(event) {
+	event.preventDefault();
+	buscarClientes($(this).val());
+	/* Act on the event */
+});
+
 
 
 
@@ -500,6 +585,32 @@ $.ajax({
 
 	
 }
+
+function buscarClientes(texto) {
+
+
+$.ajax({
+	url: '../mod_clientes/async/buscar2.php',
+	type: 'POST',
+ 
+	data: {parametro: texto},
+})
+.done(function(data) {
+	console.log("success");
+	$('#resultado_busqueda2').html(data);
+//alert(data);
+
+})
+.fail(function() {
+	console.log("error");
+})
+.always(function() {
+	console.log("complete");
+});
+
+	
+}
+
 
 });
 /*=====  End of Buscar   ======*/
