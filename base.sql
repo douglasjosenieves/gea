@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 15-01-2017 a las 19:36:19
+-- Tiempo de generación: 18-01-2017 a las 22:29:51
 -- Versión del servidor: 5.7.11
 -- Versión de PHP: 5.6.19
 
@@ -1062,9 +1062,11 @@ CREATE TABLE `obras` (
   `email2` varchar(500) DEFAULT NULL,
   `movil` varchar(500) DEFAULT NULL,
   `movil2` varchar(500) DEFAULT NULL,
-  `pre_informacion` text,
-  `porque_espana` text,
+  `comentarios` text,
+  `id_cliente` text,
+  `des_cliente` text,
   `inversion` double DEFAULT NULL,
+  `tipos` varchar(500) DEFAULT NULL,
   `status` varchar(500) DEFAULT NULL,
   `tramitido_al_crm` varchar(1) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
@@ -1073,12 +1075,27 @@ CREATE TABLE `obras` (
   `editado_por` varchar(500) DEFAULT NULL,
   `editado_fecha` datetime DEFAULT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
+  `fecha_terminacion` date DEFAULT NULL,
   `direccion_oficina` text,
   `direccion_domicilio` text,
   `titulacion` text,
   `anos_laboral` int(11) DEFAULT NULL,
   `imagenes` text,
   `ip` varchar(250) DEFAULT NULL,
+  `anulado` varchar(1) DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `obras_detalle`
+--
+
+CREATE TABLE `obras_detalle` (
+  `id` int(11) NOT NULL,
+  `id_doc` int(11) NOT NULL,
+  `doc_id` text,
+  `doc_desc` text,
   `anulado` varchar(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -1461,6 +1478,12 @@ ALTER TABLE `obras`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `obras_detalle`
+--
+ALTER TABLE `obras_detalle`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `pagos`
 --
 ALTER TABLE `pagos`
@@ -1655,6 +1678,11 @@ ALTER TABLE `nota_entrega_detalle`
 -- AUTO_INCREMENT de la tabla `obras`
 --
 ALTER TABLE `obras`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `obras_detalle`
+--
+ALTER TABLE `obras_detalle`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `pagos`

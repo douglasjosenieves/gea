@@ -5,6 +5,7 @@ header('Location: ../../index.php');
 //echo $_SESSION['usuario']['Tipo'].$_SESSION['usuario']['Nombre'].$_SESSION['usuario']['Apellido'].'asdasdasdsas' ;
 require_once '../../db_connect.php';
 require_once '../../PHPPaging.lib.php';
+require_once 'envios/config.php';
 
 // connecting to db
 $con = new DB_CONNECT();
@@ -19,7 +20,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>obras</title>
+	<title><?php echo TITULO ?></title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -65,7 +66,7 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">obras </a>
+					<a href="#" title="#"><?php echo TITULO ?> </a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -110,7 +111,7 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../asesor_funtion.php';
 	                  require_once '../status_funtion.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `obras` where anulado <> 1");
+					$resul =  mysql_query("SELECT * FROM `".TABLA."` where anulado <> 1");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
@@ -141,7 +142,7 @@ require_once '../asesor_funtion.php';
 								Procesos <i class="fa fa-chevron-down"></i>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="../mod_obras/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
+								<li><a href="../<?php echo MODULO ?>/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
 							
 						
 								

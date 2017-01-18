@@ -59,7 +59,17 @@ $_SESSION['usuario']['Tipo']=='ADMINISTRADOR'
 
 ): ?>	
 
-
+<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-city-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Obras (Proyectos)<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+					<li><a href="<?php echo BASE_URL ?>mod_obras/index.php" title="#">Nuevo </a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_obras/reporte.php" title="#">Ver</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_obras/status.php" title="#">Ver por status</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_obras/anulados.php" title="Administracion de contactos">Anulados</a> </li>
+			
+			</ul>
+			</li>
+					
 
 
 					 						<li class="sub js-submenu">
@@ -74,17 +84,7 @@ $_SESSION['usuario']['Tipo']=='ADMINISTRADOR'
 			</li>
 					 
 
-					  						<li class="sub js-submenu">
-					<div><i class="zmdi zmdi-city-alt zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Obras (Proyectos)<i class="zmdi zmdi-plus plus"></i></span></div>
-					<ul>
-					<li><a href="<?php echo BASE_URL ?>mod_obras/index.php" title="#">Nuevo </a></li>
-					<li><a href="<?php echo BASE_URL ?>mod_obras/reporte.php" title="#">Ver</a></li>
-					<li><a href="<?php echo BASE_URL ?>mod_obras/status.php" title="#">Ver por status</a></li>
-					<li><a href="<?php echo BASE_URL ?>mod_obras/anulados.php" title="Administracion de contactos">Anulados</a> </li>
-			
-			</ul>
-			</li>
-					
+					  						
 			
 				<li class="sub js-submenu">
 					<div><i class="zmdi zmdi-dialpad zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Articulos<i class="zmdi zmdi-plus plus"></i></span></div>

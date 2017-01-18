@@ -67,7 +67,7 @@ $('body').on('click', '.delete', function(event) {
 var index = $( ".delete" ).index( this );
 $('tbody tr:eq( '+index +' )').fadeOut("slow").remove();
   /* Act on the event */
-//alert('Borrar');
+alert('Borrado');
 
 });
 
@@ -75,6 +75,7 @@ $('tbody tr:eq( '+index +' )').fadeOut("slow").remove();
 
 $("body").on("click",".arti",function(event){
   event.preventDefault();
+  
 var numero = $('tbody tr').size() + 1;
  
 var Self = $(this);
@@ -87,7 +88,9 @@ var cliente = Self.data('cliente');
 
 $('tbody').append("<tr><th scope='row'>"+numero +"</th><td>"+id+"</td><td>"+cliente+"</td><td><a class='text-danger borrar-row delete' href='#'><i class='fa fa-trash'></i> Borrar</a></td></tr><input type='hidden'  name='id_cliente[]' id='id_cliente[]' value='"+id+"'><input type='hidden'  name='des_cliente[]' id='des_cliente[]' value='"+cliente+"'>").fadeIn("slow");
 
+$('#resultado_busqueda2').html('Agregado!');
 
+alert("Agregado!");
 
 var Self = $('.itemsrow ul').hide();
 sumarSubTotales();

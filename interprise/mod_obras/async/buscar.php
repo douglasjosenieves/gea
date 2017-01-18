@@ -12,7 +12,7 @@ $texto = $_POST['parametro'];
  
 			
 				$i=0;
-$resul =  mysql_query("SELECT * FROM  obras where anulado <> 1 and cliente like '%".$texto."%' OR nombres like '%".$texto."%'  OR  apellidos like '%".$texto."%'  ");
+$resul =  mysql_query("SELECT * FROM  ".TABLA." where anulado <> 1 and cliente like '%".$texto."%' OR nombres like '%".$texto."%'  OR  apellidos like '%".$texto."%'  ");
 				while($row =  mysql_fetch_array($resul) ) {
 				
 								

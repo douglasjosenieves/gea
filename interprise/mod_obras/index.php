@@ -4,6 +4,7 @@ header('Location: ../../index.php');
 }
 
 require_once '../../db_connect.php';
+require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -15,7 +16,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  obras where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
@@ -32,7 +33,7 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>obras</title>
+	<title><?php echo TITULO ?></title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -86,7 +87,7 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">obras</a>
+					<a href="#" title="#"><?php echo TITULO ?></a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="../index.php">Panel de control</a></li>
@@ -94,7 +95,7 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline">obras</h2>
+					<h2 class="boxHeadline"><?php echo TITULO ?></h2>
 					<h3 class="boxHeadlineSub">Datos del contacto</h3>
 <div class="row">
 
@@ -240,7 +241,7 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 
 <div class="col-xs-12 col-sm-8">
 <div class="form-group">
-<label for="basicInput">Obra / Proyecto (Nombre)</label>
+<label for="basicInput"> <?php echo TITULO ?>(Nombre)</label>
 <input type="text" required  value="<?php echo $data['data'][0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre">
 </div>
 </div>
@@ -331,8 +332,8 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
-<label for="basicInput">Agregue clientes a su obra</label>
-<input type="text" value="<?php echo $data['data'][0]['buscar_cliente'] ?>"  class="form-control" name="buscar_cliente" id="buscar_cliente" placeholder="Agregue clientes a su obra. Escriba aqui">
+<label for="basicInput">Agregue <?php echo TEXTO ?> a <?php echo TITULO; ?></label>
+<input style="background-color: #accead; "  type="text" value="<?php echo $data['data'][0]['buscar_cliente'] ?>"  class="form-control" name="buscar_cliente" id="buscar_cliente" placeholder="Agregue! Escriba aqui!">
 </div>
 
 <ul id="resultado_busqueda2">
@@ -347,11 +348,11 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 <div class="row">
 	
 <div class="box rte box-without-bottom-padding">
-					<h2 class="boxHeadline">Clientes Agregados</h2>
+					<h2 class="boxHeadline"><?php echo TEXTO ?> Agregados</h2>
 					 
 					
 					<div class="tableWrap table-responsive">
-						<table class="table table-bordered">
+						<table class="table table-bordered table-striped">
 							<thead>
 								<tr>
 									<th># N°</th>
@@ -373,7 +374,8 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 									<th><?php echo $id_cliente[$key]?></th>
 									<th><?php echo $des_cliente[$key]?></th>
 									<th><a class='text-danger borrar-row delete' href='#'><i class='fa fa-trash'></i> Borrar</a></th>
-									 
+								<input type='hidden'  name='id_cliente[]' id='id_cliente[]' value='<?php echo $id_cliente[$key]?>'>
+								<input type='hidden'  name='des_cliente[]' id='des_cliente[]' value='<?php echo $des_cliente[$key]?>'>	 
 								</tr>
 <?php }} endif ?>
 
