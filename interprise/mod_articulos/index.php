@@ -189,11 +189,17 @@ $data['data'][] = $row;
 
 <div class="row">
 <div class="col-xs-12 col-sm-12">
+
+
 <div class="form-group">
-<label for="basicInput">Descripción:</label>
-<textarea  id="mytextarea" class="mceEditor" ><?php echo  $data['data'][0]['descripcion']; ?></textarea>
-<input type="hidden" name="descripcion" value=""  id="question_html" name="question_html" />
+<label for="max-length">Descripción:</label>
+<textarea id="max-length" name="descripcion" class="js-max-length form-control" maxlength="20" placeholder="Este campo tiene un límite de 20 caracteres" rows="2"><?php echo  $data['data'][0]['descripcion']; ?></textarea>
 </div>
+
+
+
+
+ 
 </div>
 
 
@@ -390,6 +396,18 @@ $v++;}
 	</div>
 	
 	
+</div>
+
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-12">
+<div class="form-group">
+<label for="textarea-autosize">Comentarios:</label>
+<textarea id="textarea-autosize" name="comentarios" class="js-autogrow form-control" placeholder="Comienza a escribir y presiona pocas veces 'enter' ... " rows="2"><?php echo $data['data'][0]['comentarios'] ?></textarea>
+</div>
+</div>
+
 </div>
 					
   
@@ -601,12 +619,12 @@ $(document).ready(function() {
 $('#formulario').on('submit',  function(event) {
     event.preventDefault();
     
-       content();
- var question_html = $('#question_html').val();
-if (question_html == '') {
-alert('Describa una descripción!');
-return true
-    }
+	/*       content();
+	var question_html = $('#question_html').val();
+	if (question_html == '') {
+	alert('Describa una descripción!');
+	return true
+	}*/
  
 
 

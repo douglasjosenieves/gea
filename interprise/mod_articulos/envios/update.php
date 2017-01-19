@@ -44,6 +44,7 @@ SET
 `codigo` = '$codigo',
 `nombre` = '$nombre',
 `descripcion` = '$descripcion',
+`comentarios` = '$comentarios',
 `precio` = '$precio',
 `precio1` = '$precio1',
 `precio2` = '$precio2',
