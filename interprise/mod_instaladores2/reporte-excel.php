@@ -1,5 +1,4 @@
 <?php session_start(); 
-require_once 'envios/config.php';
 
 header("Content-Type: application/vnd.ms-excel");
 
@@ -7,8 +6,8 @@ header("Expires: 0");
 
 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 
-header("content-disposition: attachment;filename=".TABLA.".xls");
-$tabla = TABLA;
+header("content-disposition: attachment;filename=instaladores.xls");
+$tabla ='form_fichas_opcione';
  ?> 
 
 <html>
@@ -16,7 +15,7 @@ $tabla = TABLA;
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title><?php echo TABLA ?></title>
+<title>instaladores</title>
 
  </head>
  <body>
@@ -38,7 +37,7 @@ $con = new DB_CONNECT();
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");   
 
-$qry=mysql_query("SELECT * FROM `".TABLA."` where id = $id" ) ; 
+$qry=mysql_query("SELECT * FROM `instaladores` where id = $id" ) ; 
 $campos = mysql_num_fields($qry) ; 
 $i=0; 
 echo "<table><tr>"; 

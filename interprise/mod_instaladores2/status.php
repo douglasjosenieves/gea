@@ -5,7 +5,6 @@ header('Location: ../../index.php');
 //echo $_SESSION['usuario']['Tipo'].$_SESSION['usuario']['Nombre'].$_SESSION['usuario']['Apellido'].'asdasdasdsas' ;
 require_once '../../db_connect.php';
 require_once '../../PHPPaging.lib.php';
-require_once 'envios/config.php';
 
 // connecting to db
 $con = new DB_CONNECT();
@@ -17,7 +16,7 @@ $v=0;
 	/*<option value="ESPANA">España</option>*/
 $status ='';
  
-				$resulv =  mysql_query("SELECT distinct(status) FROM ".TABLA."");
+				$resulv =  mysql_query("SELECT distinct(status) FROM instaladores");
 				while($rowv =  mysql_fetch_array($resulv) ) { 
 $status .= '<option value="';
 $status .= $rowv['status'];
@@ -43,7 +42,7 @@ $status .= '</option>';
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title><?php echo TITULO ?> por status</title>
+	<title>instaladores por status</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -89,7 +88,7 @@ $status .= '</option>';
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#"><?php echo TITULO ?> por status</a>
+					<a href="#" title="#">instaladores por status</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -128,7 +127,7 @@ $status .= '</option>';
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Obra</th>
+									<th>Instalador</th>
 									 
 									<th>Fecha</th>
 									<th>email</th>
@@ -157,14 +156,14 @@ require_once '../asesor_funtion.php';
 
 if (isset($_GET['status'])) {
 
-	$resul =  mysql_query("SELECT * FROM `".TABLA."` where anulado <> 1 and status = '".$_GET['status']."'");
+	$resul =  mysql_query("SELECT * FROM `instaladores` where anulado <> 1 and status = '".$_GET['status']."'");
 	# code...
 }
 
 
 else {
 
-$resul =  mysql_query("SELECT * FROM `".TABLA."` where anulado <> 1");
+$resul =  mysql_query("SELECT * FROM `instaladores` where anulado <> 1");
 
 }
 					
@@ -187,7 +186,7 @@ $resul =  mysql_query("SELECT * FROM `".TABLA."` where anulado <> 1");
 					
 					<tr>
 						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
-						<td><?php echo $opciones['opciones'][$i]['cliente']; ?></td>
+						<td><?php echo $opciones['opciones'][$i]['nombres'].' '.$opciones['opciones'][$i]['apellidos']; ?></td>
 				 
 					    <td><?php echo $opciones['opciones'][$i]['fecha']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['email']; ?></td>
@@ -201,11 +200,11 @@ $resul =  mysql_query("SELECT * FROM `".TABLA."` where anulado <> 1");
 								Procesos <i class="fa fa-chevron-down"></i>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="../<?php echo MODULO ?>/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
+								<li><a href="../mod_instaladores/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
 							
 						
 								
-								<li><a href="reporte-excel.php?id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="Exportar a excel"><i class="fa fa-file-excel-o"></i> Exportar a EXCEL</a></li>
+								<li><a href="reporte-instaladores-excel.php?id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="Exportar a excel"><i class="fa fa-file-excel-o"></i> Exportar a EXCEL</a></li>
 							</ul>
 						</div>
 					  

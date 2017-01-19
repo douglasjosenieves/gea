@@ -4,7 +4,6 @@ header('Location: ../../index.php');
 }
 
 require_once '../../db_connect.php';
-require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -16,15 +15,13 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  ".TABLA." where id =$id");
+ $resul =  mysql_query("SELECT * FROM  instaladores where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
 }
 }
-$id_cliente = unserialize($data['data'][0]['id_cliente']);
-$des_cliente = unserialize($data['data'][0]['des_cliente']);
-$tipos = unserialize($data['data'][0]['tipos']);
+
 
 ?>
 <!doctype html>
@@ -34,7 +31,7 @@ $tipos = unserialize($data['data'][0]['tipos']);
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title><?php echo TITULO ?></title>
+	<title>instaladores</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -88,7 +85,7 @@ $tipos = unserialize($data['data'][0]['tipos']);
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#"><?php echo TITULO ?></a>
+					<a href="#" title="#">instaladores</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="../index.php">Panel de control</a></li>
@@ -96,7 +93,7 @@ $tipos = unserialize($data['data'][0]['tipos']);
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline"><?php echo TITULO ?></h2>
+					<h2 class="boxHeadline">instaladores</h2>
 					<h3 class="boxHeadlineSub">Datos del contacto</h3>
 <div class="row">
 
@@ -192,7 +189,7 @@ $tipos = unserialize($data['data'][0]['tipos']);
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
 <label for="basicInput">E-mail:</label>
-<input type="email" value="<?php echo $data['data'][0]['email'] ?>" required class="form-control" name="email" id="email" placeholder="E-mail:">
+<input type="email" value="<?php echo $data['data'][0]['email'] ?>"   class="form-control" name="email" id="email" placeholder="E-mail:">
 </div>
 </div>
 
@@ -207,216 +204,17 @@ $tipos = unserialize($data['data'][0]['tipos']);
 
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
-<label for="basicInput">Fecha de Inicio:</label>
-<input type="date" value="<?php echo $data['data'][0]['fecha_nacimiento'] ?>"  class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de inicio:">
+<label for="basicInput">Fecha de nacimiento:</label>
+<input type="date" value="<?php echo $data['data'][0]['fecha_nacimiento'] ?>"  class="form-control" name="fecha_nacimiento" id="fecha_nacimiento" placeholder="Fecha de nacimiento:">
 </div>
 </div>
 
 </div>
 			 
 
-		
-				
-				
-				</div>  <!--  boxrate -->
-
-
-<!--=======================================
-=            DATOS COMERCIALES            =
-========================================-->
-
-<div class="box rte">
- <h3 class="boxHeadlineSub">Datos comerciales</h3>
-<div class="row">
-						
-
-
-	<div class="col-xs-12 col-sm-4">
-								<div class="form-group">
-									<label for="basicInput"><?php echo RIF ?>:</label>
-			<input type="text" value="<?php echo $data['data'][0]['documento'] ?>"  class="form-control"    name="documento" id="documento" placeholder="<?php echo RIF ?>:">
-								</div>
-							</div>
-
-
-
-<div class="col-xs-12 col-sm-8">
-<div class="form-group">
-<label for="basicInput"> <?php echo TITULO ?>(Nombre)</label>
-<input type="text" required  value="<?php echo $data['data'][0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre">
-</div>
-</div>
-
-
-
-							
-							
-
-
-				
-
-											</div>
-
-
-											<div class="row">
+	<div class="row">
 	
-										
-					<div class="col-xs-12 col-sm-6">
-												<div class="form-group">
-													<label for="basicInput">Teléfono:</label>
-							<input type="text" value="<?php echo $data['data'][0]['movil2'] ?>" class="form-control" name="movil2" id="movil2" placeholder="Teléfono:">
-												</div>
-											</div>
-
-	 
-<div class="col-xs-12 col-sm-6">
-<div class="form-group">
-<label for="basicInput">E-mail:</label>
-<input type="email" value="<?php echo $data['data'][0]['email2'] ?>"  class="form-control" name="email2" id="email2" placeholder="E-mail:">
-</div>
-</div>
-
-
-							
-								
-
-</div>
-
-
-<div class="row">
-	
-	<div class="col-xs-12 col-sm-6">
-															<div class="form-group">
-																<label for="basicInput">Dirección</label>
-										<input type="text" value="<?php echo $data['data'][0]['direccion_oficina'] ?>"  class="form-control" name="direccion_oficina"  required  id="direccion_oficina" placeholder="Dirección">
-															</div>
-														</div>
-
-
-														<div class="col-xs-12 col-sm-6">
-															<div class="form-group">
-																<label for="basicInput">Comentarios</label>
-										<input type="text" value="<?php echo $data['data'][0]['comentarios'] ?>"  class="form-control" name="comentarios"    id="comentarios" placeholder="Comentarios">
-															</div>
-														</div>
-</div>
-
-<div class="row">
 <div class="col-xs-12 col-sm-4 i">
-	<label for="basicInput">Tipos</label>
-<div class="row checkboxes" style="padding-top:20px;">
-
-
- 
-<?php if ($_GET['tipo']!='editar'): ?>
-	
-
-							<div class="col-xs-12 col-sm-4 i">
-								<label>
-									<input type="checkbox" name="tipos[]" value="ARMADOR">
-									<span>ARMADOR</span>
-								</label>
-							</div>
-							<div class="col-xs-12 col-sm-4 i">
-								<label>
-									<input type="checkbox" name="tipos[]" value="INSTALADOR" >
-									<span>INSTALADOR</span>
-								</label>
-							</div>
-							<div class="col-xs-12 col-sm-4 i">
-								<label>
-									<input type="checkbox" name="tipos[]" value="AYUDANTE">
-									<span>AYUDANTE</span>
-								</label>
-							</div>
-<?php else: ?>	
-<!-- 
-<?php// foreach ($tipos as $key => $value) {
-
-//echo $tipos[$key];
-
-
-	}?>
- -->
-
-
-<?php endif ?>
-</div>
-</div>	
-
-
-
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Fecha de Terminación</label>
-<input type="date" value="<?php echo $data['data'][0]['fecha_terminacion'] ?>" required class="form-control" name="fecha_terminacion" id="fecha_terminacion" placeholder="Fecha de Terminacion">
-</div>
-</div>
-
-
-
-
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Agregue <?php echo TEXTO ?> a <?php echo TITULO; ?></label>
-<input style="background-color: #accead; "  type="text" value="<?php echo $data['data'][0]['buscar_cliente'] ?>"  class="form-control" name="buscar_cliente" id="buscar_cliente" placeholder="Agregue! Escriba aqui!">
-</div>
-
-<ul id="resultado_busqueda2">
-		 
-	</ul>
-</div>
-
-
-
-</div>
-<hr>
-<div class="row">
-	
-<div class="box rte box-without-bottom-padding">
-					<h2 class="boxHeadline"><?php echo TEXTO ?> Agregados</h2>
-					 
-					
-					<div class="tableWrap table-responsive">
-						<table class="table table-bordered table-striped">
-							<thead>
-								<tr>
-									<th># N°</th>
-									<th>Id</th>
-									<th>Nombre</th>
-									<th>Borrar</th>
-									 
-								</tr>
-							</thead>
-							<tbody>
-								
-<?php if (isset($_GET['tipo'])): if ($id_cliente!='') {
-	# code...
- ?>
-
-	<?php foreach ($id_cliente as $key => $value) { ?>
-	<tr>
-									<th># <?php echo $key?></th>
-									<th><?php echo $id_cliente[$key]?></th>
-									<th><?php echo $des_cliente[$key]?></th>
-									<th><a class='text-danger borrar-row delete' href='#'><i class='fa fa-trash'></i> Borrar</a></th>
-								<input type='hidden'  name='id_cliente[]' id='id_cliente[]' value='<?php echo $id_cliente[$key]?>'>
-								<input type='hidden'  name='des_cliente[]' id='des_cliente[]' value='<?php echo $des_cliente[$key]?>'>	 
-								</tr>
-<?php }} endif ?>
-
-							
-							</tbody>
-						</table>
-					</div>
-				</div>
-
-</div>
-
-<hr>
-<div class="row">
-	<div class="col-xs-12 col-sm-4 i">
 <div class="form-group">
 <label>Status</label>
 <select id="status" required name="status" class="js-select ">
@@ -431,11 +229,14 @@ $tipos = unserialize($data['data'][0]['tipos']);
 </select>
 </div>
 </div>
-</div>
+
+</div>	
+				
+				
+				</div>  <!--  boxrate -->
 
 
-</div> <!-- box-->
-<!--====  End of DATOS COMERCIALES  ====-->
+
 
 
 <!--==============================
@@ -522,14 +323,13 @@ $tipos = unserialize($data['data'][0]['tipos']);
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
 
-<?php  require_once 'controlador/controlador.php'; ?>
+
 	<script type="text/javascript">
 		
 $(document).ready(function() {
 	$('.cargando').hide();
 	$('#pais').val('<?php echo $data['data'][0]['pais'] ?>').change();
 	$('#status').val('<?php echo $data['data'][0]['status'] ?>').change();
-	$('#tipos').val('<?php echo $data['data'][0]['tipos'] ?>').change();
 });
 
 
@@ -596,12 +396,6 @@ $('#buscar').on('keyup',  function(event) {
 	/* Act on the event */
 });
 
-$('#buscar_cliente').on('keyup',  function(event) {
-	event.preventDefault();
-	buscarClientes($(this).val());
-	/* Act on the event */
-});
-
 
 
 
@@ -630,32 +424,6 @@ $.ajax({
 
 	
 }
-
-function buscarClientes(texto) {
-
-
-$.ajax({
-	url: '../mod_obras/async/buscar2.php',
-	type: 'POST',
- 
-	data: {parametro: texto},
-})
-.done(function(data) {
-	console.log("success");
-	$('#resultado_busqueda2').html(data);
-//alert(data);
-
-})
-.fail(function() {
-	console.log("error");
-})
-.always(function() {
-	console.log("complete");
-});
-
-	
-}
-
 
 });
 /*=====  End of Buscar   ======*/
