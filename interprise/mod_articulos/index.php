@@ -163,7 +163,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-6">
 <div class="form-group">
 <label for="basicInput">Nombre:</labe8>
-<input type="text" value="<?php echo $data['data'][0]['nombre'] ?>" required class="form-control" name="nombre" id="nombre" placeholder="Nombre:">
+<input type="text" maxlength="35" value="<?php echo $data['data'][0]['nombre'] ?>" required class="form-control " name="nombre" id="nombre" placeholder="Este campo tiene un límite de 35 caracteres">
 </div>
 </div>
  

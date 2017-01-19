@@ -399,8 +399,7 @@ var docDefinition = {
         // you can declare how many rows should be treated as headers
          style: 'tableExample',
         headerRows: 1,
-   widths: [ 40, '*', 80, 60 , 60, 60],
-
+   widths: [ 30, '*', 90, 60 , 60, 60],
         body: [
           [ { text: 'Id', bold: true }, 
           { text: 'Nombre', bold: true }, 
