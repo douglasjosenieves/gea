@@ -230,8 +230,8 @@ $data['data'][] = $row;
 
 	<div class="col-xs-12 col-sm-4">
 								<div class="form-group">
-									<label for="basicInput">Documento:</label>
-			<input type="text" value="<?php echo $data['data'][0]['documento'] ?>"  class="form-control"  required  name="documento" id="documento" placeholder="Documento:">
+									<label for="basicInput"><?php echo RIF ?>:</label>
+			<input type="text" value="<?php echo $data['data'][0]['documento'] ?>"  class="form-control"  required  name="documento" id="documento" placeholder="<?php echo RIF ?>:">
 								</div>
 							</div>
 
