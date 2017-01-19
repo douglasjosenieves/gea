@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 18-01-2017 a las 22:29:51
+-- Tiempo de generación: 19-01-2017 a las 02:33:11
 -- Versión del servidor: 5.7.11
 -- Versión de PHP: 5.6.19
 
@@ -767,6 +767,7 @@ CREATE TABLE `inventario` (
   `codigo` varchar(500) DEFAULT NULL,
   `nombre` text,
   `descripcion` text,
+  `comentarios` text,
   `precio` double DEFAULT '0',
   `precio1` double DEFAULT '0',
   `precio2` double DEFAULT '0',
