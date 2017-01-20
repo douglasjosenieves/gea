@@ -14,7 +14,6 @@
 
 
 require_once __DIR__ . '../../../../db_connect.php';
-require_once 'config.php';
 //sleep(2);
  
 // connecting to db
@@ -53,10 +52,6 @@ $anulado=$_REQUEST['anulado'];
 
 
 $pre_informacion = serialize($pre_informacion);
-
-
-
-
 $fecha = date("Y-m-d H:i:s");
 $ip=$_SERVER['REMOTE_ADDR'];
 
@@ -119,24 +114,15 @@ $hijos_fecha_nacimiento_array=serialize($hijos_fecha_nacimiento);
 $hijos_documentos_array=serialize($hijos_documentos);
 
 
-$id_cliente=$_REQUEST['id_cliente'];
-$des_cliente=$_REQUEST['des_cliente'];
 
-$comentarios=$_REQUEST['comentarios'];
-$fecha_terminacion=$_REQUEST['fecha_terminacion'];
-$tipos=serialize($_REQUEST['tipos']);
-$id_cliente = serialize($id_cliente);
-$des_cliente = serialize($des_cliente);
 
- 
+/*INSERT INTO `erp`.`instaladores` (`nombres`, `apellidos`, `pais`, `email`, `movil`, `status`, `fecha`, `ip`, `elaborado_por`, `documento`, `cliente`, `fecha_nacimiento`, `direccion_domicilio`, `direccion_oficina`) VALUES ('nombre', 'apellido', 'VENEZUELA', 'prueba@gmail.com', '04141331946', 'FORMULARIO', '2016-10-09 12:29:51', '186.93.81.61', 'DOUGLAS', 'J3032511554', 'TUWEBLINK .CA', '1984-11-09', 'DIRECCION DOMICILIO', 'DIRECCION OFICINA');
+*/
 
 
 
-$qry = "INSERT INTO `".TABLA."` (`nombres`, `apellidos`, `pais`, `email`, `email2`,`movil`,`movil2`, `status`, `fecha`, `ip`, `elaborado_por`, `documento`, `cliente`, `fecha_nacimiento`, `direccion_oficina`, `id_cliente`, `des_cliente`, `comentarios`, `fecha_terminacion`, `tipos`) 
-
-
-VALUES 
-('$nombres', '$apellidos', '$pais', '$email', '$email2', '$movil', '$movil2', '$status', '$fecha', '$ip', '$elaborado_por', '$documento', '$cliente', '$fecha_nacimiento',  '$direccion_oficina', '$id_cliente', '$des_cliente', '$comentarios', '$fecha_terminacion', '$tipos' );";
+$qry = "INSERT INTO `instaladores` (`nombres`, `apellidos`, `pais`, `email`, `email2`,`movil`,`movil2`, `status`, `fecha`, `ip`, `elaborado_por`, `documento`, `cliente`, `fecha_nacimiento`, `direccion_oficina`) VALUES 
+('$nombres', '$apellidos', '$pais', '$email', '$email2', '$movil', '$movil2', '$status', '$fecha', '$ip', '$elaborado_por', '$documento', '$cliente', '$fecha_nacimiento',  '$direccion_oficina');";
 
 
 
@@ -147,38 +133,9 @@ VALUES
 $resul = mysql_query($qry);
 
 
-if ($resul==1) {
-  
 
 
-$resulf =  mysql_query("SELECT  max( id)  AS id FROM ".TABLA."");
-while($row =  mysql_fetch_array($resulf) ) {
-$id_doc= $row['id'];
-}
-
-$id_cliente = unserialize($id_cliente);
-$des_cliente = unserialize($des_cliente);
-
-foreach ($id_cliente as $key => $value) {
-
-$qry2 ="INSERT INTO  `".TABLA2."`
-(
-`id_doc`,
-`doc_id`,
-`doc_desc`,
-`anulado`)
-VALUES
-( 
-'$id_doc',
-'$id_cliente[$key]',
-'$des_cliente[$key]',
-'$anulado');
-";
-
-$resul2 = mysql_query($qry2);
-
-}
-} 
+ 
 
 if ($resul==1) {
   

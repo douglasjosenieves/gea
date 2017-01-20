@@ -5,7 +5,6 @@ header('Location: ../../index.php');
 //echo $_SESSION['usuario']['Tipo'].$_SESSION['usuario']['Nombre'].$_SESSION['usuario']['Apellido'].'asdasdasdsas' ;
 require_once '../../db_connect.php';
 require_once '../../PHPPaging.lib.php';
-require_once 'envios/config.php';
 
 // connecting to db
 $con = new DB_CONNECT();
@@ -20,7 +19,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Lista de <?php echo TITULO ?></title>
+	<title>Lista de instaladores</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -85,7 +84,7 @@ mysql_query("SET CHARACTER_SET utf");
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Obra</th>
+									<th>Instalador</th>
 										<th>Status</th>
 									<th>Usuario</th>
 									<th>Anulado</th>
@@ -134,7 +133,7 @@ require_once '../status_funtion.php';
 
 	                  require_once '../status_funtion.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `".TABLA."` order by id desc ");
+					$resul =  mysql_query("SELECT * FROM `instaladores` order by id desc ");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
@@ -151,7 +150,7 @@ require_once '../status_funtion.php';
 					
 					<tr>
 						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
-						<td><?php echo  $opciones['opciones'][$i]['cliente']; ?></td>
+						<td><?php echo $opciones['opciones'][$i]['nombres'].' '.$opciones['opciones'][$i]['apellidos']; ?></td>
 						<td><?php echo statusColor( $opciones['opciones'][$i]['status'] )?></td>
 					    
 

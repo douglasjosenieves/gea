@@ -23,7 +23,7 @@ $resul =  mysql_query("SELECT * FROM  ".TABLA." where anulado <> 1 and cliente l
 				 //$imagen = explode(';',$opciones['opciones'][0]['capture1']) ;
 				 ?>
 				
-	<li><a href="?tipo=editar&id=<?php echo $opciones['contacto'][$i]['id']  ?>"><?php echo $opciones['contacto'][$i]['id'].' '.$opciones['contacto'][$i]['cliente']  ?></a></li>
+	<li class="arti" style="cursor: pointer;" data-index="<?php echo $index?>" data-id="<?php echo $opciones['contacto'][$i]['id']?>" data-cliente="<?php echo $opciones['contacto'][$i]['cliente']?>"><?php echo $opciones['contacto'][$i]['id'].' '.$opciones['contacto'][$i]['cliente']  ?></li>
 
 			 
 															
