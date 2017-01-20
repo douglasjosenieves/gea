@@ -24,7 +24,7 @@ $data['data'][] = $row;
 }
 $id_cliente = unserialize($data['data'][0]['id_cliente']);
 $des_cliente = unserialize($data['data'][0]['des_cliente']);
-$tipos = unserialize($data['data'][0]['tipos']);
+$tipos =  unserialize($data['data'][0]['tipos']);
 
 ?>
 <!doctype html>
@@ -303,44 +303,37 @@ $tipos = unserialize($data['data'][0]['tipos']);
 
 <div class="row">
 <div class="col-xs-12 col-sm-4 i">
-	<label for="basicInput">Tipos</label>
+	<label for="basicInput">Tipos <?php  echo $tipos; ?></label>
 <div class="row checkboxes" style="padding-top:20px;">
 
 
  
-<?php if ($_GET['tipo']!='editar'): ?>
+
 	
 
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input type="checkbox" name="tipos[]" value="ARMADOR">
+									<input type="checkbox" data-nombre="ARMADOR" class="tipos" name="tipos[]" value="ARMADOR">
 									<span>ARMADOR</span>
 								</label>
 							</div>
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input type="checkbox" name="tipos[]" value="INSTALADOR" >
+									<input type="checkbox" data-nombre="INSTALADOR" class="tipos" name="tipos[]" value="INSTALADOR" >
 									<span>INSTALADOR</span>
 								</label>
 							</div>
 							<div class="col-xs-12 col-sm-4 i">
 								<label>
-									<input type="checkbox" name="tipos[]" value="AYUDANTE">
+									<input type="checkbox" data-nombre="AYUDANTE" class="tipos" name="tipos[]" value="AYUDANTE">
 									<span>AYUDANTE</span>
 								</label>
 							</div>
-<?php else: ?>	
-<!-- 
-<?php// foreach ($tipos as $key => $value) {
-
-//echo $tipos[$key];
 
 
-	}?>
- -->
 
 
-<?php endif ?>
+
 </div>
 </div>	
 
@@ -359,7 +352,7 @@ $tipos = unserialize($data['data'][0]['tipos']);
 
 <div class="col-xs-12 col-sm-4">
 <div class="form-group">
-<label for="basicInput">Agregue <?php echo TEXTO ?> a <?php echo TITULO; ?></label>
+<label for="basicInput"> Agregue <?php echo TEXTO ?> donde trabaja </label>
 <input style="background-color: #accead; "  type="text" value="<?php echo $data['data'][0]['buscar_cliente'] ?>"  class="form-control" name="buscar_cliente" id="buscar_cliente" placeholder="Agregue! Escriba aqui!">
 </div>
 
@@ -375,7 +368,7 @@ $tipos = unserialize($data['data'][0]['tipos']);
 <div class="row">
 	
 <div class="box rte box-without-bottom-padding">
-					<h2 class="boxHeadline"><?php echo TEXTO ?> Agregados</h2>
+					<h2 class="boxHeadline"><?php echo TEXTO ?> agregadas</h2>
 					 
 					
 					<div class="tableWrap table-responsive">
@@ -529,7 +522,14 @@ $(document).ready(function() {
 	$('.cargando').hide();
 	$('#pais').val('<?php echo $data['data'][0]['pais'] ?>').change();
 	$('#status').val('<?php echo $data['data'][0]['status'] ?>').change();
-	$('#tipos').val('<?php echo $data['data'][0]['tipos'] ?>').change();
+ 
+});
+
+ 
+var tipos = <?php echo json_encode($tipos); ?>;
+
+$.each(tipos, function(index, val) {
+$('.tipos[data-nombre="'+val+'"]').prop("checked", true);
 });
 
 
