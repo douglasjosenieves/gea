@@ -526,11 +526,21 @@ $(document).ready(function() {
 });
 
  
-var tipos = <?php echo json_encode($tipos); ?>;
-
+ 
+try {
+  var tipos = <?php echo json_encode($tipos); ?>;
 $.each(tipos, function(index, val) {
 $('.tipos[data-nombre="'+val+'"]').prop("checked", true);
 });
+
+}
+catch(err) {
+   console.log(err);
+}
+
+
+
+ 
 
 
 
