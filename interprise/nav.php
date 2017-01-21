@@ -345,7 +345,16 @@ $_SESSION['usuario']['Tipo']=='PAGOS'
 
  <?php if ($_SESSION['usuario']['Tipo']=='SUPERUSER'): ?>
  	
- 
+ <li class="sub js-submenu">
+					<div><i class="zmdi zmdi-accounts-add zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Empleados<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+					<li><a href="<?php echo BASE_URL ?>mod_empleados/index.php" title="#">Nuevo </a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_empleados/reporte.php" title="#">Ver</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_empleados/status.php" title="#">Ver por status</a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_empleados/anulados.php" title="Administracion de contactos">Anulados</a> </li>
+			
+			</ul>
+			</li>
  	
  
 
