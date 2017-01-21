@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-01-2017 a las 01:02:57
+-- Tiempo de generación: 21-01-2017 a las 20:55:54
 -- Versión del servidor: 5.7.11
 -- Versión de PHP: 5.6.19
 
@@ -527,6 +527,50 @@ CREATE TABLE `cuenta_por_pagar` (
   `ext3` text,
   `ext4` text,
   `ext5` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `empleados`
+--
+
+CREATE TABLE `empleados` (
+  `id` int(11) NOT NULL,
+  `nombres` varchar(500) DEFAULT NULL,
+  `apellidos` varchar(500) DEFAULT NULL,
+  `documento` varchar(500) DEFAULT NULL,
+  `cliente` varchar(500) DEFAULT NULL,
+  `pais` varchar(500) DEFAULT NULL,
+  `email` varchar(500) DEFAULT NULL,
+  `email2` varchar(500) DEFAULT NULL,
+  `movil` varchar(500) DEFAULT NULL,
+  `movil2` varchar(500) DEFAULT NULL,
+  `comentarios` text,
+  `id_cliente` text,
+  `des_cliente` text,
+  `inversion` double DEFAULT NULL,
+  `tipos` varchar(500) DEFAULT NULL,
+  `status` varchar(500) DEFAULT NULL,
+  `tramitido_al_crm` varchar(1) DEFAULT NULL,
+  `fecha` datetime DEFAULT NULL,
+  `elaborado_por` varchar(500) DEFAULT NULL,
+  `verificado` tinyint(1) DEFAULT '0',
+  `editado_por` varchar(500) DEFAULT NULL,
+  `editado_fecha` datetime DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_terminacion` date DEFAULT NULL,
+  `cargo` varchar(500) DEFAULT NULL,
+  `salario` double DEFAULT NULL,
+  `dependiente` varchar(500) DEFAULT NULL,
+  `direccion_oficina` text,
+  `direccion_domicilio` text,
+  `titulacion` text,
+  `anos_laboral` int(11) DEFAULT NULL,
+  `imagenes` text,
+  `ip` varchar(250) DEFAULT NULL,
+  `anulado` varchar(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1400,6 +1444,12 @@ ALTER TABLE `cuenta_por_pagar`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `empleados`
+--
+ALTER TABLE `empleados`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `empresa`
 --
 ALTER TABLE `empresa`
@@ -1616,6 +1666,11 @@ ALTER TABLE `cuenta_por_cobrar`
 -- AUTO_INCREMENT de la tabla `cuenta_por_pagar`
 --
 ALTER TABLE `cuenta_por_pagar`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `empleados`
+--
+ALTER TABLE `empleados`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `empresa`
