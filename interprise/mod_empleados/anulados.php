@@ -85,7 +85,7 @@ mysql_query("SET CHARACTER_SET utf");
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Obra</th>
+									<th>Nombre y Apellido</th>
 										<th>Status</th>
 									<th>Usuario</th>
 									<th>Anulado</th>
@@ -151,14 +151,14 @@ require_once '../status_funtion.php';
 					
 					<tr>
 						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
-						<td><?php echo  $opciones['opciones'][$i]['cliente']; ?></td>
+						<td><?php echo  $opciones['opciones'][$i]['nombres'].' '.$opciones['opciones'][$i]['apellidos']; ?></td>
 						<td><?php echo statusColor( $opciones['opciones'][$i]['status'] )?></td>
 					    
 
 					
 					    <td>
 
-  <?php $idElaborabo =  $opciones['opciones'][$i]['elaborado_por']; ?>
+  <?php $idElaborabo =  $opciones['opciones'][$i]['ins_user']; ?>
 	<select  name="operador[]"  data-id="<?php echo $opciones['opciones'][$i]['id']; ?>"  class="js-select operador asesor">
 										<option  value="<?php echo $idElaborabo ?>" >- <?php echo nombreAsessor($idElaborabo);?>-</option>
 										<?php echo 	$teleo  ?>

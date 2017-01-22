@@ -27,6 +27,9 @@ $_SESSION['usuario']['Tipo']=='VENTAS'
 			
 			</ul>
 			</li>
+
+
+
 <?php endif ?>
 
 
@@ -132,6 +135,31 @@ $_SESSION['usuario']['Tipo']=='ADMINISTRADOR'
 <li><a href="<?php echo BASE_URL ?>mod_articulos/inventario.php" title="#">Inventario Actual</a></li>
 <li><a href="<?php echo BASE_URL ?>mod_articulos/movimientos.php" title="#">Movimientos</a></li>
 
+			</ul>
+			</li>
+
+
+
+
+
+
+									<li class="sub js-submenu">
+					<div><i class="zmdi zmdi-balance-wallet zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Servicios<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+					<li><a href="<?php echo BASE_URL ?>mod_servicios/index.php" title="#">Nuevo </a></li>
+					<li><a href="<?php echo BASE_URL ?>mod_servicios/reporte.php" title="#">Ver</a></li>
+				 
+			
+		   <li class="sub js-submenu">
+					<div class="sub-menu"><i class="zmdi zmdi-layers zmdi-hc-fw icon"></i> <span class="hidden-xs hidden-sm">Categorias<i class="zmdi zmdi-plus plus"></i></span></div>
+					<ul>
+<li><a href="<?php echo BASE_URL ?>mod_articulos_cat/index.php" >Nuevo</a></li>
+<li><a href="<?php echo BASE_URL ?>mod_articulos_cat/reporte.php" >Ver</a></li>
+
+			</ul>
+			</li>	
+
+			
 			</ul>
 			</li>
 <?php endif ?>

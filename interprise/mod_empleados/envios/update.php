@@ -14,11 +14,11 @@ mysql_query("SET CHARACTER_SET utf");
 setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
 date_default_timezone_set('America/Caracas');
 $fecha = date("Y-m-d H:i:s");
-$editado_fecha = date("Y-m-d H:i:s");
+$upd_fecha = date("Y-m-d H:i:s");
+$ins_fecha = date("Y-m-d H:i:s");
 $ip=$_SERVER['REMOTE_ADDR'];
 //$pre_ = serialize($pre_);
 extract ($_POST);
-
 
  
  $id_cliente=$_REQUEST['id_cliente'];
@@ -32,34 +32,44 @@ $des_cliente = serialize($des_cliente);
 
 
 
-$qry = "UPDATE `".TABLA."`
+$qry = "UPDATE ".TABLA."
 SET
+ 
 `nombres` = '$nombres',
 `apellidos` = '$apellidos',
 `documento` = '$documento',
 `cliente` = '$cliente',
+`titulacion` = '$titulacion',
 `pais` = '$pais',
 `email` = '$email',
 `email2` = '$email2',
 `movil` = '$movil',
 `movil2` = '$movil2',
+`comentarios` = '$comentarios',
 `status` = '$status',
-`editado_por` = '$editado_por',
-`editado_fecha` = '$editado_fecha',
+`tipo` = '$tipo',
 `fecha_nacimiento` = '$fecha_nacimiento',
-`direccion_oficina` = '$direccion_oficina',
-`ip` = '$ip',
-
-`id_cliente` = '$id_cliente',
-`des_cliente` = '$des_cliente',
-`tipos` = '$tipos',
-`fecha_terminacion` = '$fecha_terminacion',
 `fecha_inicio` = '$fecha_inicio',
+`fecha_terminacion` = '$fecha_terminacion',
 `cargo` = '$cargo',
 `salario` = '$salario',
 `dependiente` = '$dependiente',
-`comentarios` = '$comentarios'
-
+`direccion_oficina` = '$direccion_oficina',
+`direccion_domicilio` = '$direccion_domicilio',
+`imagenes` = '$imagenes',
+`id_mobil` = '$id_mobil',
+`id_cuenta` = '$id_cuenta',
+ 
+`upd_user` = '$upd_user',
+`upd_fecha` = '$upd_fecha',
+`ip` = '$ip',
+`verificado` = '$verificado',
+`anulado` = '$anulado',
+`ext1` = '$ext1',
+`ext2` = '$ext2',
+`ext3` = '$ext3',
+`ext4` = '$ext4',
+`ext5` = '$ext5'
 WHERE `id` = '$referencia';
 ";
  

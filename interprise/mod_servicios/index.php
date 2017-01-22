@@ -33,7 +33,7 @@ $data['data'][] = $row;
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>servicios</title>
+	<title>Servicios</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -55,7 +55,8 @@ $data['data'][] = $row;
 	<link rel="stylesheet" href="../assets/css/app.min.css">
 		<link rel="stylesheet" href="../assets/css/dropzone.css">
 
-  <script src="../assets/tinymce/tinymce.min.js"></script>
+<!--   <script src="../assets/tinymce/tinymce.min.js"></script> -->
+    <script src="../assets/tinymce/tinymce.min.js"></script>
   <script>
  
 
@@ -87,7 +88,7 @@ $data['data'][] = $row;
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">servicios</a>
+					<a href="#" title="#">Servicios</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="../index.php">Panel de controlo</a></li>
@@ -159,22 +160,46 @@ $data['data'][] = $row;
 
 
 
-<div class="col-xs-12 col-sm-8">
+<div class="col-xs-12 col-sm-6">
 <div class="form-group">
 <label for="basicInput">Nombre:</labe8>
-<input type="text" value="<?php echo $data['data'][0]['nombre'] ?>" required class="form-control" name="nombre" id="nombre" placeholder="Nombre:">
+<input type="text" maxlength="35" value="<?php echo $data['data'][0]['nombre'] ?>" required class="form-control " name="nombre" id="nombre" placeholder="Este campo tiene un límite de 35 caracteres">
 </div>
 </div>
  
+<div class="col-xs-12 col-sm-2">
+<div class="form-group">
+<label for="basicInput">Und Medida:</label>
+<select required id="und_med" name="und_med" data-id=""  class="js-select">
+<option  value="" >- Seleccionar -</option>
+<option  value="und" >und</option>
+<option  value="pza" >pza</option>
+<option  value="ml" >ml</option>
+<option  value="par" >par</option>
+<option  value="jgo" >jgo</option>
+<option  value="sg" >sg</option>
+
+</select>	
+</div>
+</div>
+
+
+
 </div>
 
 <div class="row">
 <div class="col-xs-12 col-sm-12">
+
+
 <div class="form-group">
-<label for="basicInput">Descripción:</label>
-<textarea  id="mytextarea" class="mceEditor" ><?php echo  $data['data'][0]['descripcion']; ?></textarea>
-<input type="hidden" name="descripcion" value=""  id="question_html" name="question_html" />
+<label for="max-length">Descripción:</label>
+<textarea id="max-length" name="descripcion" class="js-max-length form-control" maxlength="20" placeholder="Este campo tiene un límite de 20 caracteres" rows="2"><?php echo  $data['data'][0]['descripcion']; ?></textarea>
 </div>
+
+
+
+
+ 
 </div>
 
 
@@ -185,7 +210,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio'] ?>" required class="form-control" name="precio" id="precio" placeholder="Precio:">
+		<input type="number" step="0.01" value="<?php echo $data['data'][0]['precio'] ?>" required class="form-control" name="precio" id="precio" placeholder="Precio:">
 		</div>
 		</div>
 
@@ -196,7 +221,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
 <label for="basicInput">Cantidad:</label>
-<input type="number" value="<?php echo $data['data'][0]['cantidad'] ?>" required class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad:">
+<input type="number" value="<?php echo $data['data'][0]['cantidad'] ?>"  readonly class="form-control" name="cantidad" id="cantidad" placeholder="Cantidad:">
 </div>
 </div>
 
@@ -207,7 +232,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
 <label for="basicInput">Promedio Mínimo:</label>
-<input type="number" value="<?php echo $data['data'][0]['pro_inv_min'] ?>"  required class="form-control" name="pro_inv_min" id="pro_inv_min" placeholder="Promedio Minimo:">
+<input type="number" value="<?php echo $data['data'][0]['pro_inv_min'] ?>"   class="form-control" name="pro_inv_min" id="pro_inv_min" placeholder="Promedio Minimo:">
 </div>
 </div>
 
@@ -216,7 +241,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-3">
 <div class="form-group">
 <label for="basicInput">Promedio Máximo</label>
-<input type="number" value="<?php echo $data['data'][0]['pro_inv_max'] ?>"  required class="form-control" name="pro_inv_max" id="pro_inv_max" placeholder="Promedio Maximo">
+<input type="number" value="<?php echo $data['data'][0]['pro_inv_max'] ?>"  class="form-control" name="pro_inv_max" id="pro_inv_max" placeholder="Promedio Maximo">
 </div>
 </div>
 
@@ -224,7 +249,21 @@ $data['data'][] = $row;
 
 
 	</div>				 
-					 
+		
+	<!--	<div class="row">
+ 
+
+ <div class="col-xs-12 col-sm-3">
+<div class="form-group">
+<label for="basicInput">% Desp:</label>
+<input type="number" value="<?php //echo $data['data'][0]['por_desperdicio'] ?>"   class="form-control" name="por_desperdicio" id="por_desperdicio" placeholder="% Desp:">
+</div>
+</div>		
+
+
+
+
+		</div>	 -->		 
  
 	<div class="row">
 		
@@ -236,7 +275,7 @@ $data['data'][] = $row;
 $v=0;
 $dato ='';
 $datoid =array();
-$resulv =  mysql_query("SELECT * FROM servicios_cat where anulado <> 1");
+$resulv =  mysql_query("SELECT * FROM inventario_cat where anulado <> 1");
 while($rowv =  mysql_fetch_array($resulv) ) { 
 $dato .= '<option value="';
 $dato .= $rowv['id'];
@@ -282,7 +321,7 @@ $v++;}
 <select required id="stock" name="stock" data-id=""  class="js-select">
 <option  value="" >- Seleccionar -</option>
  <option  value="CANTIDAD" >CANTIDAD</option>
- <option  value="SIEMPRE DISPONIBLE" >SIEMPRE DISPONIBLE</option>
+ <option  value="SERVICIO" >SERVICIO</option>
 </select>	
 </div>
 </div>
@@ -303,7 +342,7 @@ $v++;}
  <div class="col-xs-12 col-sm-3">
  <div class="form-group">
  <label for="basicInput">Precio de compra:</label>
- <input type="number" value="<?php echo $data['data'][0]['precio_compra'] ?>"  required class="form-control" name="precio_compra" id="precio_compra" placeholder="Precio de compra:">
+ <input type="number" step="0.01" value="<?php echo $data['data'][0]['precio_compra'] ?>"   class="form-control" name="precio_compra" id="precio_compra" placeholder="Precio de compra:">
  </div>
  </div>
  
@@ -312,14 +351,14 @@ $v++;}
 	<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio1:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio1'] ?>"  required class="form-control" name="precio1" id="precio1" placeholder="Precio1:">
+		<input type="number" step="0.01" value="<?php echo $data['data'][0]['precio1'] ?>"   class="form-control" name="precio1" id="precio1" placeholder="Precio1:">
 		</div>
 		</div>
 
 		<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio2:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio2'] ?>"  required class="form-control" name="precio2" id="precio2" placeholder="Precio2:">
+		<input type="number" step="0.01" value="<?php echo $data['data'][0]['precio2'] ?>"   class="form-control" name="precio2" id="precio2" placeholder="Precio2:">
 		</div>
 		</div>
 
@@ -327,7 +366,7 @@ $v++;}
 		<div class="col-xs-12 col-sm-3">
 		<div class="form-group">
 		<label for="basicInput">Precio3:</label>
-		<input type="number" value="<?php echo $data['data'][0]['precio3'] ?>"  required class="form-control" name="precio3" id="precio3" placeholder="Precio3:">
+		<input type="number" step="0.01" value="<?php echo $data['data'][0]['precio3'] ?>"   class="form-control" name="precio3" id="precio3" placeholder="Precio3:">
 		</div>
 		</div>	
 
@@ -342,8 +381,8 @@ $v++;}
 	
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
-	<label for="basicInput">Tax:</label>
-	<input type="number" value="<?php echo $data['data'][0]['tax'] ?>" required class="form-control" name="tax" id="tax" placeholder="Tax:">
+	<label for="basicInput"><?php echo IVA ?></label>
+	<input type="number" step="0.01" value="<?php echo $data['data'][0]['tax'] ?>"  class="form-control" name="tax" id="tax" placeholder="<?php echo IVA ?>">
 	</div>
 	</div>
 
@@ -352,11 +391,23 @@ $v++;}
 	<div class="col-xs-12 col-sm-4">
 	<div class="form-group">
 	<label for="basicInput">ISLR:</label>
-	<input type="number" value="<?php echo $data['data'][0]['islr'] ?>"  required class="form-control" name="islr" id="islr" placeholder="ISLR:">
+	<input type="number" step="0.01" value="<?php echo $data['data'][0]['islr'] ?>"   class="form-control" name="islr" id="islr" placeholder="ISLR:">
 	</div>
 	</div>
 	
 	
+</div>
+
+
+<div class="row">
+
+<div class="col-xs-12 col-sm-12">
+<div class="form-group">
+<label for="textarea-autosize">Comentarios:</label>
+<textarea id="textarea-autosize" name="comentarios" class="js-autogrow form-control" placeholder="Comienza a escribir y presiona pocas veces 'enter' ... " rows="2"><?php echo $data['data'][0]['comentarios'] ?></textarea>
+</div>
+</div>
+
 </div>
 					
   
@@ -473,7 +524,7 @@ if ($img[0] !='') {
  
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
-<script src='http:../assets/tinymce/tinymce.min.js'></script>
+
 
 
 <script type="text/javascript">
@@ -484,6 +535,7 @@ if ($img[0] !='') {
 $('#id_cat').val('<?php echo $data['data'][0]['id_cat'] ?>').change();
 $('#estado').val('<?php echo $data['data'][0]['estado'] ?>').change();
 $('#stock').val('<?php echo $data['data'][0]['stock'] ?>').change();
+$('#und_med').val('<?php echo $data['data'][0]['und_med'] ?>').change();
 
 		
 	 var imgr = $('#imgRemover').val();
@@ -567,12 +619,12 @@ $(document).ready(function() {
 $('#formulario').on('submit',  function(event) {
     event.preventDefault();
     
-       content();
- var question_html = $('#question_html').val();
-if (question_html == '') {
-alert('Describa una descripción!');
-return true
-    }
+	/*       content();
+	var question_html = $('#question_html').val();
+	if (question_html == '') {
+	alert('Describa una descripción!');
+	return true
+	}*/
  
 
 

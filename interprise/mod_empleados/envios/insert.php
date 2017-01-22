@@ -14,7 +14,8 @@ mysql_query("SET CHARACTER_SET utf");
 setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
 date_default_timezone_set('America/Caracas');
 $fecha = date("Y-m-d H:i:s");
-$editado_fecha = date("Y-m-d H:i:s");
+$upd_fecha = date("Y-m-d H:i:s");
+$ins_fecha = date("Y-m-d H:i:s");
 $ip=$_SERVER['REMOTE_ADDR'];
 //$pre_ = serialize($pre_);
 extract ($_POST);
@@ -50,11 +51,81 @@ $des_cliente = serialize($des_cliente);
 
 
 
-$qry = "INSERT INTO `".TABLA."` (`nombres`, `apellidos`, `pais`, `email`, `email2`,`movil`,`movil2`, `status`, `fecha`, `ip`, `elaborado_por`, `documento`, `cliente`, `fecha_nacimiento`, `direccion_oficina`, `id_cliente`, `des_cliente`, `comentarios`, `fecha_inicio`, `fecha_terminacion`, `tipos`, `cargo`, `salario`, `dependiente`) 
-
-
-VALUES 
-('$nombres', '$apellidos', '$pais', '$email', '$email2', '$movil', '$movil2', '$status', '$fecha', '$ip', '$elaborado_por', '$documento', '$cliente', '$fecha_nacimiento',  '$direccion_oficina', '$id_cliente', '$des_cliente', '$comentarios', '$fecha_inicio','$fecha_terminacion', '$tipos', '$cargo', '$salario' , '$dependiente' );";
+$qry = "INSERT INTO ".TABLA."
+( 
+`nombres`,
+`apellidos`,
+`documento`,
+`cliente`,
+`titulacion`,
+`pais`,
+`email`,
+`email2`,
+`movil`,
+`movil2`,
+`comentarios`,
+`status`,
+`tipo`,
+`fecha_nacimiento`,
+`fecha_inicio`,
+`fecha_terminacion`,
+`cargo`,
+`salario`,
+`dependiente`,
+`direccion_oficina`,
+`direccion_domicilio`,
+`imagenes`,
+`id_mobil`,
+`id_cuenta`,
+`ins_user`,
+`ins_fecha`,
+ 
+`ip`,
+`verificado`,
+`anulado`,
+`ext1`,
+`ext2`,
+`ext3`,
+`ext4`,
+`ext5`)
+VALUES
+( 
+'$nombres',
+'$apellidos',
+'$documento',
+'$cliente',
+'$titulacion',
+'$pais',
+'$email',
+'$email2',
+'$movil',
+'$movil2',
+'$comentarios',
+'$status',
+'$tipo',
+'$fecha_nacimiento',
+'$fecha_inicio',
+'$fecha_terminacion',
+'$cargo',
+'$salario',
+'$dependiente',
+'$direccion_oficina',
+'$direccion_domicilio',
+'$imagenes',
+'$id_mobil',
+'$id_cuenta',
+'$ins_user',
+'$ins_fecha',
+ 
+'$ip',
+'$verificado',
+'$anulado',
+'$ext1',
+'$ext2',
+'$ext3',
+'$ext4',
+'$ext5');
+";
 
 
 

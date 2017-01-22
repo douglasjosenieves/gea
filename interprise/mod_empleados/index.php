@@ -24,6 +24,7 @@ $data['data'][] = $row;
 }
 $id_cliente = unserialize($data['data'][0]['id_cliente']);
 $des_cliente = unserialize($data['data'][0]['des_cliente']);
+$anulado = unserialize($data['data'][0]['anulado']);
 
 ?>
 <!doctype html>
@@ -108,9 +109,9 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 </div>
 
 
-<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
+<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="ins_user" id="ins_user" placeholder="Elaborado Por:">
 
-<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="editado_por" id="editado_por" placeholder="Elaborado Por:">
+<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="upd_user" id="upd_user" placeholder="Elaborado Por:">
 
 
 <?php require_once '../asesor_funtion.php'; ?>
@@ -305,7 +306,7 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 <div class="col-xs-12 col-sm-4 i">
 <div class="form-group">
 <label>Tipo</label>
-<select id="tipos" required name="tipos" class="js-select ">
+<select id="tipo" required name="tipo" class="js-select ">
  
 <option value="" >- Select Tipo -</option>
 <option value="FULL-TIME">FULL-TIME</option>
@@ -402,7 +403,17 @@ $des_cliente = unserialize($data['data'][0]['des_cliente']);
 </select>
 </div>
 </div>
+
+
+ 
+
+
+
+
 </div>
+
+
+
 
 
 </div> <!-- box-->
@@ -500,10 +511,12 @@ $(document).ready(function() {
 	$('.cargando').hide();
 	$('#pais').val('<?php echo $data['data'][0]['pais'] ?>').change();
 	$('#status').val('<?php echo $data['data'][0]['status'] ?>').change();
-	$('#tipos').val('<?php echo $data['data'][0]['tipos'] ?>').change();
+	$('#tipo').val('<?php echo $data['data'][0]['tipo'] ?>').change();
 	$('#dependiente').val('<?php echo $data['data'][0]['dependiente'] ?>').change();
 });
 
+
+ 
 
 
 $('#formulario').on('submit', function(e){

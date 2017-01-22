@@ -85,11 +85,11 @@ mysql_query("SET CHARACTER_SET utf");
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Obra</th>
+									<th>Nombre y Apellido</th>
 										 
 									<th>Fecha</th>
 									<th>email</th>
-									<th>Asesor</th>
+								 
 									<th>status</th>
 									<th>Procesos</th>
 								
@@ -128,11 +128,11 @@ require_once '../asesor_funtion.php';
 					
 					<tr>
 						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
-						<td><?php echo $opciones['opciones'][$i]['cliente']; ?></td>
+						<td><?php echo $opciones['opciones'][$i]['nombres'].' '.$opciones['opciones'][$i]['apellidos']; ?></td>
 				 
 					    <td><?php echo $opciones['opciones'][$i]['fecha']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['email']; ?></td>
-					    <td><?php echo nombreAsessor($opciones['opciones'][$i]['elaborado_por']); ?></td>
+					    
 					    <td><?php echo statusColor($opciones['opciones'][$i]['status']); ?></td>
 					    <td>
 					    	

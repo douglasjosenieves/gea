@@ -123,21 +123,21 @@ $indicadores[] = $row['total'];
 						<div class="col-xs-12 col-md-4 i yellow">
 							<a href="mod_cotizacion/reporte.php" title="#" class="c">
 								<h3 class="title">Total Cotizaciones</h3>
-								<div class="num"><?php  echo MONEDA.$indicadores[0]; ?></div>
+								<div class="num"><?php  echo MONEDA.round_up($indicadores[0]); ?></div>
 								<i class="icon zmdi zmdi-globe"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i pink">
 							<a href="mod_facturacion/reporte.php" title="#" class="c">
 								<h3 class="title">Total Facturación</h3>
-								<div class="num"><?php  echo MONEDA.$indicadores[1]; ?></div>
+								<div class="num"><?php  echo MONEDA.round_up($indicadores[1]); ?></div>
 								<i class="icon zmdi zmdi-square-down"></i>
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-4 i green">
 							<a href="#" title="#" class="c">
 								<h3 class="title">Pendiente por cobrar </h3>
-								<div class="num"><?php  echo MONEDA.$indicadores[1]; ?></div>
+								<div class="num"><?php  echo MONEDA.round_up($indicadores[1]); ?></div>
 								<i class="icon zmdi zmdi-card"></i>
 							</a>
 						</div>
@@ -188,11 +188,11 @@ $indicadores[] = $row['total'];
 
 									<div class="row statsInfo clearfix">
 										<div class="col-xs-6 i">
-											<div class="count"><?php  echo MONEDA.$indicadores[1]; ?></div>
+											<div class="count"><?php  echo MONEDA.round_up($indicadores[1]); ?></div>
 											<div class="text">Ventas acumuladas</div>
 										</div>
 										<div class="col-xs-6 i">
-											<div class="count"><?php  echo MONEDA.$indicadores[1]; ?></div>
+											<div class="count"><?php  echo MONEDA.round_up($indicadores[1]); ?></div>
 											<div class="text">Ventas del Mes</div>
 										</div>
 									</div>

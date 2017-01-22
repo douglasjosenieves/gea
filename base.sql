@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 21-01-2017 a las 20:55:54
+-- Tiempo de generación: 22-01-2017 a las 22:29:00
 -- Versión del servidor: 5.7.11
 -- Versión de PHP: 5.6.19
 
@@ -541,23 +541,15 @@ CREATE TABLE `empleados` (
   `apellidos` varchar(500) DEFAULT NULL,
   `documento` varchar(500) DEFAULT NULL,
   `cliente` varchar(500) DEFAULT NULL,
+  `titulacion` varchar(500) DEFAULT NULL,
   `pais` varchar(500) DEFAULT NULL,
   `email` varchar(500) DEFAULT NULL,
   `email2` varchar(500) DEFAULT NULL,
   `movil` varchar(500) DEFAULT NULL,
   `movil2` varchar(500) DEFAULT NULL,
   `comentarios` text,
-  `id_cliente` text,
-  `des_cliente` text,
-  `inversion` double DEFAULT NULL,
-  `tipos` varchar(500) DEFAULT NULL,
   `status` varchar(500) DEFAULT NULL,
-  `tramitido_al_crm` varchar(1) DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL,
-  `elaborado_por` varchar(500) DEFAULT NULL,
-  `verificado` tinyint(1) DEFAULT '0',
-  `editado_por` varchar(500) DEFAULT NULL,
-  `editado_fecha` datetime DEFAULT NULL,
+  `tipo` varchar(500) DEFAULT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
   `fecha_inicio` date DEFAULT NULL,
   `fecha_terminacion` date DEFAULT NULL,
@@ -566,11 +558,22 @@ CREATE TABLE `empleados` (
   `dependiente` varchar(500) DEFAULT NULL,
   `direccion_oficina` text,
   `direccion_domicilio` text,
-  `titulacion` text,
-  `anos_laboral` int(11) DEFAULT NULL,
   `imagenes` text,
+  `id_categoria` varchar(45) DEFAULT NULL,
+  `id_mobil` varchar(45) DEFAULT NULL,
+  `id_cuenta` varchar(45) DEFAULT NULL,
+  `ins_user` varchar(500) DEFAULT NULL,
+  `ins_fecha` datetime DEFAULT NULL,
+  `upd_user` varchar(500) DEFAULT NULL,
+  `upd_fecha` datetime DEFAULT NULL,
   `ip` varchar(250) DEFAULT NULL,
-  `anulado` varchar(1) DEFAULT '0'
+  `verificado` varchar(1) DEFAULT '0',
+  `anulado` varchar(1) DEFAULT '0',
+  `ext1` text,
+  `ext2` text,
+  `ext3` text,
+  `ext4` text,
+  `ext5` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1294,14 +1297,17 @@ CREATE TABLE `servicios` (
   `codigo` varchar(500) DEFAULT NULL,
   `nombre` text,
   `descripcion` text,
-  `precio` double DEFAULT NULL,
-  `precio1` double DEFAULT NULL,
-  `precio2` double DEFAULT NULL,
-  `precio3` double DEFAULT NULL,
-  `precio_compra` double DEFAULT NULL,
+  `comentarios` text,
+  `precio` double DEFAULT '0',
+  `precio1` double DEFAULT '0',
+  `precio2` double DEFAULT '0',
+  `precio3` double DEFAULT '0',
+  `precio_compra` double DEFAULT '0',
   `cantidad` int(11) DEFAULT NULL,
   `pro_inv_max` int(11) DEFAULT NULL,
   `pro_inv_min` int(11) DEFAULT NULL,
+  `und_med` varchar(500) DEFAULT NULL,
+  `por_desperdicio` varchar(500) DEFAULT NULL,
   `tax` double DEFAULT NULL,
   `islr` double DEFAULT NULL,
   `id_cat` int(11) DEFAULT NULL,
@@ -1788,18 +1794,4 @@ ALTER TABLE `servicios_cat`
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
-  INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `email`, `tel`, `fecha_emis`, `fecha_login`, `usuario`, `clave`, `foto`, `color`, `pais`, `tipo`, `cargo`, `anulado`) VALUES
-(1, 'SUPER', 'USUARIO', 'M', 'super@gmail.com', '04141331946', '2016-10-18 00:00:00', '2017-01-14 12:45:51', 'super@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'hombre.jpg', '#212121', 'venezuela', 'SUPERUSER', 'PROGRAMADOR', '0'),
-(2, 'Melanie', 'Hicks', 'F', 'cobros@gmail.com', '+861-36-6593225', '2017-01-14 09:54:37', '2017-01-14 12:37:05', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'mujer.jpg', 'Totam blanditiis tempore eu id nisi laboriosam officia repellendus Hic totam maxime id ut', 'Qui consectetur optio ullamco vitae sit impedit', 'COBROS', 'Nihil quas repellendus Qui quia duis laboris vitae iste dolor reiciendis doloremque dolores magni velit', '0'),
-(3, 'Tamara', 'Macias', 'M', 'ventas@gmail.com', '+913-97-1516515', '2017-01-14 09:56:38', '2017-01-14 10:31:44', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'mujer.jpg', 'Velit quia incidunt duis numquam voluptas irure eaque aut expedita magna pariatur Recusandae Sit est nobis magni voluptatem', 'Ipsum vel reprehenderit voluptate ut praesentium dolorum', 'VENTAS', 'Architecto praesentium in irure aliquid enim id velit asperiores', '0'),
-(4, 'Helen', 'Shaw', 'M', 'compras@gmail.com', '+357-21-4896404', '2017-01-14 10:17:16', '2017-01-14 10:18:03', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'hombre.jpg', 'Exercitationem aperiam amet nobis eiusmod quod laboriosam nulla quos veritatis blanditiis illum voluptatem error lorem eveniet pariatur Adipisci reiciendis consequatur', 'Do commodi laudantium aliqua Non perferendis beatae duis reiciendis omnis accusamus ullamco et odit illum in eos eum', 'COMPRAS', 'Perspiciatis eiusmod culpa laborum Omnis aspernatur omnis aut', '0'),
-(5, 'Cora', 'Mckinney', 'M', 'pagos@gmail.com', '+594-25-9446618', '2017-01-14 10:24:42', '2017-01-14 12:36:27', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'mujer.jpg', 'Officiis saepe minim omnis fugiat', 'Id praesentium et modi cumque facere commodi rerum deserunt autem ut sit quo suscipit molestias', 'PAGOS', 'Qui labore saepe sint autem eiusmod et eos et similique id', '0'),
-(6, 'Nayda', 'Witt', 'F', 'administrador@gmail.com', '+568-85-1521677', '2017-01-14 10:27:22', '2017-01-14 10:27:34', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'mujer.jpg', 'Vel irure nemo asperiores quasi odit fugiat cum', 'Quia asperiores nulla nostrum eum non qui quis non non eu at amet excepturi laboris fuga', 'ADMINISTRADOR', 'Excepteur rerum consectetur est soluta reprehenderit numquam officiis cupiditate sint placeat modi laborum Voluptate veritatis maiores molestias provident repudiandae velit', '0'),
-(7, 'Cody', 'Mcguire', 'F', 'operador@gmail.com', '+724-91-5123427', '2017-01-14 10:28:27', '2017-01-14 10:28:38', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'hombre.jpg', 'Quod inventore rerum officiis accusantium facilis similique qui omnis harum quisquam aperiam molestias libero', 'Commodo nulla quisquam et quia obcaecati ad magni et rerum aspernatur id incididunt consequuntur ab in', 'OPERADOR', 'Numquam nostrud blanditiis molestias duis deserunt suscipit aut dolorum', '0');
-
-INSERT INTO `seguimiento_cat` (`id`, `nombre`, `anulado`) VALUES
-(1, 'EJECUTIVO Y COMERCIAL', 0),
-(2, 'FINANCIERO', 0),
-(3, 'LEGAL', 0),
-(4, 'ADMINISTRATIVO Y CONTABLE', 0),
-(5, 'TECNOLOGIA', 0);
+  
