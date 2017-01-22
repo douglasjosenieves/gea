@@ -1,4 +1,4 @@
-<?php require_once 'nav_define.php'; ?>
+
 <script type="text/javascript">var usuarioOnline = <?php echo $_SESSION['usuario']['Id']; ?>;</script>
 <header id="header" class="hidden-print">
 		<h1 class="logo">

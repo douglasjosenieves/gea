@@ -1,6 +1,3 @@
-<?php
-require_once 'nav_define.php';
-?>
 
 
 

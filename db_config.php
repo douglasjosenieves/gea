@@ -16,19 +16,4 @@ function round_up($number, $precision = 3)
     return (ceil($number * $fig) / $fig);
 }
 
-/*========================================
-=            Version 1.5 Gea             =
-========================================*/
-/*---------- 
-La ultima version se acomodo
-1) tabla de empleados
-2) Menu define se cambio la variables
-
-
-  ----------*/
-
-
-
-/*=====  End of Version 1.5 Gea   ======*/
-
 ?>
