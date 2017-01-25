@@ -67,7 +67,7 @@ INSERT INTO `obras` (`id`, `nombres`, `apellidos`, `documento`, `cliente`, `pais
 --
 
 INSERT INTO `obras_detalle` (`id`, `id_doc`, `doc_id`, `doc_desc`, `anulado`) VALUES
-(1, 8, '1', 'Douglas C.A', ''),
+(1, 1, '1', 'CLIENTE DEMO CA', ''),
  
 
 --
