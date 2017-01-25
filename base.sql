@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.5.1
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-01-2017 a las 22:29:00
--- Versión del servidor: 5.7.11
--- Versión de PHP: 5.6.19
+-- Tiempo de generación: 25-01-2017 a las 03:48:34
+-- Versión del servidor: 5.7.14
+-- Versión de PHP: 5.6.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -221,6 +221,47 @@ CREATE TABLE `chat` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `clientes`
+--
+
+CREATE TABLE `clientes` (
+  `id` int(11) NOT NULL,
+  `nombres` varchar(200) DEFAULT NULL,
+  `apellidos` varchar(200) DEFAULT NULL,
+  `documento` varchar(200) DEFAULT NULL,
+  `cliente` varchar(200) DEFAULT NULL,
+  `titulacion` varchar(200) DEFAULT NULL,
+  `pais` varchar(200) DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `movil` varchar(200) DEFAULT NULL,
+  `email2` varchar(200) DEFAULT NULL,
+  `movil2` varchar(200) DEFAULT NULL,
+  `direccion_oficina` text,
+  `direccion_domicilio` text,
+  `comentario` text,
+  `status` varchar(200) DEFAULT NULL,
+  `ins_user` varchar(200) DEFAULT NULL,
+  `upd_user` varchar(200) DEFAULT NULL,
+  `ins_fecha` datetime DEFAULT NULL,
+  `upd_fecha` datetime DEFAULT NULL,
+  `id_categoria` varchar(45) DEFAULT NULL,
+  `id_vendedor` varchar(45) DEFAULT NULL,
+  `id_movil` varchar(45) DEFAULT NULL,
+  `id_cuenta` varchar(45) DEFAULT NULL,
+  `imagenes` text,
+  `ip` varchar(200) DEFAULT NULL,
+  `anulado` varchar(1) DEFAULT '0',
+  `ext1` text,
+  `ext2` text,
+  `ext3` text,
+  `ext4` text,
+  `ext5` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `cobros`
 --
 
@@ -336,43 +377,6 @@ CREATE TABLE `compras_detalle` (
   `reg_tax_monto` text,
   `reg_subtotal` text,
   `reg_subtotal_con_tax` text,
-  `anulado` varchar(1) DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `contactos_web`
---
-
-CREATE TABLE `contactos_web` (
-  `id` int(11) NOT NULL,
-  `nombres` varchar(500) DEFAULT NULL,
-  `apellidos` varchar(500) DEFAULT NULL,
-  `documento` varchar(500) DEFAULT NULL,
-  `cliente` varchar(500) DEFAULT NULL,
-  `pais` varchar(500) DEFAULT NULL,
-  `email` varchar(500) DEFAULT NULL,
-  `email2` varchar(500) DEFAULT NULL,
-  `movil` varchar(500) DEFAULT NULL,
-  `movil2` varchar(500) DEFAULT NULL,
-  `pre_informacion` text,
-  `porque_espana` text,
-  `inversion` double DEFAULT NULL,
-  `status` varchar(500) DEFAULT NULL,
-  `tramitido_al_crm` varchar(1) DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL,
-  `elaborado_por` varchar(500) DEFAULT NULL,
-  `verificado` tinyint(1) DEFAULT '0',
-  `editado_por` varchar(500) DEFAULT NULL,
-  `editado_fecha` datetime DEFAULT NULL,
-  `fecha_nacimiento` date DEFAULT NULL,
-  `direccion_oficina` text,
-  `direccion_domicilio` text,
-  `titulacion` text,
-  `anos_laboral` int(11) DEFAULT NULL,
-  `imagenes` text,
-  `ip` varchar(250) DEFAULT NULL,
   `anulado` varchar(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -536,49 +540,6 @@ CREATE TABLE `cuenta_por_pagar` (
 --
 
 CREATE TABLE `empleados` (
-  `id` int(11) NOT NULL,
-  `nombres` varchar(500) DEFAULT NULL,
-  `apellidos` varchar(500) DEFAULT NULL,
-  `documento` varchar(500) DEFAULT NULL,
-  `cliente` varchar(500) DEFAULT NULL,
-  `titulacion` varchar(500) DEFAULT NULL,
-  `pais` varchar(500) DEFAULT NULL,
-  `email` varchar(500) DEFAULT NULL,
-  `email2` varchar(500) DEFAULT NULL,
-  `movil` varchar(500) DEFAULT NULL,
-  `movil2` varchar(500) DEFAULT NULL,
-  `comentarios` text,
-  `status` varchar(500) DEFAULT NULL,
-  `tipo` varchar(500) DEFAULT NULL,
-  `fecha_nacimiento` date DEFAULT NULL,
-  `fecha_inicio` date DEFAULT NULL,
-  `fecha_terminacion` date DEFAULT NULL,
-  `cargo` varchar(500) DEFAULT NULL,
-  `salario` double DEFAULT NULL,
-  `dependiente` varchar(500) DEFAULT NULL,
-  `direccion_oficina` text,
-  `direccion_domicilio` text,
-  `imagenes` text,
-  `id_categoria` varchar(45) DEFAULT NULL,
-  `id_mobil` varchar(45) DEFAULT NULL,
-  `id_cuenta` varchar(45) DEFAULT NULL,
-  `ins_user` varchar(500) DEFAULT NULL,
-  `ins_fecha` datetime DEFAULT NULL,
-  `upd_user` varchar(500) DEFAULT NULL,
-  `upd_fecha` datetime DEFAULT NULL,
-  `ip` varchar(250) DEFAULT NULL,
-  `verificado` varchar(1) DEFAULT '0',
-  `anulado` varchar(1) DEFAULT '0',
-  `ext1` text,
-  `ext2` text,
-  `ext3` text,
-  `ext4` text,
-  `ext5` text
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-CREATE TABLE `vendedores` (
   `id` int(11) NOT NULL,
   `nombres` varchar(500) DEFAULT NULL,
   `apellidos` varchar(500) DEFAULT NULL,
@@ -887,7 +848,7 @@ CREATE TABLE `inventario` (
   `por_desperdicio` varchar(500) DEFAULT NULL,
   `tax` double DEFAULT NULL,
   `islr` double DEFAULT NULL,
-  `id_cat` int(11) DEFAULT NULL,
+  `id_categoria` int(11) DEFAULT NULL,
   `estado` varchar(500) DEFAULT NULL,
   `stock` varchar(500) DEFAULT NULL,
   `tramitido_al_crm` varchar(1) DEFAULT NULL,
@@ -900,18 +861,6 @@ CREATE TABLE `inventario` (
   `ip` varchar(250) DEFAULT NULL,
   `anulado` varchar(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `inventario_cat`
---
-
-CREATE TABLE `inventario_cat` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(500) DEFAULT NULL,
-  `anulado` varchar(1) DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1265,33 +1214,37 @@ CREATE TABLE `pagos` (
 
 CREATE TABLE `proveedores` (
   `id` int(11) NOT NULL,
-  `nombres` varchar(500) DEFAULT NULL,
-  `apellidos` varchar(500) DEFAULT NULL,
-  `documento` varchar(500) DEFAULT NULL,
-  `cliente` varchar(500) DEFAULT NULL,
-  `pais` varchar(500) DEFAULT NULL,
-  `email` varchar(500) DEFAULT NULL,
-  `email2` varchar(500) DEFAULT NULL,
-  `movil` varchar(500) DEFAULT NULL,
-  `movil2` varchar(500) DEFAULT NULL,
-  `pre_informacion` text,
-  `porque_espana` text,
-  `inversion` double DEFAULT NULL,
-  `status` varchar(500) DEFAULT NULL,
-  `tramitido_al_crm` varchar(1) DEFAULT NULL,
-  `fecha` datetime DEFAULT NULL,
-  `elaborado_por` varchar(500) DEFAULT NULL,
-  `verificado` tinyint(1) DEFAULT '0',
-  `editado_por` varchar(500) DEFAULT NULL,
-  `editado_fecha` datetime DEFAULT NULL,
+  `nombres` varchar(200) DEFAULT NULL,
+  `apellidos` varchar(200) DEFAULT NULL,
+  `documento` varchar(200) DEFAULT NULL,
+  `cliente` varchar(200) DEFAULT NULL,
+  `titulacion` varchar(200) DEFAULT NULL,
+  `pais` varchar(200) DEFAULT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
+  `email` varchar(200) DEFAULT NULL,
+  `movil` varchar(200) DEFAULT NULL,
+  `email2` varchar(200) DEFAULT NULL,
+  `movil2` varchar(200) DEFAULT NULL,
   `direccion_oficina` text,
   `direccion_domicilio` text,
-  `titulacion` text,
-  `anos_laboral` int(11) DEFAULT NULL,
+  `comentario` text,
+  `status` varchar(200) DEFAULT NULL,
+  `ins_user` varchar(200) DEFAULT NULL,
+  `upd_user` varchar(200) DEFAULT NULL,
+  `ins_fecha` datetime DEFAULT NULL,
+  `upd_fecha` datetime DEFAULT NULL,
+  `id_categoria` varchar(45) DEFAULT NULL,
+  `id_vendedor` varchar(45) DEFAULT NULL,
+  `id_movil` varchar(45) DEFAULT NULL,
+  `id_cuenta` varchar(45) DEFAULT NULL,
   `imagenes` text,
-  `ip` varchar(250) DEFAULT NULL,
-  `anulado` varchar(1) DEFAULT '0'
+  `ip` varchar(200) DEFAULT NULL,
+  `anulado` varchar(1) DEFAULT '0',
+  `ext1` text,
+  `ext2` text,
+  `ext3` text,
+  `ext4` text,
+  `ext5` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1306,7 +1259,7 @@ CREATE TABLE `seguimiento` (
   `cliente` varchar(500) DEFAULT NULL,
   `asunto` text,
   `descripcion` text,
-  `categoria` varchar(500) DEFAULT NULL,
+  `id_categoria` varchar(500) DEFAULT NULL,
   `status` varchar(500) DEFAULT NULL,
   `tramitido_al_crm` varchar(1) DEFAULT NULL,
   `fecha` datetime DEFAULT NULL,
@@ -1316,18 +1269,6 @@ CREATE TABLE `seguimiento` (
   `anulado` varchar(1) DEFAULT '0',
   `adjuntos` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `seguimiento_cat`
---
-
-CREATE TABLE `seguimiento_cat` (
-  `id` int(11) NOT NULL,
-  `nombre` varchar(500) NOT NULL,
-  `anulado` tinyint(1) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -1353,7 +1294,7 @@ CREATE TABLE `servicios` (
   `por_desperdicio` varchar(500) DEFAULT NULL,
   `tax` double DEFAULT NULL,
   `islr` double DEFAULT NULL,
-  `id_cat` int(11) DEFAULT NULL,
+  `id_categoria` int(11) DEFAULT NULL,
   `estado` varchar(500) DEFAULT NULL,
   `stock` varchar(500) DEFAULT NULL,
   `tramitido_al_crm` varchar(1) DEFAULT NULL,
@@ -1370,13 +1311,50 @@ CREATE TABLE `servicios` (
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `servicios_cat`
+-- Estructura de tabla para la tabla `taxonomia`
 --
 
-CREATE TABLE `servicios_cat` (
+CREATE TABLE `taxonomia` (
   `id` int(11) NOT NULL,
-  `nombre` varchar(500) DEFAULT NULL,
-  `anulado` varchar(1) DEFAULT '0'
+  `nombre` varchar(200) DEFAULT NULL,
+  `slug` varchar(200) DEFAULT NULL,
+  `term_group` varchar(10) DEFAULT NULL,
+  `descripcion` text,
+  `ins_user` varchar(45) DEFAULT NULL,
+  `upd_user` varchar(45) DEFAULT NULL,
+  `ins_fecha` datetime DEFAULT NULL,
+  `upd_fecha` datetime DEFAULT NULL,
+  `ext1` varchar(45) DEFAULT NULL,
+  `ext2` varchar(45) DEFAULT NULL,
+  `ext3` varchar(45) DEFAULT NULL,
+  `ext4` varchar(45) DEFAULT NULL,
+  `ext5` varchar(45) DEFAULT NULL,
+  `anulado` varchar(1) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `taxonomia_relacion`
+--
+
+CREATE TABLE `taxonomia_relacion` (
+  `id` int(11) NOT NULL,
+  `id_taxonomia` int(11) DEFAULT NULL,
+  `taxonomia` varchar(200) DEFAULT NULL,
+  `descripcion` text,
+  `padre` bigint(20) DEFAULT NULL,
+  `contador` bigint(20) DEFAULT NULL,
+  `ins_user` varchar(45) DEFAULT NULL,
+  `upd_user` varchar(45) DEFAULT NULL,
+  `ins_fecha` datetime DEFAULT NULL,
+  `upd_fecha` datetime DEFAULT NULL,
+  `ext1` varchar(45) DEFAULT NULL,
+  `ext2` varchar(45) DEFAULT NULL,
+  `ext3` varchar(45) DEFAULT NULL,
+  `ext4` varchar(45) DEFAULT NULL,
+  `ext5` varchar(45) DEFAULT NULL,
+  `anulado` varchar(1) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -1402,6 +1380,53 @@ CREATE TABLE `usuarios` (
   `tipo` varchar(100) DEFAULT NULL,
   `cargo` varchar(500) DEFAULT NULL,
   `anulado` varchar(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `vendedores`
+--
+
+CREATE TABLE `vendedores` (
+  `id` int(11) NOT NULL,
+  `nombres` varchar(500) DEFAULT NULL,
+  `apellidos` varchar(500) DEFAULT NULL,
+  `documento` varchar(500) DEFAULT NULL,
+  `cliente` varchar(500) DEFAULT NULL,
+  `titulacion` varchar(500) DEFAULT NULL,
+  `pais` varchar(500) DEFAULT NULL,
+  `email` varchar(500) DEFAULT NULL,
+  `email2` varchar(500) DEFAULT NULL,
+  `movil` varchar(500) DEFAULT NULL,
+  `movil2` varchar(500) DEFAULT NULL,
+  `comentarios` text,
+  `status` varchar(500) DEFAULT NULL,
+  `tipo` varchar(500) DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_terminacion` date DEFAULT NULL,
+  `cargo` varchar(500) DEFAULT NULL,
+  `salario` double DEFAULT NULL,
+  `dependiente` varchar(500) DEFAULT NULL,
+  `direccion_oficina` text,
+  `direccion_domicilio` text,
+  `imagenes` text,
+  `id_categoria` varchar(45) DEFAULT NULL,
+  `id_mobil` varchar(45) DEFAULT NULL,
+  `id_cuenta` varchar(45) DEFAULT NULL,
+  `ins_user` varchar(500) DEFAULT NULL,
+  `ins_fecha` datetime DEFAULT NULL,
+  `upd_user` varchar(500) DEFAULT NULL,
+  `upd_fecha` datetime DEFAULT NULL,
+  `ip` varchar(250) DEFAULT NULL,
+  `verificado` varchar(1) DEFAULT '0',
+  `anulado` varchar(1) DEFAULT '0',
+  `ext1` text,
+  `ext2` text,
+  `ext3` text,
+  `ext4` text,
+  `ext5` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1445,6 +1470,12 @@ ALTER TABLE `chat`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `cobros`
 --
 ALTER TABLE `cobros`
@@ -1460,12 +1491,6 @@ ALTER TABLE `compras`
 -- Indices de la tabla `compras_detalle`
 --
 ALTER TABLE `compras_detalle`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `contactos_web`
---
-ALTER TABLE `contactos_web`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1496,14 +1521,6 @@ ALTER TABLE `cuenta_por_pagar`
 -- Indices de la tabla `empleados`
 --
 ALTER TABLE `empleados`
-  ADD PRIMARY KEY (`id`);
-
-
-
-  --
--- Indices de la tabla `vendedores`
---
-ALTER TABLE `vendedores`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1546,12 +1563,6 @@ ALTER TABLE `instaladores`
 -- Indices de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indices de la tabla `inventario_cat`
---
-ALTER TABLE `inventario_cat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1627,27 +1638,33 @@ ALTER TABLE `seguimiento`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `seguimiento_cat`
---
-ALTER TABLE `seguimiento_cat`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indices de la tabla `servicios`
 --
 ALTER TABLE `servicios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `servicios_cat`
+-- Indices de la tabla `taxonomia`
 --
-ALTER TABLE `servicios_cat`
+ALTER TABLE `taxonomia`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `taxonomia_relacion`
+--
+ALTER TABLE `taxonomia_relacion`
   ADD PRIMARY KEY (`id`);
 
 --
 -- Indices de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -1685,6 +1702,11 @@ ALTER TABLE `calendario`
 ALTER TABLE `chat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `clientes`
+--
+ALTER TABLE `clientes`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `cobros`
 --
 ALTER TABLE `cobros`
@@ -1698,11 +1720,6 @@ ALTER TABLE `compras`
 -- AUTO_INCREMENT de la tabla `compras_detalle`
 --
 ALTER TABLE `compras_detalle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `contactos_web`
---
-ALTER TABLE `contactos_web`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `cotizacion`
@@ -1763,11 +1780,6 @@ ALTER TABLE `instaladores`
 -- AUTO_INCREMENT de la tabla `inventario`
 --
 ALTER TABLE `inventario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT de la tabla `inventario_cat`
---
-ALTER TABLE `inventario_cat`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `inventario_entrada`
@@ -1835,14 +1847,22 @@ ALTER TABLE `seguimiento`
 ALTER TABLE `servicios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `servicios_cat`
+-- AUTO_INCREMENT de la tabla `taxonomia`
 --
-ALTER TABLE `servicios_cat`
+ALTER TABLE `taxonomia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `taxonomia_relacion`
+--
+ALTER TABLE `taxonomia_relacion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-  
+--
+-- AUTO_INCREMENT de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;

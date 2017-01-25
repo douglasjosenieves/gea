@@ -144,7 +144,7 @@ if (isset($_GET['id'])) {
 <div class="col-xs-12 col-sm-4 col-sm-offset-2">
 <div class="form-group">
 <label for="basicInput">Buscar:</label>
-<input type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+<input type="text" autocomplete="off" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
 </div>
 
 <div >
