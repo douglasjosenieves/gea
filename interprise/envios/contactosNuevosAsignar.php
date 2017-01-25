@@ -25,7 +25,7 @@ foreach ($operador as $key => $value) {
 if ($operador[$key] != '') {
 	# code...
 	//echo $operador[$key];
-$query = "UPDATE `contactos_web` SET `elaborado_por` = '".$operador[$key]."' WHERE `contactos_web`.`id` = '".$id[$key]."';";
+$query = "UPDATE `clientes` SET `elaborado_por` = '".$operador[$key]."' WHERE `clientes`.`id` = '".$id[$key]."';";
 $resul = mysql_query($query);
 
 }

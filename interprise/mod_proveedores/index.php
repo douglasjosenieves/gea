@@ -4,6 +4,8 @@ header('Location: ../../index.php');
 }
 
 require_once '../../db_connect.php';
+require_once 'envios/config.php';
+
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -15,7 +17,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  proveedores where id =$id");
+ $resul =  mysql_query("SELECT * FROM  ".TABLA." where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;
@@ -31,7 +33,7 @@ $data['data'][] = $row;
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>proveedores</title>
+	<title><?php ECHO TITULO ?></title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -85,7 +87,7 @@ $data['data'][] = $row;
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">proveedores</a>
+					<a href="#" title="#"><?php ECHO TITULO ?></a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="../index.php">Panel de control</a></li>
@@ -93,7 +95,7 @@ $data['data'][] = $row;
 				</ol>
 				
 				<div class="box rte">
-					<h2 class="boxHeadline">proveedores</h2>
+					<h2 class="boxHeadline"><?php ECHO TITULO ?></h2>
 					<h3 class="boxHeadlineSub">Datos del contacto</h3>
 <div class="row">
 
@@ -106,9 +108,9 @@ $data['data'][] = $row;
 </div>
 
 
-<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="elaborado_por" id="elaborado_por" placeholder="Elaborado Por:">
+<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="ins_user" id="ins_user" placeholder="Elaborado Por:">
 
-<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="editado_por" id="editado_por" placeholder="Elaborado Por:">
+<input  readonly type="hidden" required class="form-control" value="<?php echo $_SESSION['usuario']['Id']?>" name="upd_user" id="upd_user" placeholder="Elaborado Por:">
 
 
 <?php require_once '../asesor_funtion.php'; ?>
@@ -146,7 +148,7 @@ $data['data'][] = $row;
 
 								<div class="col-xs-12 col-sm-4">
 																<div class="form-group">
-																	<label for="basicInput">Contacto Nombre:</label>
+																	<label for="basicInput">Nombre del contacto:</label>
 											<input type="text" value="<?php echo $data['data'][0]['nombres'] ?>" required class="form-control" name="nombres" id="nombres" placeholder="Nombres:">
 																</div>
 															</div>
@@ -155,7 +157,7 @@ $data['data'][] = $row;
 								
 									<div class="col-xs-12 col-sm-4">
 																<div class="form-group">
-																	<label for="basicInput">Contacto Apellido:</label>
+																	<label for="basicInput">Apellido del contacto:</label>
 											<input type="text" value="<?php echo $data['data'][0]['apellidos'] ?>" required class="form-control" name="apellidos" id="apellidos" placeholder="Apellidos:">
 																</div>
 															</div>
@@ -167,12 +169,7 @@ $data['data'][] = $row;
 								<div class="form-group">
 									<label>País</label>
 									<select name="pais" id="pais" class="js-select ">
-										<option value="" selected>- Select país -</option>
-										<option value="PANAMA">Panamá</option>
-										<option value="ESPANA">España</option>
-											<option value="USA">Usa</option>
-
-											<option value="OTRO">Otro</option>
+									 <?php require_once '../paises.php'; ?>
 								 
 									</select>
 								</div>
@@ -239,8 +236,8 @@ $data['data'][] = $row;
 
 <div class="col-xs-12 col-sm-8">
 <div class="form-group">
-<label for="basicInput">Proveedor (Nombre)</label>
-<input type="text" required  value="<?php echo $data['data'][0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre del Cliente Fiscal">
+<label for="basicInput">Nombre del <?php echo TITULO2 ?> fiscal</label>
+<input type="text" required  value="<?php echo $data['data'][0]['cliente'] ?>"  class="form-control" name="cliente" id="cliente" placeholder="Nombre fiscal">
 </div>
 </div>
 
@@ -261,7 +258,7 @@ $data['data'][] = $row;
 					<div class="col-xs-12 col-sm-6">
 												<div class="form-group">
 													<label for="basicInput">Teléfono:</label>
-							<input type="text" value="<?php echo $data['data'][0]['movil2'] ?>" class="form-control" name="movil2" id="movil2" placeholder="Teléfono:">
+							<input type="text" value="<?php echo $data['data'][0]['movil2'] ?>" required  class="form-control" name="movil2" id="movil2" placeholder="Teléfono:">
 												</div>
 											</div>
 
@@ -281,13 +278,85 @@ $data['data'][] = $row;
 
 
 <div class="row">
-	
-	<div class="col-xs-12 col-sm-12">
-															<div class="form-group">
-																<label for="basicInput">Dirección</label>
-										<input type="text" value="<?php echo $data['data'][0]['direccion_oficina'] ?>"  class="form-control" name="direccion_oficina"  required  id="direccion_oficina" placeholder="Dirección">
-															</div>
-														</div>
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Dirección de oficina</label>
+<input type="text" value="<?php echo $data['data'][0]['direccion_oficina'] ?>" required class="form-control" name="direccion_oficina" id="direccion_oficina" placeholder="Dirección de oficina">
+</div>
+</div>
+
+
+
+														
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Representante</label>
+<?php 
+			
+$v=0;
+$dato ='';
+$datoid =array();
+$resulv =  mysql_query("SELECT * FROM vendedores where anulado <> 1");
+while($rowv =  mysql_fetch_array($resulv) ) { 
+$dato .= '<option value="';
+$dato .= $rowv['id'];
+$dato .= '">';
+$dato .= strtoupper($rowv['nombres'].' '.$rowv['apellidos']);
+$dato .= '</option>';
+$datoid[] = $rowv['id'];
+$v++;}
+?>
+
+<select required id="id_vendedor" name="id_vendedor" data-id=""  class="js-select">
+<option  value="" >- Seleccionar -</option>
+
+<?php echo 	$dato  ?>
+</select>
+</div>
+</div>
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Categoria</label>
+<?php 
+			
+$v=0;
+$categoria ='';
+$categoriaid =array();
+$resulv =  mysql_query("SELECT * FROM taxonomia a, taxonomia_relacion b where a.id = b.id_taxonomia and b.taxonomia = '".TAXONOMIA."' and a.anulado <> 1");
+while($rowv =  mysql_fetch_array($resulv) ) { 
+$categoria .= '<option value="';
+$categoria .= $rowv['id'];
+$categoria .= '">';
+$categoria .= strtoupper($rowv['nombre']);
+$categoria .= '</option>';
+ 
+$v++;}
+?>
+
+<select required id="id_categoria" name="id_categoria" data-id=""  class="js-select">
+<option  value="" >- Seleccionar -</option>
+
+<?php echo 	$categoria  ?>
+</select>
+</div>
+</div>
+
+
+														
+</div>
+<div class="row">
+
+<div class="col-xs-12 col-sm-12">
+<div class="form-group">
+<label for="textarea-autosize">Comentario:</label>
+<textarea id="textarea-autosize" name="comentario" class="js-autogrow form-control" placeholder="Comienza a escribir y presiona pocas veces 'enter' ... " rows="2"><?php echo $data['data'][0]['comentario'] ?></textarea>
+</div>
+</div>
+
 </div>
 
 <div class="row">
@@ -298,8 +367,8 @@ $data['data'][] = $row;
 <select id="status" required name="status" class="js-select ">
  
 <option value="" >- Select Status -</option>
-<option value="ACTIVO">ACTIVO</option>
 <option value="INTERESADO">INTERESADO</option>								
+<option value="ACTIVO">ACTIVO</option>
 <option value="DESCARTADO">DESCARTADO</option>
 
 
@@ -337,7 +406,9 @@ $data['data'][] = $row;
  
 
 <input type="reset" value="Reset" class="btn bg-gray">
-<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button><span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
+<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button>
+<input type="button" value="Nuevo" onclick="window.location='index.php';" class="btn bg-blue">
+<span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
 					 
 
 
@@ -404,8 +475,14 @@ $data['data'][] = $row;
 		
 $(document).ready(function() {
 	$('.cargando').hide();
-	$('#pais').val('<?php echo $data['data'][0]['pais'] ?>').change();
-	$('#status').val('<?php echo $data['data'][0]['status'] ?>').change();
+ <?php if ($_GET['tipo']=='editar'): ?>
+ 		$('#id_categoria').val('<?php echo $data['data'][0]['id_categoria'] ?>').change();
+		$('#id_vendedor').val('<?php echo $data['data'][0]['id_vendedor'] ?>').change();
+		$('#pais').val('<?php echo $data['data'][0]['pais'] ?>').change();
+			$('#status').val('<?php echo $data['data'][0]['status'] ?>').change();
+ <?php endif ?>
+
+	
 });
 
 
@@ -421,10 +498,11 @@ $.ajax({
 	//dataType: 'json',
 	data: $('#formulario').serialize(),
 })
-.done(function(data) {
-	console.log(data);
-	//console.log("success");
-if (data==1) {
+ .done(function(data) {
+  console.log(data);
+  response = data.split('-');
+  //console.log(response[0]);
+if (response[0]==1) {
 
 swal({ 
   title: "Enviado!",
@@ -433,7 +511,13 @@ swal({
   },
   function(){
  $('#formulario')[0].reset();
-location.reload();
+ <?php if ($_GET['tipo']!='editar'): ?>
+ window.location.replace(window.location.href + "?tipo=editar&id="+response[1]+""); 
+ <?php else: ?>
+location.reload();  
+<?php endif ?>
+
+
 });
 
 }

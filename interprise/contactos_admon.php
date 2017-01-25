@@ -133,7 +133,7 @@ require_once 'asesor_funtion.php';
 
 	                  require_once 'status_funtion.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `contactos_web` order by id desc ");
+					$resul =  mysql_query("SELECT * FROM `clientes` order by id desc ");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									

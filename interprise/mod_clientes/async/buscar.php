@@ -1,5 +1,6 @@
 <?php 
 require_once __DIR__ . '../../../../db_connect.php';
+require_once '../envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -12,7 +13,7 @@ $texto = $_POST['parametro'];
  
 			
 				$i=0;
-$resul =  mysql_query("SELECT * FROM  contactos_web where anulado <> 1 and cliente like '%".$texto."%' OR nombres like '%".$texto."%'  OR  apellidos like '%".$texto."%'  ");
+$resul =  mysql_query("SELECT * FROM  ".TABLA." where anulado <> 1 and cliente like '%".$texto."%' OR nombres like '%".$texto."%'  OR  apellidos like '%".$texto."%'  ");
 				while($row =  mysql_fetch_array($resul) ) {
 				
 								

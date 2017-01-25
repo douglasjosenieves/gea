@@ -55,7 +55,7 @@ $qry = "INSERT INTO `inventario`
 
 `tax`,
 `islr`,
-`id_cat`,
+`id_categoria`,
 `estado`,
 `stock`,
 `tramitido_al_crm`,
@@ -86,7 +86,7 @@ $precio_compra,
 
 $tax,
 $islr,
-'$id_cat',
+'$id_categoria',
 '$estado',
 '$stock',
 '$tramitido_al_crm',
@@ -104,23 +104,20 @@ $islr,
 $resul = mysql_query($qry);
 
 
-
-
+ 
+$id_asignado = mysql_insert_id();
 
 if ($resul==1) {
   
-echo $resul;
+echo $resul.'-'.$id_asignado;
 }
 
 else
 {
 echo 'false'.$qry;
-
-
 }
-
+die;
  
-
  
 
   

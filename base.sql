@@ -576,6 +576,49 @@ CREATE TABLE `empleados` (
   `ext5` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+
+
+CREATE TABLE `vendedores` (
+  `id` int(11) NOT NULL,
+  `nombres` varchar(500) DEFAULT NULL,
+  `apellidos` varchar(500) DEFAULT NULL,
+  `documento` varchar(500) DEFAULT NULL,
+  `cliente` varchar(500) DEFAULT NULL,
+  `titulacion` varchar(500) DEFAULT NULL,
+  `pais` varchar(500) DEFAULT NULL,
+  `email` varchar(500) DEFAULT NULL,
+  `email2` varchar(500) DEFAULT NULL,
+  `movil` varchar(500) DEFAULT NULL,
+  `movil2` varchar(500) DEFAULT NULL,
+  `comentarios` text,
+  `status` varchar(500) DEFAULT NULL,
+  `tipo` varchar(500) DEFAULT NULL,
+  `fecha_nacimiento` date DEFAULT NULL,
+  `fecha_inicio` date DEFAULT NULL,
+  `fecha_terminacion` date DEFAULT NULL,
+  `cargo` varchar(500) DEFAULT NULL,
+  `salario` double DEFAULT NULL,
+  `dependiente` varchar(500) DEFAULT NULL,
+  `direccion_oficina` text,
+  `direccion_domicilio` text,
+  `imagenes` text,
+  `id_categoria` varchar(45) DEFAULT NULL,
+  `id_mobil` varchar(45) DEFAULT NULL,
+  `id_cuenta` varchar(45) DEFAULT NULL,
+  `ins_user` varchar(500) DEFAULT NULL,
+  `ins_fecha` datetime DEFAULT NULL,
+  `upd_user` varchar(500) DEFAULT NULL,
+  `upd_fecha` datetime DEFAULT NULL,
+  `ip` varchar(250) DEFAULT NULL,
+  `verificado` varchar(1) DEFAULT '0',
+  `anulado` varchar(1) DEFAULT '0',
+  `ext1` text,
+  `ext2` text,
+  `ext3` text,
+  `ext4` text,
+  `ext5` text
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 -- --------------------------------------------------------
 
 --
@@ -1453,6 +1496,14 @@ ALTER TABLE `cuenta_por_pagar`
 -- Indices de la tabla `empleados`
 --
 ALTER TABLE `empleados`
+  ADD PRIMARY KEY (`id`);
+
+
+
+  --
+-- Indices de la tabla `vendedores`
+--
+ALTER TABLE `vendedores`
   ADD PRIMARY KEY (`id`);
 
 --

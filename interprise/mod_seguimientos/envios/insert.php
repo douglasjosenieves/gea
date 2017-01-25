@@ -14,29 +14,15 @@ setlocale(LC_TIME, 'es_VE'); # Localiza en español es_Venezuela
 date_default_timezone_set('America/Caracas');
 $fecha = date("Y-m-d H:i:s");
 
-//echo $_REQUEST['descripcion'];
- 
-//$id=$_REQUEST['id'];
-$categoria=$_REQUEST['categoria'];
-$status=$_REQUEST['status'];
-
-$id_contacto=$_REQUEST['id_contacto'];
-$cliente=$_REQUEST['cliente'];
- 
-
-$asunto=$_REQUEST['asunto'];
-$descripcion=$_REQUEST['descripcion'];
+extract($_POST);
 
  
- 
-$elaborado_por=$_REQUEST['elaborado_por'];
-
 
  
 
 $fecha = date("Y-m-d H:i:s");
 
-$qry = "INSERT INTO `seguimiento` ( `id_contacto`, `cliente`, `asunto`, `descripcion`, `categoria`, `status`, `tramitido_al_crm`, `fecha`, `elaborado_por`) 
+$qry = "INSERT INTO `seguimiento` ( `id_contacto`, `cliente`, `asunto`, `descripcion`, `id_categoria`, `status`, `tramitido_al_crm`, `fecha`, `elaborado_por`) 
 
 
 VALUES (
@@ -45,14 +31,14 @@ VALUES (
 '$cliente',
  '$asunto',
 '$descripcion',
-'$categoria',
+'$id_categoria',
 '$status', 
 'S',
 '$fecha',
 '$elaborado_por');";
 
 
-$resul2 = mysql_query("UPDATE `contactos_web` SET `verificado`='1' WHERE `id`=".$id_contacto.";");
+$resul2 = mysql_query("UPDATE `clientes` SET `verificado`='1' WHERE `id`=".$id_contacto.";");
 
 $resul = mysql_query($qry);
 

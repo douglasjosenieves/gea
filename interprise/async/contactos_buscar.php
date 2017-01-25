@@ -19,7 +19,7 @@ $cliente = $_POST['nombre'];
 				<?php 
 			
 				$i=0;
-				$resul =  mysql_query("SELECT *, CONCAT(id,' ',nombres,' ',apellidos) as nombre_completo FROM `contactos_web`  where nombres 
+				$resul =  mysql_query("SELECT *, CONCAT(id,' ',nombres,' ',apellidos) as nombre_completo FROM `clientes`  where nombres 
 					like '%".$cliente."%' OR apellidos like '%".$cliente."%' and anulado <> 1 ");
 				while($row =  mysql_fetch_array($resul) ) {
 				

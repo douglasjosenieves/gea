@@ -26,7 +26,7 @@ if ($tipo == 'asesor') {
 	
 
 
-$qry = "UPDATE `contactos_web` SET `elaborado_por`='$elaborado_por' WHERE `id`='$id';";
+$qry = "UPDATE `clientes` SET `elaborado_por`='$elaborado_por' WHERE `id`='$id';";
 $resul = mysql_query($qry);
 echo $resul ;
 
@@ -40,7 +40,7 @@ if ($tipo == 'anulado') {
 	
 
 
-$qry = "UPDATE `contactos_web` SET `anulado`='$anulado' WHERE `id`='$id';";
+$qry = "UPDATE `clientes` SET `anulado`='$anulado' WHERE `id`='$id';";
 $resul = mysql_query($qry);
 echo $resul ;
 

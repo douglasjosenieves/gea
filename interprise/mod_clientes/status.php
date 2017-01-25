@@ -5,13 +5,37 @@ header('Location: ../../index.php');
 //echo $_SESSION['usuario']['Tipo'].$_SESSION['usuario']['Nombre'].$_SESSION['usuario']['Apellido'].'asdasdasdsas' ;
 require_once '../../db_connect.php';
 require_once '../../PHPPaging.lib.php';
+require_once 'envios/config.php';
 
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");   
+
+$v=0;
+	/*<option value="ESPANA">España</option>*/
+$status ='';
+ 
+				$resulv =  mysql_query("SELECT distinct(status) FROM ".TABLA."");
+				while($rowv =  mysql_fetch_array($resulv) ) { 
+$status .= '<option value="';
+$status .= $rowv['status'];
+$status .= '">';
+$status .= strtoupper($rowv['status']);
+$status .= '</option>';
+ 
+
+            
+            //$teleoperador['teleoperador'][]=$row;
+					$v++;}
 ?>
+
+	 
+			
+
+
+
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -19,7 +43,7 @@ mysql_query("SET CHARACTER_SET utf");
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<title>Clientes</title>
+	<title><?php echo TITULO ?> por status</title>
 	<meta name="description" content="...">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
@@ -65,7 +89,7 @@ mysql_query("SET CHARACTER_SET utf");
 		<div class="pageContent extended">
 			<div class="container">
 				<h1 class="pageTitle">
-					<a href="#" title="#">Clientes </a>
+					<a href="#" title="#"><?php echo TITULO ?> por status</a>
 				</h1>
 				<ol class="breadcrumb">
 					<li><a href="index.php">Sharpen</a></li>
@@ -78,20 +102,39 @@ mysql_query("SET CHARACTER_SET utf");
 					<h2 class="boxHeadline">Table</h2>
 					<h3 class="boxHeadlineSub">Reporte</h3>
 				 
+				 <div class="row">
+				
+
+
+				 	
+				 	<div class="col-xs-12 col-sm-4">
+				 	<div class="form-group">
+				 	<label for="basicInput">Status:</label>
+				 <select  name="status[]"  id="status"   class="js-select status">
+										<option  value="" >- Seleccionar -</option>
+										<?php echo 	$status  ?>
+										
+								 
+									</select>
+				 	</div>
+				 	</div>
+				 	 	
+	
+
+				 </div>
 					
 					<div class="tableWrap dataTable table-responsive js-select">
 								<table  id="tabla" class="table">
 							<thead>
 								<tr>
 									<th >Id</th>
-									<th>Cliente</th>
+								 <th><?php ECHO TITULO ?></th>
 										 
-									<th>Fecha</th>
+								 
 									<th>email</th>
-									<th>Asesor</th>
+								 
 									<th>status</th>
 									<th>Procesos</th>
-								
 								</tr>
 							</thead>
 							<tbody>
@@ -110,7 +153,23 @@ mysql_query("SET CHARACTER_SET utf");
 require_once '../asesor_funtion.php';
 	                  require_once '../status_funtion.php';
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1");
+
+if (isset($_GET['status'])) {
+
+	$resul =  mysql_query("SELECT * FROM `".TABLA."` where anulado <> 1 and status = '".$_GET['status']."'");
+	# code...
+}
+
+
+else {
+
+$resul =  mysql_query("SELECT * FROM `".TABLA."` where anulado <> 1");
+
+}
+					
+					
+
+
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									
@@ -125,13 +184,12 @@ require_once '../asesor_funtion.php';
 																		
 					
 					
-					<tr>
-						<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
-						<td><?php echo $opciones['opciones'][$i]['cliente']; ?></td>
+					<td> <?php echo $opciones['opciones'][$i]['id']; ?></td>
+						<td><?php echo $opciones['opciones'][$i]['cliente']  ?></td>
 				 
-					    <td><?php echo $opciones['opciones'][$i]['fecha']; ?></td>
+					 
 					    <td><?php echo $opciones['opciones'][$i]['email']; ?></td>
-					    <td><?php echo nombreAsessor($opciones['opciones'][$i]['elaborado_por']); ?></td>
+					    
 					    <td><?php echo statusColor($opciones['opciones'][$i]['status']); ?></td>
 					    <td>
 					    	
@@ -141,11 +199,11 @@ require_once '../asesor_funtion.php';
 								Procesos <i class="fa fa-chevron-down"></i>
 							</button>
 							<ul class="dropdown-menu">
-								<li><a href="../mod_clientes/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
+								<li><a href="../<?php echo MODULO ?>/index.php?tipo=editar&id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="#"><i class="fa fa-eye"></i> Gestionar</a></li>
 							
 						
 								
-								<li><a href="reporte-clientes-excel.php?id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="Exportar a excel"><i class="fa fa-file-excel-o"></i> Exportar a EXCEL</a></li>
+								<li><a href="reporte-excel.php?id=<?php echo $opciones['opciones'][$i]['id']; ?>" title="Exportar a excel"><i class="fa fa-file-excel-o"></i> Exportar a EXCEL</a></li>
 							</ul>
 						</div>
 					  
@@ -203,7 +261,7 @@ require_once '../asesor_funtion.php';
 	<script src="../assets/js/chartist.min.js"></script>
 	<script src="../assets/js/datatables.min.js"></script>
 	<script src="../assets/js/jquery.fullscreen.min.js"></script>
-	<script src="../assets/js/app.min.js"></script>
+	<script src="../assets/js/app_index.min.js"></script>
 
 	<div class="visible-xs visible-sm extendedChecker"></div>
 <script type="text/javascript">
@@ -214,6 +272,19 @@ $(document).ready(function() {
 } );
 	
  
+ jQuery(document).ready(function($) {
+ 	
+
+ 	$('body').on('change', '#status', function(event) {
+ 		event.preventDefault();
+ 		/* Act on the event */
+
+ 		var seleccion = $(this).val();
+  window.location="status.php?status="+seleccion+"";
+ 
+ 	 
+ 	});
+ });
 
 </script>
 </body>

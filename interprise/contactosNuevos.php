@@ -133,7 +133,7 @@ $teleoid[] = $rowv['id'];
 
 
 				$i=0;
-				$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and elaborado_por ='website'");
+				$resul =  mysql_query("SELECT * FROM `clientes` where anulado <> 1 and elaborado_por ='website'");
 				while($row =  mysql_fetch_array($resul) ) {
 				
 								

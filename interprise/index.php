@@ -14,7 +14,7 @@ mysql_query("SET CHARACTER_SET utf");
 
 $resul =  mysql_query("(SELECT sum(total_total) as total FROM cotizacion where anulado <> 1) union all  # TOTAL COTIZACIONES
 (SELECT sum(total_total) as total FROM factura where anulado <> 1) union all  # TOTAL FACTURACION
-(SELECT count(id) as total FROM contactos_web where anulado <> 1) union all   # TOTAL CLIENTES
+(SELECT count(id) as total FROM clientes where anulado <> 1) union all   # TOTAL CLIENTES
 (SELECT count(id) as total FROM proveedores where anulado <> 1) union all   # TOTAL PROVEEDORES
 (SELECT count(id) as total FROM  inventario where anulado <> 1) union all   # ARTICULOS
 (SELECT count(id) as total FROM obras where anulado <> 1)  # PROYECTOS");

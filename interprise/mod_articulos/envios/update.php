@@ -59,7 +59,7 @@ SET
 
 `tax` = '$tax',
 `islr` = '$islr',
-`id_cat` = '$id_cat',
+`id_categoria` = '$id_categoria',
 `estado` = '$estado',
 `stock` = '$stock',
 `editado_por` = '$editado_por',

@@ -41,7 +41,7 @@ $con = new DB_CONNECT();
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");   
 
-$qry=mysql_query("SELECT id, nombres, apellidos, fecha, email, movil FROM contactos_web where date(fecha) between '$start' and '$fin' and anulado <> 1" ) ; 
+$qry=mysql_query("SELECT id, nombres, apellidos, fecha, email, movil FROM clientes where date(fecha) between '$start' and '$fin' and anulado <> 1" ) ; 
 $campos = mysql_num_fields($qry) ; 
 $i=0; 
 echo "<table><tr>"; 

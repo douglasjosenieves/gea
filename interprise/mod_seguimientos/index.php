@@ -3,7 +3,7 @@ if (!isset($_SESSION['usuario'] )) {
 header('Location: ../../index.php');
 }
 require_once '../../db_connect.php';
-
+require_once 'envios/config.php';
 
 // connecting to db
 $con = new DB_CONNECT();
@@ -20,7 +20,7 @@ if (isset($_GET['id'])) {
 
 
                     $c=0;
-                    $resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and id='".$id."'");
+                    $resul =  mysql_query("SELECT * FROM `clientes` where anulado <> 1 and id='".$id."'");
                     while($row =  mysql_fetch_array($resul) ) {
                                                         
                     // echo $row['nombre'].'<br>';;
@@ -185,46 +185,32 @@ if (isset($_GET['id'])) {
 						<div class="row">
 	
 
-	<div class="col-xs-12 col-sm-4 i">
-								<div class="form-group">
-									<label>Categoria:</label>
-									<select name="categoria" required class="js-select">
-									
-									<?php if (isset($_GET['editar_caso'])) {
-                                        echo  '<option value="';
-										echo  $casos['casos'][0]['categoria'];
-										echo '" selected>';
-										echo  $casos['casos'][0]['categoria'];
-										echo '</option>';
-										# code...
-									} ?>
-									<option value=""  >- Select categoria -</option>
-										<?php 
+	 <div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Categoria</label>
+<?php 
+      
+$v=0;
+$categoria ='';
+$categoriaid =array();
+$resulv =  mysql_query("SELECT * FROM taxonomia a, taxonomia_relacion b where a.id = b.id_taxonomia and b.taxonomia = '".TAXONOMIA."' and a.anulado <> 1");
+while($rowv =  mysql_fetch_array($resulv) ) { 
+$categoria .= '<option value="';
+$categoria .= $rowv['id'];
+$categoria .= '">';
+$categoria .= strtoupper($rowv['nombre']);
+$categoria .= '</option>';
+ 
+$v++;}
+?>
 
+<select required id="id_categoria" name="id_categoria" data-id=""  class="js-select">
+<option  value="" >- Seleccionar -</option>
 
-                    $i=0;
-                    $resul =  mysql_query("SELECT * FROM `seguimiento_cat` where anulado <> 1 ");
-                    while($row =  mysql_fetch_array($resul) ) {
-                    
-                          ?>
-
-<option value="<?php echo $row['nombre'] ?>"><?php echo $row['nombre'] ?></option>
-                        
-                         <?php               
-                    //echo $row['nombre_opcion'].'<br>';;
-                    $opciones['opciones'][]=$row;
-                    
-                      }
-                     ?>
-
-
-										
-									
-
-										
-									</select>
-								</div>
-							</div>
+<?php echo  $categoria  ?>
+</select>
+</div>
+</div>
 					
 	
 
@@ -359,7 +345,7 @@ require_once '../status_funtion_abierto_cerrado.php';
 									<td><?php echo $contacto['contacto'][$i]['fecha']?></td>
 										<td><?php echo $contacto['contacto'][$i]['editado_fecha']?></td>
 									<td><?php echo $contacto['contacto'][$i]['asunto']?></td>
-										<td><?php echo $contacto['contacto'][$i]['categoria']?></td>
+										<td><?php echo categoria($contacto['contacto'][$i]['id_categoria'])?></td>
 									<td><?php echo statusColor($contacto['contacto'][$i]['status'])?></td>
 								</tr>
 							

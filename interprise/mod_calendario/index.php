@@ -15,7 +15,7 @@ $id=$_GET['id'];
 if (isset($id)) {
 	# code...
 
- $resul =  mysql_query("SELECT * FROM  contactos_web where id =$id");
+ $resul =  mysql_query("SELECT * FROM  clientes where id =$id");
 $data = array();
 while($row =  mysql_fetch_array($resul) ) {
 $data['data'][] = $row;

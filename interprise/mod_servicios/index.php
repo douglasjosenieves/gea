@@ -4,6 +4,7 @@ header('Location: ../index.php');
 }
 
 require_once '../../db_connect.php';
+require_once 'envios/config.php';
 // connecting to db
 $con = new DB_CONNECT();
 //sleep(10);
@@ -131,7 +132,7 @@ $data['data'][] = $row;
 <div class="col-xs-12 col-sm-4 col-sm-offset-2">
 <div class="form-group">
 <label for="basicInput">Buscar:</label>
-<input type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+<input autocomplete="off" type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
 </div>
 
 <div >
@@ -267,40 +268,34 @@ $data['data'][] = $row;
  
 	<div class="row">
 		
-<!--======================================================
-=            Buscar lista en la base de datos            =
-=======================================================-->
+ <div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Categoria</label>
 <?php 
-			
+      
 $v=0;
-$dato ='';
-$datoid =array();
-$resulv =  mysql_query("SELECT * FROM inventario_cat where anulado <> 1");
+$categoria ='';
+$categoriaid =array();
+$resulv =  mysql_query("SELECT * FROM taxonomia a, taxonomia_relacion b where a.id = b.id_taxonomia and b.taxonomia = '".TAXONOMIA."' and a.anulado <> 1");
 while($rowv =  mysql_fetch_array($resulv) ) { 
-$dato .= '<option value="';
-$dato .= $rowv['id'];
-$dato .= '">';
-$dato .= strtoupper($rowv['nombre']);
-$dato .= '</option>';
-$datoid[] = $rowv['id'];
+$categoria .= '<option value="';
+$categoria .= $rowv['id'];
+$categoria .= '">';
+$categoria .= strtoupper($rowv['nombre']);
+$categoria .= '</option>';
+ 
 $v++;}
 ?>
 
-	
-<!--====  End of Buscar lista en la base de datos  ====-->
-		
-<div class="col-xs-12 col-sm-4">
-<div class="form-group">
-<label for="basicInput">Categoría:</label>
-
-<select required id="id_cat" name="id_cat" data-id=""  class="js-select">
+<select required id="id_categoria" name="id_categoria" data-id=""  class="js-select">
 <option  value="" >- Seleccionar -</option>
-<?php echo 	$dato  ?>
-</select>	
 
+<?php echo  $categoria  ?>
+</select>
 </div>
 </div>
 
+ 
 
 
 <div class="col-xs-12 col-sm-4">
@@ -467,7 +462,8 @@ if ($img[0] !='') {
 
  }
  ?>
-<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button><span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
+<button type="submit"  id="boton" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i>Loading..." class="btn btn-primary"><?php echo $botonNombre; ?> <i class="fa fa-save"></i></button>
+<input type="button" value="Nuevo" onclick="window.location='index.php';" class="btn bg-blue"><span class="cargando"><i class='fa fa-circle-o-notch fa-spin'></i>Loading...</span>
 </div> <!-- en box rate -->
 
 <!--====  End of botones guardar y reset  ====-->
@@ -532,10 +528,12 @@ if ($img[0] !='') {
 
 	$(document).ready(function() {
 			$('.cargando').hide();
-$('#id_cat').val('<?php echo $data['data'][0]['id_cat'] ?>').change();
+			 <?php if ($_GET['tipo']=='editar'): ?>
+$('#id_categoria').val('<?php echo $data['data'][0]['id_categoria'] ?>').change();
 $('#estado').val('<?php echo $data['data'][0]['estado'] ?>').change();
 $('#stock').val('<?php echo $data['data'][0]['stock'] ?>').change();
 $('#und_med').val('<?php echo $data['data'][0]['und_med'] ?>').change();
+ <?php endif ?>
 
 		
 	 var imgr = $('#imgRemover').val();
@@ -637,12 +635,11 @@ $.ajax({
  
     data: $('#formulario').serialize(),
 })
-.done(function(data) {
-    console.log("success");
-    console.log(data);
-
-   
-    if (data==1) {
+ .done(function(data) {
+  console.log(data);
+  response = data.split('-');
+  //console.log(response[0]);
+if (response[0]==1) {
 
 swal({ 
   title: "Enviado!",
@@ -651,11 +648,16 @@ swal({
   },
   function(){
  $('#formulario')[0].reset();
-location.reload();
+ <?php if ($_GET['tipo']!='editar'): ?>
+ window.location.replace(window.location.href + "?tipo=editar&id="+response[1]+""); 
+ <?php else: ?>
+location.reload();  
+<?php endif ?>
+
+
 });
 
 }
-
  
 
 else {

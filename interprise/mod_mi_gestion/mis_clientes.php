@@ -111,7 +111,7 @@ mysql_query("SET CHARACTER_SET utf");
 
 	                $idusuario =  $_SESSION['usuario']['Id'] ;
 					$i=0;
-					$resul =  mysql_query("SELECT * FROM `contactos_web` where anulado <> 1 and elaborado_por = '".$idusuario."'");
+					$resul =  mysql_query("SELECT * FROM `clientes` where anulado <> 1 and elaborado_por = '".$idusuario."'");
 					while($row =  mysql_fetch_array($resul) ) {
 					
 									

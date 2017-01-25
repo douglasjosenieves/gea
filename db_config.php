@@ -9,6 +9,9 @@ define('IMPUESTO',12);
 define('RIF','RUC');
 define('IVA','ITBMS');
 define('BASE_URL', 'http://localhost/gea/interprise/'); 
+define('PAIS', '<option value="PA" selected>Panamá</option>'); 
+
+
 
 function round_up($number, $precision = 3)
 {

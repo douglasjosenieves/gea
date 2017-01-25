@@ -1,4 +1,5 @@
 <?php session_start(); 
+require_once 'envios/config.php';
 
 header("Content-Type: application/vnd.ms-excel");
 
@@ -6,8 +7,8 @@ header("Expires: 0");
 
 header("Cache-Control: must-revalidate, post-check=0, pre-check=0");
 
-header("content-disposition: attachment;filename=clientes.xls");
-$tabla ='form_fichas_opcione';
+header("content-disposition: attachment;filename=".TABLA.".xls");
+$tabla = TABLA;
  ?> 
 
 <html>
@@ -15,7 +16,7 @@ $tabla ='form_fichas_opcione';
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-<title>clientes</title>
+<title><?php echo TABLA ?></title>
 
  </head>
  <body>
@@ -37,7 +38,7 @@ $con = new DB_CONNECT();
 mysql_query("SET NAMES utf8");
 mysql_query("SET CHARACTER_SET utf");   
 
-$qry=mysql_query("SELECT * FROM `contactos_web` where id = $id" ) ; 
+$qry=mysql_query("SELECT * FROM `".TABLA."` where id = $id" ) ; 
 $campos = mysql_num_fields($qry) ; 
 $i=0; 
 echo "<table><tr>"; 

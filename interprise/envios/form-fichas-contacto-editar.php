@@ -124,7 +124,7 @@ $hijos_documentos_array=serialize($hijos_documentos);
 
 
 
-$qry = "UPDATE `contactos_web` SET 
+$qry = "UPDATE `clientes` SET 
 
 `nombres`= '$nombres', 
 `apellidos`= '$apellidos', 
@@ -187,7 +187,7 @@ $qry = "UPDATE `contactos_web` SET
 
 `imagenes`= '$imagenes_array'
 
-WHERE `contactos_web`.`id` = ".$referencia.";";
+WHERE `clientes`.`id` = ".$referencia.";";
  
 
 $resul = mysql_query($qry);

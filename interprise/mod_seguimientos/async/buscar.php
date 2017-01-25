@@ -12,7 +12,7 @@ $texto = $_POST['parametro'];
  
 			
 				$i=0;
-$resul =  mysql_query("SELECT * FROM  contactos_web where anulado <> 1 and cliente like '%".$texto."%'");
+$resul =  mysql_query("SELECT * FROM  clientes where anulado <> 1 and cliente like '%".$texto."%'");
 				while($row =  mysql_fetch_array($resul) ) {
 				
 								

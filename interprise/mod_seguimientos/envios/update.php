@@ -31,7 +31,7 @@ SET
 
 `asunto` = '$asunto',
 `descripcion` = '$descripcion',
-`categoria` = '$categoria',
+`id_categoria` = '$id_categoria',
 `status` = '$status',
 
 `editado_por` = '$editado_por',
