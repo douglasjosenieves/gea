@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 25-01-2017 a las 03:52:14
+-- Tiempo de generación: 25-01-2017 a las 14:08:32
 -- Versión del servidor: 5.7.14
 -- Versión de PHP: 5.6.25
 
@@ -21,16 +21,6 @@ SET time_zone = "+00:00";
 INSERT INTO `cajas_bancos` (`id`, `descripcion`, `tipo`, `numero_cuenta`, `direccion`, `ejecutivo`, `saldo_inicial`, `saldo_final`, `tramitido_al_crm`, `elaborado_por`, `fecha`, `verificado`, `editado_por`, `editado_fecha`, `imagenes`, `ip`, `anulado`, `ext1`, `ext2`, `ext3`, `ext4`, `ext5`) VALUES
 (1, 'CAJA MENUDA', 'CAJA', '', '', '', 10000, 15074.48, '', '1', '2017-01-15 15:09:51', '', '1', '2017-01-24 18:48:44', '', '::1', '0', '', '', '', '', ''),
 (2, 'BANESCO PANAMA DEMO', 'BANCO', '0000000000000', 'BANESCO PANAMA CITY', 'PRUEBA', 100, 100, '', '1', '2017-01-24 18:49:38', '', '1', '2017-01-24 19:29:59', '', '::1', '0', '', '', '', '', '');
-
---
--- Volcado de datos para la tabla `chat`
---
-
-INSERT INTO `chat` (`id`, `id_de`, `id_para`, `mensaje`, `fecha_envio`, `fecha_leido`, `envio_todos`, `visto`, `leido`, `ip`, `anulado`) VALUES
-(1, 1, 2, 'que mas', '2017-01-18 21:07:05', NULL, 0, 0, 0, '::1', 0),
-(2, 1, 4, 'como te va', '2017-01-18 21:14:47', '2017-01-18 21:15:50', 0, 1, 0, '::1', 0),
-(3, 1, 5, 'hola', '2017-01-18 21:19:43', NULL, 0, 0, 0, '::1', 0),
-(4, 1, 6, 'holas', '2017-01-18 22:07:56', NULL, 0, 0, 0, '::1', 0);
 
 --
 -- Volcado de datos para la tabla `clientes`
@@ -60,15 +50,14 @@ INSERT INTO `inventario` (`id`, `codigo`, `nombre`, `descripcion`, `comentarios`
 --
 
 INSERT INTO `obras` (`id`, `nombres`, `apellidos`, `documento`, `cliente`, `pais`, `email`, `email2`, `movil`, `movil2`, `comentarios`, `id_cliente`, `des_cliente`, `inversion`, `tipos`, `status`, `tramitido_al_crm`, `fecha`, `elaborado_por`, `verificado`, `editado_por`, `editado_fecha`, `fecha_nacimiento`, `fecha_terminacion`, `direccion_oficina`, `direccion_domicilio`, `titulacion`, `anos_laboral`, `imagenes`, `ip`, `anulado`) VALUES
-(1, 'Douglas', 'Nieves', '0001215', 'RETO2017', 'PANAMA', 'douglas.nieves@cohenyaguirre.es', 'douglasjosenieves@gmail.com', '04141331946', '041411331946', NULL, NULL, NULL, NULL, NULL, 'ACTIVO', NULL, '2017-01-17 10:03:55', '1', 0, NULL, NULL, '2017-01-17', NULL, 'Caracas', NULL, NULL, NULL, NULL, '::1', '0');
+(1, 'Douglas', 'Nieves', '0001215', 'RETO2017', 'PANAMA', 'douglas.nieves@cohenyaguirre.es', 'douglasjosenieves@gmail.com', '04141331946', '041411331946', '', 'a:1:{i:0;s:1:"1";}', 'a:1:{i:0;s:15:"CLIENTE DEMO CA";}', NULL, 'EJECUCION', 'ACTIVO', NULL, '2017-01-17 10:03:55', '1', 0, '1', '2017-01-24 23:55:38', '2017-01-17', '2017-01-24', 'Caracas', NULL, NULL, NULL, NULL, '::1', '0');
 
 --
 -- Volcado de datos para la tabla `obras_detalle`
 --
 
 INSERT INTO `obras_detalle` (`id`, `id_doc`, `doc_id`, `doc_desc`, `anulado`) VALUES
-(1, 1, '1', 'CLIENTE DEMO CA', ''),
- 
+(1, 1, '1', 'CLIENTE DEMO CA', '');
 
 --
 -- Volcado de datos para la tabla `proveedores`
@@ -76,20 +65,6 @@ INSERT INTO `obras_detalle` (`id`, `id_doc`, `doc_id`, `doc_desc`, `anulado`) VA
 
 INSERT INTO `proveedores` (`id`, `nombres`, `apellidos`, `documento`, `cliente`, `titulacion`, `pais`, `fecha_nacimiento`, `email`, `movil`, `email2`, `movil2`, `direccion_oficina`, `direccion_domicilio`, `comentario`, `status`, `ins_user`, `upd_user`, `ins_fecha`, `upd_fecha`, `id_categoria`, `id_vendedor`, `id_movil`, `id_cuenta`, `imagenes`, `ip`, `anulado`, `ext1`, `ext2`, `ext3`, `ext4`, `ext5`) VALUES
 (1, 'Juan', 'Demo', '000001', 'PROVEEDOR DEMO CA', '', 'PA', '2017-01-24', 'demo@gmail.com', '04145552211', 'demo@gmail.com', '04145552211', 'Panama City ', '', 'ESTE ES UN PROVEEDOR DEMO', 'ACTIVO', '1', '1', '2017-01-24 18:35:43', '2017-01-24 18:44:54', '6', '1', '', '', '', '::1', '0', '', '', '', '', '');
-
---
--- Volcado de datos para la tabla `seguimiento`
---
-
-INSERT INTO `seguimiento` (`id`, `id_contacto`, `cliente`, `asunto`, `descripcion`, `id_categoria`, `status`, `tramitido_al_crm`, `fecha`, `elaborado_por`, `editado_por`, `editado_fecha`, `anulado`, `adjuntos`) VALUES
-(1, 1, 'CLIENTE DEMO CA', 'PRUEBA DE SEGUIMIENTO', '<p>PRUEBA</p>', '16', 'ABIERTO', 'S', '2017-01-24 23:35:17', '1', '', '2017-01-24 23:40:41', '0', NULL);
-
---
--- Volcado de datos para la tabla `servicios`
---
-
-INSERT INTO `servicios` (`id`, `codigo`, `nombre`, `descripcion`, `comentarios`, `precio`, `precio1`, `precio2`, `precio3`, `precio_compra`, `cantidad`, `pro_inv_max`, `pro_inv_min`, `und_med`, `por_desperdicio`, `tax`, `islr`, `id_categoria`, `estado`, `stock`, `tramitido_al_crm`, `fecha`, `elaborado_por`, `verificado`, `editado_por`, `editado_fecha`, `imagenes`, `ip`, `anulado`) VALUES
-(1, '0001', 'SERVICIO 1', 'SERVICIO 1 ESPECIAL', 'PRUEBA', 15, 0, 0, 0, 10.2, 0, 20, 10, 'und', '', 7, 0, 11, 'ACTIVO', 'CANTIDAD', '', '2017-01-24 23:18:55', '1', '', NULL, NULL, 'N;', '::1', '');
 
 --
 -- Volcado de datos para la tabla `taxonomia`
@@ -142,7 +117,7 @@ INSERT INTO `taxonomia_relacion` (`id`, `id_taxonomia`, `taxonomia`, `descripcio
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `apellido`, `sexo`, `email`, `tel`, `fecha_emis`, `fecha_login`, `usuario`, `clave`, `foto`, `color`, `pais`, `tipo`, `cargo`, `anulado`) VALUES
-(1, 'SUPER', 'USUARIO', 'M', 'super@gmail.com', '04141331946', '2016-10-18 00:00:00', '2017-01-24 19:28:26', 'super@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'hombre.jpg', '#212121', 'venezuela', 'SUPERUSER', 'PROGRAMADOR', '0'),
+(1, 'SUPER', 'USUARIO', 'M', 'super@gmail.com', '04141331946', '2016-10-18 00:00:00', '2017-01-25 10:04:43', 'super@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', 'hombre.jpg', '#212121', 'venezuela', 'SUPERUSER', 'PROGRAMADOR', '0'),
 (2, 'Melanie', 'Hicks', 'F', 'cobros@gmail.com', '+861-36-6593225', '2017-01-14 09:54:37', '2017-01-14 12:37:05', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'mujer.jpg', 'Totam blanditiis tempore eu id nisi laboriosam officia repellendus Hic totam maxime id ut', 'Qui consectetur optio ullamco vitae sit impedit', 'COBROS', 'Nihil quas repellendus Qui quia duis laboris vitae iste dolor reiciendis doloremque dolores magni velit', '0'),
 (3, 'Tamara', 'Macias', 'M', 'ventas@gmail.com', '+913-97-1516515', '2017-01-14 09:56:38', '2017-01-14 10:31:44', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'mujer.jpg', 'Velit quia incidunt duis numquam voluptas irure eaque aut expedita magna pariatur Recusandae Sit est nobis magni voluptatem', 'Ipsum vel reprehenderit voluptate ut praesentium dolorum', 'VENTAS', 'Architecto praesentium in irure aliquid enim id velit asperiores', '0'),
 (4, 'Helen', 'Shaw', 'M', 'compras@gmail.com', '+357-21-4896404', '2017-01-14 10:17:16', '2017-01-18 21:15:30', NULL, '827ccb0eea8a706c4c34a16891f84e7b', 'hombre.jpg', 'Exercitationem aperiam amet nobis eiusmod quod laboriosam nulla quos veritatis blanditiis illum voluptatem error lorem eveniet pariatur Adipisci reiciendis consequatur', 'Do commodi laudantium aliqua Non perferendis beatae duis reiciendis omnis accusamus ullamco et odit illum in eos eum', 'COMPRAS', 'Perspiciatis eiusmod culpa laborum Omnis aspernatur omnis aut', '0'),
