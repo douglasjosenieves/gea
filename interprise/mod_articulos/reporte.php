@@ -87,7 +87,7 @@ mysql_query("SET CHARACTER_SET utf");
 									<th>Codigo</th>
 								   <th>Nombre</th>
 									<th>Precio</th>
-									<th>Categoría</th>
+									<th>Cantidad</th>
 									<th>Estado</th>
 								 
 									<th>Procesos</th>
@@ -131,7 +131,7 @@ require_once '../asesor_funtion.php';
 						<td><?php echo $opciones['opciones'][$i]['codigo']; ?></td>
 						<td><?php echo $opciones['opciones'][$i]['nombre']; ?></td>
 					    <td><?php echo $opciones['opciones'][$i]['precio']; ?></td>
-					    <td><?php echo id_cat($opciones['opciones'][$i]['id_cat']); ?></td>
+					    <td><?php echo $opciones['opciones'][$i]['cantidad']; ?></td>
 					    <td><?php echo statusestado($opciones['opciones'][$i]['estado']); ?></td>
 			 
 					    <td>

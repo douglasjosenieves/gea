@@ -419,7 +419,8 @@ if (isset($importar)) {
 <div class="textinf  subtotalmastax"><?php  echo IVA ?>: <span class="totalcontax"></span> | <span class="totalcontax2"></span></div>
 
 
-<input type="hidden" value="<?php echo $art['reg'][0]['reg_tax_monto'] ?>"  readonly  class="form-control reg_tax_monto"  name="reg_tax_monto[]" id="reg_tax_monto" placeholder="reg_tax_monto">
+
+<input type="hidden" data-iva="" value="<?php echo $art['reg'][0]['reg_tax_monto'] ?>"  readonly  class="form-control reg_tax_monto"  name="reg_tax_monto[]" id="reg_tax_monto" placeholder="reg_tax_monto">
 
 <input type="hidden" value="<?php echo $art['reg'][0]['reg_subtotal_con_tax'] ?>"  readonly  class="form-control reg_subtotal_con_tax"  name="reg_subtotal_con_tax[]" id="reg_subtotal_con_tax" placeholder="reg_subtotal_con_tax">
 
@@ -455,10 +456,13 @@ if (isset($importar)) {
 	<div class="col-md-6"></div>
 	<div class="col-md-6" style="font-size: 16px;font-weight: bold;">
 		
-<div class="row">
+<div class="row ">
 	
 	<div class="col-md-6">TOTAL PARCIAL</div>
 	<div class="col-md-6" id="e_total_parcial">0</div>
+</div>
+
+<div class="misbaseimponible">
 </div>
 
 <div class="row">

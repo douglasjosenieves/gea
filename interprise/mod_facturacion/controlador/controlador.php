@@ -249,6 +249,7 @@ $('#subtotal-sum').on('click', function(event) {
 function sumarSubTotales(argument) {
 
 
+
  
 
 
@@ -262,23 +263,66 @@ var cantidad = $( ".cantidad:eq( "+index +" )" ).val();
 var precio = $( ".precio:eq( "+index +" )" ).val();
 var tax = $( ".tax:eq( "+index +" )" ).val();
 var subtotal = cantidad * precio;
-
 var totalcontax = subtotal * tax / 100;
 var totalcontaxtotal = totalcontax + subtotal;
 
+
+
+
+
+
 $( ".subtotal:eq( "+index +" )" ).val(roundToTwo(subtotal));
 $( ".reg_tax_monto:eq( "+index +" )" ).val(roundToTwo(totalcontax));
+$( ".reg_tax_monto:eq( "+index +" )" ).attr('data-iva', tax);
+
 
 $('.totalcontax:eq( '+index +' )').html(roundToTwo(totalcontax));
 $('.totalcontax2:eq( '+index +' )').html(roundToTwo(totalcontaxtotal)); 
 $( ".reg_subtotal_con_tax:eq( "+index +" )" ).val(roundToTwo(totalcontaxtotal));
-console.log(index, cantidad );
+//console.log(index, cantidad );
 
 
 
 
 });
  
+var miArray = new Array(); 
+$('.reg_tax_monto').each(function (index) {
+miArray[index]  = $(this).attr('data-iva');
+});
+
+var names = miArray ;
+var uniqueNames = [];
+
+$.each(names, function(i, el){
+    if($.inArray(el, uniqueNames) === -1) uniqueNames.push(el);
+});
+
+
+
+var baseimponible = '';
+$.each(uniqueNames, function(index, val) {
+
+var sum = 0;
+$(".reg_tax_monto[data-iva='"+val+"']").each(function(){
+    sum += parseFloat(this.value);
+
+
+
+});
+
+baseimponible += '<div class="row"><div class="col-md-6">BASE IMPONIBLE '+val+'%</div><div class="col-md-6" id="" >'+sum+'</div></div>';
+ $('.misbaseimponible').html(baseimponible);
+
+
+
+
+
+ console.log(baseimponible);
+});
+
+
+
 var total_parcial = 0;
 $('.subtotal').each(function(){
     total_parcial += parseFloat(this.value);
