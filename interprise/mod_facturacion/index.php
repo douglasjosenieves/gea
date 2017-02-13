@@ -188,7 +188,7 @@ $imagenes = unserialize($imagenes);
 <div class="col-xs-12 col-sm-4 col-sm-offset-2">
 <div class="form-group">
 <label for="basicInput">Buscar <?php echo TITULO3 ?>:</label>
-<input type="text" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
+<input type="text" autocomplete="off" value="<?php echo $data['data'][0]['buscar'] ?>" class="form-control" name="buscar" id="buscar" placeholder="Buscar:" style="background-color: #accead; font-weight: 800;">
 </div>
 
 <div >
@@ -207,27 +207,35 @@ $imagenes = unserialize($imagenes);
 					 =====================================================-->
 <div class="row">
 					
- <div class="col-xs-12 col-sm-4">
+ <div class="col-xs-12 col-sm-2">
  <div class="form-group">
  <label for="basicInput">Id:</label>
- <input type="text" value="<?php echo $data['data'][0]['id'] ?>" required class="form-control" name="enc_id_cliente" id="enc_id_cliente" placeholder="id:">
+ <input type="text" readonly="true" value="<?php echo $data['data'][0]['id'] ?>" required class="form-control" name="enc_id_cliente" id="enc_id_cliente" placeholder="id:">
  </div>
  </div>
  
 
 
+<div class="col-xs-12 col-sm-3">
+<div class="form-group">
+<label for="basicInput"><?php echo RIF  ?></label>
+<input type="text" readonly="true" value="<?php echo $data['data'][0]['documento'] ?>" required class="form-control" name="enc_cliente_documento" id="enc_cliente_documento" placeholder="<?php echo RIF  ?>">
+</div>
+</div>
 
-<div class="col-xs-12 col-sm-8">
+
+
+<div class="col-xs-12 col-sm-7">
 <div class="form-group">
 <label for="basicInput"><?php echo TITULO3 ?>:</labe8>
-<input type="text" value="<?php echo $data['data'][0]['cliente'] ?>" required class="form-control" name="enc_cliente" id="enc_cliente" placeholder="<?php echo TITULO3 ?>:">
+<input type="text" readonly="true" value="<?php echo $data['data'][0]['cliente'] ?>" required class="form-control" name="enc_cliente" id="enc_cliente" placeholder="<?php echo TITULO3 ?>:">
 <div class="input-default-msg"><?php echo $data['data'][0]['direccion_oficina'] ?></div>
 
 
 <input type="hidden" value="<?php echo $data['data'][0]['direccion_oficina'] ?>" required class="form-control" name="enc_cliente_direccion" id="enc_cliente_direccion" placeholder="Cliente:">
  
 
-<input type="hidden" value="<?php echo $data['data'][0]['documento'] ?>" required class="form-control" name="enc_cliente_documento" id="enc_cliente_documento" placeholder="Cliente:">
+ 
  
 
  <input type="hidden" value="<?php echo $data['data'][0]['movil'] ?>" required class="form-control" name="enc_cliente_tel" id="enc_cliente_tel" placeholder="Cliente:">
@@ -262,14 +270,14 @@ $imagenes = unserialize($imagenes);
  </div>
  </div>
  
- 
  <div class="col-xs-12 col-sm-4">
-	                  	<div class="form-group">
-	                  	<label for="basicInput">Orden #</label>
-	                  	<input type="text" value="<?php echo $enc_orden ?>" required class="form-control" name="enc_orden" id="enc_orden" placeholder="Orden #">
-	                  	</div>
-	                  	</div>
+<div class="form-group">
+<label for="basicInput">Fecha de Vencimiento</label>
+<input type="date" value="<?php echo $ficha['ficha_contacto'][0]['enc_fecha_vencimiento'] ?>"  class="form-control" name="enc_fecha_vencimiento" id="enc_fecha_vencimiento" placeholder="Fecha de Vencimiento">
+</div>
+</div>
  
+
 
 
 	                  </div>
@@ -311,7 +319,32 @@ $v++;}
 
 </div>
 </div>
+
+
+
+
+
+<div class="col-xs-12 col-sm-4">
+<div class="form-group">
+<label for="basicInput">Descuento Monto <?php echo MONEDA ?></label>
+<input type="number" step="0.01"  value="<?php echo $ficha['ficha_contacto'][0]['descuento'] ?>"  class="form-control" name="descuento" id="descuento" placeholder="Descuento Monto <?php MONEDA ?>">
 </div>
+</div>
+
+
+ <div class="col-xs-12 col-sm-4">
+	                  	<div class="form-group">
+	                  	<label for="basicInput">Orden #</label>
+	                  	<input type="text" value="<?php echo $enc_orden ?>"  class="form-control" name="enc_orden" id="enc_orden" placeholder="Orden #">
+	                  	</div>
+	                  	</div>
+ 
+</div>
+
+
+
+
+
 <!-- informacion adicional opcional -->
  
 <div class="row">
